@@ -1,192 +1,50 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.195.0/containers/javascript-node
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
-  "name": "Node.js & Typescript",
-  "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:16-bullseye",
-  // Set *default* container specific settings.json values on container create.
-  "settings": {
-    "color-highlight.markRuler": false,
-    "color-highlight.markerType": "underline",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontLigatures": true,
-    "editor.formatOnType": false,
-    "editor.minimap.enabled": false,
-    "editor.multiCursorModifier": "alt",
-    "editor.rulers": [
-      110,
-      130
-    ],
-    "editor.suggestSelection": "first",
-    "editor.tabSize": 2,
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "gitlens.codeLens.scopes": [
-      "document"
-    ],
-    "update.showReleaseNotes": false,
-    "update.mode": "none",
-    "terminal.explorerKind": "external",
-    "extensions.autoCheckUpdates": false,
-    "extensions.autoUpdate": false,
-    "markdown.extension.toc.githubCompatibility": true,
-    "markdown.extension.toc.levels": "1..3",
-    "prettier.singleQuote": true,
-    "prettier.trailingComma": "es5",
-    "telemetry.enableTelemetry": false,
-    "window.openFilesInNewWindow": "on",
-    "window.openFoldersInNewWindow": "on",
-    "window.zoomLevel": 0,
-    "workbench.activityBar.visible": false,
-    "workbench.fontAliasing": "antialiased",
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorCustomizations": {
-      // "titleBar.activeBackground": "#353535",
-      // "activityBar.background": "#353535",
-      // "statusBar.background": "#353535",
-      // "statusBar.noFolderBackground": "#353535",
-      // "statusBar.debuggingBackground": "#263238"
-      // JS THEME
-      "editor.background": "#212121",
-      "editor.foreground": "#ffffff",
-      "activityBar.background": "#121212",
-      "activityBar.foreground": "#F3DC1C",
-      "activityBar.dropBackground": "#121212",
-      "activityBarBadge.background": "#F3DC1C",
-      "activityBarBadge.foreground": "#121212",
-      "sideBar.background": "#121212",
-      "sideBar.foreground": "#b3b3b3",
-      "sideBar.border": "#212121",
-      "sideBarTitle.foreground": "#FFF",
-      "sideBarSectionHeader.foreground": "#FFF",
-      "sideBarSectionHeader.background": "#121212",
-      "list.activeSelectionBackground": "#535353",
-      "list.activeSelectionForeground": "#fff",
-      "list.dropBackground": "#212121",
-      "list.hoverBackground": "#212121",
-      "list.hoverForeground": "#fff",
-      "list.focusBackground": "#212121",
-      "list.focusForeground": "#fff",
-      "list.inactiveSelectionBackground": "#212121",
-      "list.inactiveFocusBackground": "#121212",
-      "list.inactiveSelectionForeground": "#fff",
-      "list.highlightForeground": "#fff",
-      "statusBar.background": "#212121",
-      "statusBar.foreground": "#ffffff",
-      "statusBar.border": "#F3DC1C",
-      "statusBar.noFolderBackground": "#121212",
-      "statusBar.noFolderBorder": "#121212",
-      "statusBar.noFolderForeground": "#b3b3b3",
-      "statusBar.debuggingBackground": "#F3DC1C",
-      "statusBar.debuggingForeground": "#121212",
-      "statusBarItem.activeBackground": "#535353",
-      "statusBarItem.hoverBackground": "#F3DC1C",
-      "notificationCenter.border": "#121212",
-      "notificationCenterHeader.foreground": "#b3b3b3",
-      "notificationCenterHeader.background": "#121212",
-      "editorGroup.emptyBackground": "#212121",
-      "editorGroup.border": "#F3DC1C",
-      "editorGroup.dropBackground": "#212121",
-      "tab.activeBackground": "#212121",
-      "button.background": "#535353",
-      "button.foreground": "#fff",
-      "titleBar.activeBackground": "#212121",
-      "titleBar.border": "#F3DC1C",
-      "titleBar.inactiveBackground": "#535353",
-      "textLink.foreground": "#F3DC1C",
-      "textLink.activeForeground": "#A6960A"
-      // JS THEME - END
-    },
-    // Suggested settings for Web development (see https://github.com/shawn-sandy/codestudio)
-    "files.associations": {
-      "*.tag": "html",
-      "*.cshtml": "html",
-      "*.html": "html",
-      "*.njk": "html",
-      "*.mustache": "html",
-      "*.html.md": "html"
-    },
-    "files.exclude": {
-      "*.sublime-*": true,
-      "**/__pycache__": true,
-      "**/.DS_Store": true,
-      "**/.git": true,
-      "**/.pytest_cache": true,
-      "**/.vscode": true,
-      "**/node_modules": true,
-      "node_modules": true,
-      "venv": true
-    },
-    "search.exclude": {
-      "**/node_modules": true,
-      "**/bower_components": true,
-      "**/env": true,
-      "**/venv": true
-    },
-    "files.watcherExclude": {
-      "**/.git/objects/**": true,
-      "**/.git/subtree-cache/**": true,
-      "**/node_modules/**": true,
-      "**/env/**": true,
-      "**/venv/**": true,
-      "env-*": true
-    },
-    // "files.autoSave": "onFocusChange",
-    "files.trimTrailingWhitespace": true,
-    "editor.cursorBlinking": "phase",
-    "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
-    // "editor.formatOnSave": true,
-    "breadcrumbs.enabled": true,
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.maxColumn": 200,
-    "editor.minimap.showSlider": "always",
-    // END Suggested settings for Web development
-    "[html]": {
-      "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "[json]": {
-      "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[jsonc]": {
-      "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[markdown]": {
-      "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
-    "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "extensions.ignoreRecommendations": true,
-    "workbench.enableExperiments": false,
-    "workbench.settings.enableNaturalLanguageSearch": false
-  },
-  // Add the IDs of extensions you want installed when the container is created.
-  "extensions": [
-    "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
-    "naumovs.color-highlight",
-    "vscode-icons-team.vscode-icons",
-    "yzhang.markdown-all-in-one"
-  ],
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [3000],
-  // Use 'portsAttributes' to set default properties for specific forwarded ports. More info: https://code.visualstudio.com/docs/remote/devcontainerjson-reference.
-  // "portsAttributes": {
-  //   "3000": {
-  //     "label": "Hello Remote World",
-  //     "onAutoForward": "notify"
-  //   }
-  // },
-  // Use 'otherPortsAttributes' to configure any ports that aren't configured using 'portsAttributes'.
-  // "otherPortsAttributes": {
-  // 		"onAutoForward": "silent"
-  // },
-  // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "yarn install",
-  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-  "remoteUser": "node"
+	"name": "React Auth",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"configureZshAsDefaultShell": true,
+			"username": "node"
+		},
+		"ghcr.io/devcontainers-extra/features/zsh-plugins:0": {
+			"plugins": "git npm",
+			"omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions",
+			"username": "node"
+		},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/joshuanianji/devcontainer-features/mount-pnpm-store:1": {}
+	},
+
+	// Volumes to mount
+	"mounts": [
+		"source=${devcontainerId}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo chown node node_modules; pnpm install",
+
+	// Configure tool-specific properties.
+	"customizations": {
+			"vscode": {
+					"extensions": [
+            "dbaeumer.vscode-eslint",
+						"esbenp.prettier-vscode",
+            "editorconfig.editorconfig",
+						"GitHub.vscode-github-actions",
+						"yzhang.markdown-all-in-one",
+					]
+			}
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
 }
