@@ -1,24 +1,22 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
-import { BaseAuthClient } from './types';
+import type { BaseAuthClient } from './types';
 
 /**
  * Props that can be passed to AuthProvider
  */
-export type AuthProviderProps = {
-  children?: React.ReactNode;
-
+export type AuthProviderProps = PropsWithChildren<{
   /**
    * An optional component to display if AuthClient initialization failed.
    */
-  ErrorComponent?: JSX.Element;
+  ErrorComponent?: React.ReactNode;
 
   /**
    * An optional component to display while AuthClient instance is being initialized.
    */
-  LoadingComponent?: JSX.Element;
-};
+  LoadingComponent?: React.ReactNode;
+}>;
 
 type AuthProviderState = {
   isAuthenticated: boolean;
@@ -79,7 +77,7 @@ export function createAuth<C extends BaseAuthClient>(authClient: C) {
   };
 
   // Retrieve the AuthClient from the current context
-  const useAuthClient = function(): C {
+  const useAuthClient = function (): C {
     const ctx = useContext(authContext);
 
     if (!ctx) {
