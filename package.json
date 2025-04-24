@@ -12,5 +12,17 @@
   "homepage": "https://github.com/forwardsoftware/react-auth#readme",
   "bugs": "https://github.com/forwardsoftware/react-auth/issues",
   "repository": "https://github.com/forwardsoftware/react-auth",
-  "scripts": {}
+  "scripts": {},
+  "devDependencies": {
+    "@babel/cli": "7.27.0",
+    "@babel/core": "7.26.10",
+    "@babel/preset-env": "7.26.9",
+    "@babel/preset-react": "7.26.3",
+    "@babel/preset-typescript": "7.27.0",
+    "mkdirp": "3.0.1",
+    "npm-run-all2": "7.0.2",
+    "rimraf": "6.0.1",
+    "tslib": "2.8.1",
+    "typescript": "5.8.3"
+  }
 }

@@ -1,6 +1,5 @@
-import * as React from 'react';
 import * as rtl from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 import { createMockAuthClient, createChild, flushPromises } from './test-utils';
 

@@ -1,7 +1,7 @@
 import React, { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
-import type { BaseAuthClient } from './types';
+import { BaseAuthClient } from './types';
 
 /**
  * Props that can be passed to AuthProvider

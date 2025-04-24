@@ -1,7 +1,5 @@
 /* istanbul ignore file */
 
-import * as React from 'react';
-
 import { BaseAuthClient } from '../src';
 
 type MockTokens = {
@@ -101,7 +99,7 @@ export const createMockAuthClientWithHooks = (hooks: Record<string, any>) => {
 };
 
 export const createChild = (useAuthClientHook: () => MockAuthClient) => {
-  return function() {
+  return function () {
     const authClient = useAuthClientHook();
     return (
       <div data-testid="authClient">
@@ -111,4 +109,4 @@ export const createChild = (useAuthClientHook: () => MockAuthClient) => {
   };
 };
 
-export const flushPromises = () => new Promise(setImmediate);
+export const flushPromises = () => new Promise(process.nextTick);
