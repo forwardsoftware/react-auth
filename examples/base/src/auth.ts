@@ -1,4 +1,4 @@
-import { BaseAuthClient, createAuth } from '../../../.';
+import { BaseAuthClient, createAuth } from '../../../lib/dist';
 
 type AuthCredentials = {};
 

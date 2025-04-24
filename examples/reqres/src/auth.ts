@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BaseAuthClient, createAuth } from '../../../.';
+import { BaseAuthClient, createAuth } from '../../../lib/dist';
 
 type ReqResCredentials = {
   email: string;

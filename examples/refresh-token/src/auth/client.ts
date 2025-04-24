@@ -1,7 +1,6 @@
 import axios, { Axios } from 'axios';
 import isJwtTokenExpired from 'jwt-check-expiry';
-import { BaseAuthClient } from '../../../../.';
-import { BASE_URL } from '../constants';
+import { BaseAuthClient } from '../../../../lib/dist';
 
 type Tokens = Partial<{
   accessToken: string;
@@ -18,7 +17,7 @@ class Client extends BaseAuthClient<Tokens, Credentials> {
 
   protected async onInit(): Promise<void> {
     this.AxiosClient = axios.create({
-      baseURL: BASE_URL,
+      baseURL: process.env.BASE_URL,
       headers: {
         'Content-Type': 'application/json',
       },

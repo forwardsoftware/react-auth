@@ -2,12 +2,10 @@ import * as React from 'react';
 import AppContent from './AppContent';
 import { AuthProvider } from './auth';
 
-const App = () => {
+export const App = () => {
   return (
     <AuthProvider>
       <AppContent />
     </AuthProvider>
   );
 };
-
-export default App;
