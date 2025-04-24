@@ -1,3 +1,4 @@
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom';
 
@@ -6,15 +7,15 @@ import {
   createMockAuthClientWithHooks,
 } from './test-utils';
 
-afterEach(require('@testing-library/react').cleanup);
+afterEach(rtl.cleanup);
 
 describe('AuthClient', () => {
   describe('on Init', () => {
     it('should notify success', async () => {
-      const initSuccessEventListener = jest.fn();
+      const initSuccessEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onInit').mockResolvedValue(undefined);
+      vi.spyOn(authClientStub, 'onInit').mockResolvedValue(undefined);
 
       authClientStub.on('initSuccess', initSuccessEventListener);
 
@@ -26,7 +27,7 @@ describe('AuthClient', () => {
     });
 
     it('should notify failure', async () => {
-      const initFailureEventListener = jest.fn();
+      const initFailureEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
       authClientStub.on('initFailed', initFailureEventListener);
@@ -39,12 +40,12 @@ describe('AuthClient', () => {
     });
 
     it('should invoke postInit hook', async () => {
-      const postInitHook = jest.fn();
+      const postInitHook = vi.fn();
 
       const authClientStub = createMockAuthClientWithHooks({
         onPostInit: postInitHook,
       });
-      jest.spyOn(authClientStub, 'onInit').mockResolvedValue(undefined);
+      vi.spyOn(authClientStub, 'onInit').mockResolvedValue(undefined);
 
       await rtl.act(async () => {
         await authClientStub.init();
@@ -56,7 +57,7 @@ describe('AuthClient', () => {
 
   describe('on Login', () => {
     it('should notify start', async () => {
-      const loginStartedListener = jest.fn();
+      const loginStartedListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
       authClientStub.on('loginStarted', loginStartedListener);
@@ -69,10 +70,10 @@ describe('AuthClient', () => {
     });
 
     it('should notify success', async () => {
-      const loginSuccessEventListener = jest.fn();
+      const loginSuccessEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onLogin').mockResolvedValue({
+      vi.spyOn(authClientStub, 'onLogin').mockResolvedValue({
         authToken: 'tkn',
         refreshToken: 'tkn',
       });
@@ -87,7 +88,7 @@ describe('AuthClient', () => {
     });
 
     it('should notify failure', async () => {
-      const loginFailureEventListener = jest.fn();
+      const loginFailureEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
       authClientStub.on('loginFailed', loginFailureEventListener);
@@ -100,14 +101,14 @@ describe('AuthClient', () => {
     });
 
     it('should invoke preLogin and postLogin hooks in case of success', async () => {
-      const preLoginHook = jest.fn();
-      const postLoginHook = jest.fn();
+      const preLoginHook = vi.fn();
+      const postLoginHook = vi.fn();
 
       const authClientStub = createMockAuthClientWithHooks({
         onPreLogin: preLoginHook,
         onPostLogin: postLoginHook,
       });
-      jest.spyOn(authClientStub, 'onLogin').mockResolvedValue({
+      vi.spyOn(authClientStub, 'onLogin').mockResolvedValue({
         authToken: 'tkn',
         refreshToken: 'tkn',
       });
@@ -122,8 +123,8 @@ describe('AuthClient', () => {
     });
 
     it('should invoke preLogin and postLogin hooks in case of failure', async () => {
-      const preLoginHook = jest.fn();
-      const postLoginHook = jest.fn();
+      const preLoginHook = vi.fn();
+      const postLoginHook = vi.fn();
 
       const authClientStub = createMockAuthClientWithHooks({
         onPreLogin: preLoginHook,
@@ -142,7 +143,7 @@ describe('AuthClient', () => {
 
   describe('on Refresh', () => {
     it('should notify start', async () => {
-      const refreshStartedListener = jest.fn();
+      const refreshStartedListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
       authClientStub.on('refreshStarted', refreshStartedListener);
@@ -155,10 +156,10 @@ describe('AuthClient', () => {
     });
 
     it('should notify success', async () => {
-      const refreshSuccessEventListener = jest.fn();
+      const refreshSuccessEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
+      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
         authToken: 'tkn',
         refreshToken: 'tkn',
       });
@@ -173,7 +174,7 @@ describe('AuthClient', () => {
     });
 
     it('should notify failure', async () => {
-      const refreshFailureEventListener = jest.fn();
+      const refreshFailureEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
       authClientStub.on('refreshFailed', refreshFailureEventListener);
@@ -187,14 +188,13 @@ describe('AuthClient', () => {
 
     it('should NOT trigger onRefresh twice', async () => {
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
+      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
         authToken: 'tkn',
         refreshToken: 'tkn',
       });
 
       await rtl.act(() => {
         authClientStub.refresh();
-
         authClientStub.refresh();
       });
 
@@ -202,12 +202,12 @@ describe('AuthClient', () => {
     });
 
     it('should NOT emit refresh events twice', async () => {
-      const refreshStartedListener = jest.fn();
-      const refreshSuccessEventListener = jest.fn();
-      const refreshFailureEventListener = jest.fn();
+      const refreshStartedListener = vi.fn();
+      const refreshSuccessEventListener = vi.fn();
+      const refreshFailureEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
+      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
         authToken: 'tkn',
         refreshToken: 'tkn',
       });
@@ -218,7 +218,6 @@ describe('AuthClient', () => {
 
       await rtl.act(() => {
         authClientStub.refresh();
-
         authClientStub.refresh();
       });
 
@@ -228,14 +227,14 @@ describe('AuthClient', () => {
     });
 
     it('should invoke preRefresh and postRefresh hooks in case of success', async () => {
-      const preRefreshHook = jest.fn();
-      const postRefreshHook = jest.fn();
+      const preRefreshHook = vi.fn();
+      const postRefreshHook = vi.fn();
 
       const authClientStub = createMockAuthClientWithHooks({
         onPreRefresh: preRefreshHook,
         onPostRefresh: postRefreshHook,
       });
-      jest.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
+      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
         authToken: 'tkn',
         refreshToken: 'tkn',
       });
@@ -250,8 +249,8 @@ describe('AuthClient', () => {
     });
 
     it('should invoke preRefresh and postRefresh hooks in case of failure', async () => {
-      const preRefreshHook = jest.fn();
-      const postRefreshHook = jest.fn();
+      const preRefreshHook = vi.fn();
+      const postRefreshHook = vi.fn();
 
       const authClientStub = createMockAuthClientWithHooks({
         onPreRefresh: preRefreshHook,
@@ -270,7 +269,7 @@ describe('AuthClient', () => {
 
   describe('on logout', () => {
     it('should notify start', async () => {
-      const logoutStartedListener = jest.fn();
+      const logoutStartedListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
       authClientStub.on('logoutStarted', logoutStartedListener);
@@ -283,10 +282,10 @@ describe('AuthClient', () => {
     });
 
     it('should notify success', async () => {
-      const logoutSuccessEventListener = jest.fn();
+      const logoutSuccessEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onLogout').mockResolvedValue(undefined);
+      vi.spyOn(authClientStub, 'onLogout').mockResolvedValue(undefined);
 
       authClientStub.on('logoutSuccess', logoutSuccessEventListener);
 
@@ -298,7 +297,7 @@ describe('AuthClient', () => {
     });
 
     it('should notify failure', async () => {
-      const logoutFailureEventListener = jest.fn();
+      const logoutFailureEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
       authClientStub.on('logoutFailed', logoutFailureEventListener);
@@ -311,14 +310,14 @@ describe('AuthClient', () => {
     });
 
     it('should invoke preLogout and postLogout hooks in case of success', async () => {
-      const preLogoutHook = jest.fn();
-      const postLogoutHook = jest.fn();
+      const preLogoutHook = vi.fn();
+      const postLogoutHook = vi.fn();
 
       const authClientStub = createMockAuthClientWithHooks({
         onPreLogout: preLogoutHook,
         onPostLogout: postLogoutHook,
       });
-      jest.spyOn(authClientStub, 'onLogout').mockResolvedValue(undefined);
+      vi.spyOn(authClientStub, 'onLogout').mockResolvedValue(undefined);
 
       await rtl.act(async () => {
         await authClientStub.logout();
@@ -330,8 +329,8 @@ describe('AuthClient', () => {
     });
 
     it('should invoke preLogout and postLogout hooks in case of failure', async () => {
-      const preLogoutHook = jest.fn();
-      const postLogoutHook = jest.fn();
+      const preLogoutHook = vi.fn();
+      const postLogoutHook = vi.fn();
 
       const authClientStub = createMockAuthClientWithHooks({
         onPreLogout: preLogoutHook,
@@ -357,7 +356,7 @@ describe('AuthClient', () => {
 
     it('should return current tokens after login', async () => {
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onLogin').mockResolvedValue({
+      vi.spyOn(authClientStub, 'onLogin').mockResolvedValue({
         authToken: 'a.fake.tkn',
         refreshToken: 'a.fake.tkn',
       });
@@ -375,7 +374,7 @@ describe('AuthClient', () => {
 
   describe('when event listener is removed', () => {
     it('should not crash if no listener is defined', async () => {
-      const initSuccessEventListener = jest.fn();
+      const initSuccessEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
 
@@ -387,10 +386,10 @@ describe('AuthClient', () => {
     });
 
     it('should not be invoked on login success', async () => {
-      const loginSuccessEventListener = jest.fn();
+      const loginSuccessEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onLogin').mockResolvedValue({
+      vi.spyOn(authClientStub, 'onLogin').mockResolvedValue({
         authToken: 'tkn',
         refreshToken: 'tkn',
       });
@@ -411,7 +410,7 @@ describe('AuthClient', () => {
     });
 
     it('should not be invoked on login failed', async () => {
-      const loginFailureEventListener = jest.fn();
+      const loginFailureEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
       authClientStub.on('loginFailed', loginFailureEventListener);
@@ -430,12 +429,12 @@ describe('AuthClient', () => {
     });
 
     it('should not be invoked on refresh success', async () => {
-      const refreshStartedListener = jest.fn();
-      const refreshSuccessEventListener = jest.fn();
-      const refreshFailureEventListener = jest.fn();
+      const refreshStartedListener = vi.fn();
+      const refreshSuccessEventListener = vi.fn();
+      const refreshFailureEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
+      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
         authToken: 'tkn',
         refreshToken: 'tkn',
       });
@@ -462,12 +461,12 @@ describe('AuthClient', () => {
     });
 
     it('should not be invoked on refresh failed', async () => {
-      const refreshStartedListener = jest.fn();
-      const refreshSuccessEventListener = jest.fn();
-      const refreshFailureEventListener = jest.fn();
+      const refreshStartedListener = vi.fn();
+      const refreshSuccessEventListener = vi.fn();
+      const refreshFailureEventListener = vi.fn();
 
       const authClientStub = createMockAuthClient();
-      jest.spyOn(authClientStub, 'onRefresh').mockRejectedValue(null);
+      vi.spyOn(authClientStub, 'onRefresh').mockRejectedValue(null);
 
       authClientStub.on('refreshSuccess', refreshSuccessEventListener);
       authClientStub.on('refreshStarted', refreshStartedListener);

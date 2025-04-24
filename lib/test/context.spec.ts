@@ -1,3 +1,4 @@
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { renderHook } from '@testing-library/react';
 
 import { createMockAuthClient } from './test-utils';
@@ -17,9 +18,9 @@ describe('createAuth', () => {
 
   describe('useAuthClient hook', () => {
     it('should throw error if used outside AuthProvider context', async () => {
-      const consoleErrorFn = jest
+      const consoleErrorFn = vi
         .spyOn(console, 'error')
-        .mockImplementation(() => jest.fn());
+        .mockImplementation(() => vi.fn());
 
       const { useAuthClient } = createAuth(createMockAuthClient());
 

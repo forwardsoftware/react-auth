@@ -1,3 +1,5 @@
+import React from 'react';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom';
 
@@ -5,13 +7,13 @@ import { createMockAuthClient, createChild, flushPromises } from './test-utils';
 
 import { createAuth } from '../src';
 
-afterEach(require('@testing-library/react').cleanup);
+afterEach(rtl.cleanup);
 
 describe('AuthProvider', () => {
   describe('on initialization', () => {
     it('should init AuthClient instance', async () => {
       const authClientStub = createMockAuthClient();
-      const authClientInitSpy = jest
+      const authClientInitSpy = vi
         .spyOn(authClientStub, 'onInit')
         .mockResolvedValue(undefined);
 
@@ -31,7 +33,7 @@ describe('AuthProvider', () => {
     it('should handle errors during init', async () => {
       const authClientStub = createMockAuthClient();
 
-      const authClientInitSpy = jest
+      const authClientInitSpy = vi
         .spyOn(authClientStub, 'onInit')
         .mockRejectedValue(new Error('Stub error'));
 
@@ -73,7 +75,7 @@ describe('AuthProvider', () => {
 
     it('should diplay ErrorComponent if provided', async () => {
       const authClientStub = createMockAuthClient();
-      jest
+      vi
         .spyOn(authClientStub, 'onInit')
         .mockRejectedValue(new Error('Stub error'));
 

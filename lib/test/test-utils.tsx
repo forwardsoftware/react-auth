@@ -1,16 +1,15 @@
 /* istanbul ignore file */
 
+import React from 'react';
 import { BaseAuthClient } from '../src';
 
 type MockTokens = {
   authToken: string;
-
   refreshToken: string;
 };
 
 type MockCredentials = {
   username: string;
-
   password: string;
 };
 
