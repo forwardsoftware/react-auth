@@ -20,16 +20,30 @@ export type AuthProviderProps = PropsWithChildren<{
   LoadingComponent?: React.ReactNode;
 }>;
 
+/**
+ * Represents the current state of the authentication provider
+ */
 type AuthProviderState = {
   isAuthenticated: boolean;
-
   isInitialized: boolean;
 };
 
+/**
+ * The authentication context containing both the state and the enhanced auth client
+ * @template AC - The AuthClient implementation type
+ * @template E - The error type used throughout the authentication flow
+ */
 type AuthContext<AC extends AuthClient, E extends Error> = AuthProviderState & {
   authClient: EnhancedAuthClient<AC, E>;
 };
 
+/**
+ * Creates an authentication context and provider for a React application
+ * @template AC - The AuthClient implementation type
+ * @template E - The error type used throughout the authentication flow
+ * @param authClient - The base authentication client to use
+ * @returns An object containing the AuthProvider component and useAuthClient hook
+ */
 export function createAuth<AC extends AuthClient, E extends Error = Error>(authClient: AC) {
   // Create a React context containing an AuthClient instance.
   const authContext = createContext<AuthContext<AC, E> | null>(null);
@@ -73,7 +87,10 @@ export function createAuth<AC extends AuthClient, E extends Error = Error>(authC
     );
   };
 
-  // Retrieve the AuthClient from the current context
+  /**
+   * Hook to access the authentication client within the AuthProvider
+   * @throws Error if used outside of an AuthProvider
+   */
   const useAuthClient = function (): EnhancedAuthClient<AC, E> {
     const ctx = useContext(authContext);
     if (!ctx) {

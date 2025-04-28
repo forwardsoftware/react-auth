@@ -1,10 +1,20 @@
 import { createEventEmitter, Deferred, EventReceiver } from "./utils";
 import type { EventKey } from "./utils";
 
+/**
+ * Represents authentication tokens used for API authorization
+ */
 type AuthTokens = {};
 
+/**
+ * Represents user credentials used for authentication
+ */
 type AuthCredentials = {};
 
+/**
+ * Maps authentication events to their corresponding payload types
+ * @template E - The error type used throughout the authentication flow
+ */
 type AuthEventsMap<E extends Error> = {
   initSuccess: undefined;
 
@@ -29,38 +39,103 @@ type AuthEventsMap<E extends Error> = {
   logoutFailed: E;
 };
 
+/**
+ * Function type for subscription callbacks
+ */
 type SubscribeFn = () => void;
 
+/**
+ * Function type for unsubscribing from events
+ * @returns {boolean} - Returns true if the subscription was successfully removed
+ */
 type UnsubscribeFn = () => boolean;
 
+/**
+ * Interface defining the core authentication client functionality
+ * @template T - The type of authentication tokens
+ * @template C - The type of authentication credentials
+ */
 export interface AuthClient<T = AuthTokens, C = AuthCredentials> {
+  /**
+   * Optional initialization hook called before authentication
+   * @returns {Promise<T | null>} - Returns authentication tokens if available
+   */
   onInit?(): Promise<T | null>;
 
+  /**
+   * Optional post-initialization hook
+   */
   onPostInit?(): Promise<void>;
 
+  /**
+   * Optional pre-login hook
+   */
   onPreLogin?(): Promise<void>;
 
+  /**
+   * Handles the login process
+   * @param {C} [credentials] - Optional credentials for authentication
+   * @returns {Promise<T>} - Returns authentication tokens upon successful login
+   */
   onLogin(credentials?: C): Promise<T>;
 
+  /**
+   * Optional post-login hook
+   * @param {boolean} isSuccess - Indicates whether the login was successful
+   */
   onPostLogin?(isSuccess: boolean): Promise<void>;
 
+  /**
+   * Optional pre-refresh hook
+   */
   onPreRefresh?(): Promise<void>;
 
+  /**
+   * Optional token refresh handler
+   * @param {number} [minValidity] - Minimum token validity period in seconds
+   * @returns {Promise<T>} - Returns refreshed authentication tokens
+   */
   onRefresh?(minValidity?: number): Promise<T>;
 
+  /**
+   * Optional post-refresh hook
+   * @param {boolean} isSuccess - Indicates whether the token refresh was successful
+   */
   onPostRefresh?(isSuccess: boolean): Promise<void>;
 
+  /**
+   * Optional pre-logout hook
+   */
   onPreLogout?(): Promise<void>;
 
+  /**
+   * Optional logout handler
+   */
   onLogout?(): Promise<void>;
 
+  /**
+   * Optional post-logout hook
+   * @param {boolean} isSuccess - Indicates whether the logout was successful
+   */
   onPostLogout?(isSuccess: boolean): Promise<void>;
 }
 
+/**
+ * Extracts token type from an AuthClient implementation
+ * @template AC - The AuthClient implementation type
+ */
 type AuthClientTokens<AC extends AuthClient> = Partial<ReturnType<AC["onLogin"]>>;
 
+/**
+ * Extracts credentials type from an AuthClient implementation
+ * @template AC - The AuthClient implementation type
+ */
 type AuthClientCredentials<AC extends AuthClient> = Parameters<AC["onLogin"]>;
 
+/**
+ * Represents the current state of an AuthClient
+ * @template AC - The AuthClient implementation type
+ */
 type AuthClientState<AC extends AuthClient> = {
   isAuthenticated: boolean;
 
@@ -69,27 +144,93 @@ type AuthClientState<AC extends AuthClient> = {
   tokens: AuthClientTokens<AC>;
 };
 
+/**
+ * Enhanced authentication client with additional functionality and state management
+ * @template AC - The AuthClient implementation type
+ * @template E - The error type used throughout the authentication flow
+ */
 export interface EnhancedAuthClient<AC extends AuthClient, E extends Error = Error> {
-  // Getters
+  /**
+   * Indicates whether the authentication client has been initialized
+   * @readonly
+   */
   readonly isInitialized: boolean;
+
+  /**
+   * Indicates whether the user is currently authenticated
+   * @readonly
+   */
   readonly isAuthenticated: boolean;
+
+  /**
+   * Current authentication tokens
+   * @readonly
+   */
   readonly tokens: AuthClientTokens<AC>;
 
-  // Public methods
+  /**
+   * Initializes the authentication client
+   * @returns {Promise<boolean>} - Returns true if initialization was successful
+   */
   init(): Promise<boolean>;
+
+  /**
+   * Attempts to authenticate the user with provided credentials
+   * @param {...AuthClientCredentials<AC>} params - Authentication credentials
+   * @returns {Promise<boolean>} - Returns true if login was successful
+   */
   login(...params: AuthClientCredentials<AC>): Promise<boolean>;
+
+  /**
+   * Refreshes the authentication tokens
+   * @param {number} [minValidity] - Minimum token validity period in seconds
+   * @returns {Promise<boolean>} - Returns true if token refresh was successful
+   */
   refresh(minValidity?: number): Promise<boolean>;
+
+  /**
+   * Logs out the current user
+   * @returns {Promise<void>}
+   */
   logout(): Promise<void>;
 
-  // Event handling
+  /**
+   * Registers an event listener for authentication events
+   * @template K - The event key type
+   * @param {K} eventName - The name of the event to listen for
+   * @param {EventReceiver<AuthEventsMap<E>[K]>} listener - The event handler function
+   */
   on<K extends EventKey<AuthEventsMap<E>>>(eventName: K, listener: EventReceiver<AuthEventsMap<E>[K]>): void;
+
+  /**
+   * Removes an event listener for authentication events
+   * @template K - The event key type
+   * @param {K} eventName - The name of the event to stop listening for
+   * @param {EventReceiver<AuthEventsMap<E>[K]>} listener - The event handler function to remove
+   */
   off<K extends EventKey<AuthEventsMap<E>>>(eventName: K, listener: EventReceiver<AuthEventsMap<E>[K]>): void;
 
-  // Subscription handling
+  /**
+   * Subscribes to authentication state changes
+   * @param {SubscribeFn} subscription - The callback function to be called on state changes
+   * @returns {UnsubscribeFn} - A function to unsubscribe from state changes
+   */
   subscribe(subscription: SubscribeFn): UnsubscribeFn;
+
+  /**
+   * Gets the current authentication state
+   * @returns {AuthClientState<AC>} - The current authentication state
+   */
   getSnapshot(): AuthClientState<AC>;
 }
 
+/**
+ * Wraps a basic AuthClient implementation with enhanced functionality
+ * @template AC - The AuthClient implementation type
+ * @template E - The error type used throughout the authentication flow
+ * @param {AC} authClient - The base authentication client to enhance
+ * @returns {EnhancedAuthClient<AC, E>} - An enhanced authentication client with additional features
+ */
 export function wrapAuthClient<AC extends AuthClient, E extends Error = Error>(authClient: AC): EnhancedAuthClient<AC> {
   return new (class implements EnhancedAuthClient<AC, E> {
     private _state: Readonly<AuthClientState<AC>> = {
