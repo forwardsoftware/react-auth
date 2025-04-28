@@ -2,7 +2,7 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import * as rtl from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import { wrapAuthClient } from "../src";
+import { wrapAuthClient } from "../src/auth";
 
 import { createMockAuthClient, createMockAuthClientWithHooks } from "./test-utils";
 
