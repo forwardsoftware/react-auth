@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: Test packages
+      - name: Test package
         run: pnpm --filter "@forward-software/react-auth" test
 
   build:
@@ -56,5 +56,8 @@ jobs:
           node-version: "lts/*"
           cache: pnpm
 
-      - name: Build packages
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Build package
         run: pnpm --filter "@forward-software/react-auth" build
