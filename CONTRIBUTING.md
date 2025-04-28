@@ -28,9 +28,9 @@ Here are some resources to help you get started with open source contributions:
 
 We use GitHub to host code, to track issues and feature requests, as well as accept pull requests.
 
-### Report bugs using GitHub's [issues](https://github.com/Forward-Software/react-auth/issues)
+### Report bugs using GitHub's [issues](https://github.com/forwardsoftware/react-auth/issues)
 
-Report a bug by [opening a new issue](https://github.com/Forward-Software/react-auth/issues/new/choose)
+Report a bug by [opening a new issue](https://github.com/forwardsoftware/react-auth/issues/new/choose)
 
 #### Write bug reports with detail, background, and sample code
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BaseAuthClient, createAuth } from '../../../.';
+import { BaseAuthClient, createAuth } from '@forward-software/react-auth';
 
 type ReqResCredentials = {
   email: string;
@@ -17,6 +17,9 @@ class ReqResAuthClient extends BaseAuthClient<
 > {
   private _apiClient = axios.create({
     baseURL: 'https://reqres.in',
+    headers: {
+      "x-api-key": "reqres-free-v1"
+    }
   });
 
   protected onInit(): Promise<void> {
@@ -40,7 +43,7 @@ class ReqResAuthClient extends BaseAuthClient<
     };
   }
 
-  protected onRefresh(minValidity?: number): Promise<ReqResAuthTokens> {
+  protected onRefresh(): Promise<ReqResAuthTokens> {
     throw new Error('Unsupported method!');
   }
 

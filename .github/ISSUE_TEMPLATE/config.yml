@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: General Questions and Inquiries
-    url: https://github.com/Forward-Software/react-auth/discussions
+    url: https://github.com/forwardsoftware/react-auth/discussions
     about: Please ask general integration/design/architecture questions using GitHub Discussion.

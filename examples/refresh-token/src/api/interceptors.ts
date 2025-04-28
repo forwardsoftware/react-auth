@@ -1,9 +1,9 @@
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { authClient } from '../auth';
+import type { AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import { authClient } from "../auth";
 
 // REQUEST
 
-export async function requestSuccessInterceptor(axiosRequestCfg: AxiosRequestConfig) {
+export async function requestSuccessInterceptor<D>(axiosRequestCfg: InternalAxiosRequestConfig<D>) {
   try {
     // Check and acquire a token before the request is sent
     const token = await authClient.refresh();
@@ -12,7 +12,7 @@ export async function requestSuccessInterceptor(axiosRequestCfg: AxiosRequestCon
     if (axiosRequestCfg?.headers) axiosRequestCfg.headers.Authorization = `Bearer ${token}`;
   } catch (err) {
     // Do something with error of acquiring the token
-    console.error('getAuthToken:', err);
+    console.error("getAuthToken:", err);
   }
 
   return axiosRequestCfg;
@@ -32,13 +32,13 @@ export function responseSuccessInterceptor(axiosReponse: AxiosResponse) {
 
 export function responseErrorInterceptor({ request, response, message }: any) {
   let status = -1;
-  let errMsg = '';
+  let errMsg = "";
 
   if (response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
     status = response?.status ?? 500;
-    errMsg = response?.statusText ?? 'Unknow server error';
+    errMsg = response?.statusText ?? "Unknow server error";
     if (response?.data?.error instanceof Object) {
       errMsg = response?.data?.error?.message ?? errMsg;
     } else if (response?.data?.error) {
@@ -49,7 +49,7 @@ export function responseErrorInterceptor({ request, response, message }: any) {
     }
   } else if (request) {
     status = request?.status ?? 400;
-    errMsg = 'Unknow client error';
+    errMsg = "Unknow client error";
   } else if (!!message) {
     // Something happened in setting up the request that triggered an Error
     errMsg = message;

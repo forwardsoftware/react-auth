@@ -1,0 +1,53 @@
+{
+  "name": "@forward-software/react-auth",
+  "description": "Simplify your Auth flow when working with React apps",
+  "version": "1.1.0",
+  "author": "ForWarD Software (https://forwardsoftware.solutions/)",
+  "license": "MIT",
+  "repository": "https://github.com/forwardsoftware/react-auth",
+  "homepage": "https://github.com/forwardsoftware/react-auth#readme",
+  "keywords": [
+    "react",
+    "react-native",
+    "auth",
+    "authentication"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build:code": "tsc --removeComments",
+    "build:types": "tsc --declaration --emitDeclarationOnly",
+    "build": "run-p clean build:*",
+    "lint": "eslint src",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.0.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.14.1",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@types/use-sync-external-store": "^1.5.0",
+    "@vitejs/plugin-react": "catalog:",
+    "jsdom": "^26.1.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "vite": "catalog:",
+    "vitest": "^3.1.2"
+  },
+  "dependencies": {
+    "use-sync-external-store": "^1.5.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8"
+  }
+}
