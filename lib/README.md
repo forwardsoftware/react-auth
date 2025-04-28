@@ -18,81 +18,130 @@ npm install @forward-software/react-auth
 
 ## Setup
 
-### Define an AuthClient class
+### Define an AuthClient
 
-Create a new `AuthClient` class which extends the `BaseAuthClient` provided by this library and implements the 4 required methods:
-
-- **onInit**, called when the AuthClient gets initialized
-- **onLogin**, invoked when the `login` method of the AuthClient gets called
-- **onRefresh**, invoked when the `refresh` method of the AuthClient gets called
-- **onLogout**, invoked when the `logout` method of the AuthClient gets called
+Create a new object that implements the `AuthClient` interface provided by this library. The interface includes several lifecycle methods, some of which are optional:
 
 ```ts
-import { BaseAuthClient } from '@forward-software/react-auth';
+import type { AuthClient } from '@forward-software/react-auth';
 
 // The type for your credentials
 type AuthCredentials = {
   username: string;
-
   password: string;
 };
 
 // The type for your tokens
 type AuthTokens = {
   authToken: string;
-
   refreshToken: string;
 };
 
-class AuthClient extends BaseAuthClient<AuthTokens, AuthCredentials> {
-  protected onInit(): Promise<void> {
+const authClient: AuthClient<AuthTokens, AuthCredentials> = {
+  // Optional: Called when the AuthClient gets initialized
+  onInit: async (): Promise<AuthTokens | null> => {
     // Implement the initialization logic for your client
-  }
+    return null;
+  },
 
-  protected onLogin(credentials?: AuthCredentials): Promise<AuthTokens> {
+  // Optional: Called after initialization completes
+  onPostInit: async (): Promise<void> => {
+    // Implement any post-initialization logic
+  },
+
+  // Optional: Called before login starts
+  onPreLogin: async (): Promise<void> => {
+    // Implement any pre-login logic
+  },
+
+  // Required: Called when login is requested
+  onLogin: async (credentials?: AuthCredentials): Promise<AuthTokens> => {
     // Implement the logic required to exchange the provided credentials for user tokens
-  }
+    return {
+      authToken: '...',
+      refreshToken: '...'
+    };
+  },
 
-  protected onRefresh(minValidity?: number): Promise<AuthTokens> {
+  // Optional: Called after login completes
+  onPostLogin: async (isSuccess: boolean): Promise<void> => {
+    // Implement any post-login logic
+  },
+
+  // Optional: Called before refresh starts
+  onPreRefresh: async (): Promise<void> => {
+    // Implement any pre-refresh logic
+  },
+
+  // Optional: Called when refresh is requested
+  onRefresh: async (minValidity?: number): Promise<AuthTokens> => {
     // Implement the logic required to refresh the current user tokens
-  }
+    return {
+      authToken: '...',
+      refreshToken: '...'
+    };
+  },
 
-  protected onLogout(): Promise<void> {
+  // Optional: Called after refresh completes
+  onPostRefresh: async (isSuccess: boolean): Promise<void> => {
+    // Implement any post-refresh logic
+  },
+
+  // Optional: Called before logout starts
+  onPreLogout: async (): Promise<void> => {
+    // Implement any pre-logout logic
+  },
+
+  // Optional: Called when logout is requested
+  onLogout: async (): Promise<void> => {
     // Implement the logic required to invalidate the current user tokens
+  },
+
+  // Optional: Called after logout completes
+  onPostLogout: async (isSuccess: boolean): Promise<void> => {
+    // Implement any post-logout logic
   }
-}
+};
 ```
 
-### Instantiate an AuthClient
+### Use the AuthClient
 
-Create an instance of the `AuthClient` class defined
+The `AuthClient` instance can be used directly with the `createAuth` function:
 
 ```ts
-const authClient = new AuthClient();
+import { createAuth } from '@forward-software/react-auth';
+
+export const { AuthProvider, useAuthClient } = createAuth(authClient);
 ```
 
-#### AuthClient Props
+The `createAuth` function returns:
 
+- `AuthProvider`, the context Provider component that should wrap your app and provide access to your AuthClient
+- `useAuthClient`, the hook to retrieve and interact with your AuthClient
+
+#### AuthProvider
+
+The context Provider component that should wrap your app and provide access to your AuthClient, this component also accepts 2 additional props
+
+- `ErrorComponent`, displayed when the AuthClient initialization fails
+- `LoadingComponent`, displayed while the AuthClient is being initialized
+
+#### EnhancedAuthClient
+
+The `createAuth` function wraps your `AuthClient` implementation with an `EnhancedAuthClient` that provides additional functionality:
+
+##### Properties
 - `isInitialized`, a boolean indicating if the AuthClient has been initialized
-- `isAuthenticated`, a boolean indicating if the login process has been successfull and the user is authenticated
+- `isAuthenticated`, a boolean indicating if the login process has been successful and the user is authenticated
 - `tokens`, the current tokens returned by the `login` or the `refresh` process
 
-#### AuthClient Methods
-
-##### Core
-
-- `init()`, initialize the AuthClient (**N.B.** this shouldn't be called if using `AuthProvider` - see below)
+##### Methods
+- `init()`, initialize the AuthClient (**N.B.** this shouldn't be called if using `AuthProvider` - see above)
 - `login(credentials)`, start the login process
 - `refresh()`, refresh the current tokens
 - `logout()`, logout and invalidate the current tokens
-
-##### EventEmitter
-
 - `on(eventName, listenerFn)`, subscribe to `eventName` events emitted by the AuthClient
 - `off(eventName, listenerFn)`, unsubscribe from `eventName` events emitted by the AuthClient
-
-##### Observable
-
 - `subscribe(() => { })`, subscribe to AuthClient state changes
 - `getSnapshot()`, returns the current state of the AuthClient
 
