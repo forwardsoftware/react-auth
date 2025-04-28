@@ -1,7 +1,9 @@
-import React, { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import type { PropsWithChildren } from 'react';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
-import { BaseAuthClient } from './types';
+import { wrapAuthClient } from './auth';
+import type { AuthClient, EnhancedAuthClient } from './auth';
 
 /**
  * Props that can be passed to AuthProvider
@@ -24,30 +26,25 @@ type AuthProviderState = {
   isInitialized: boolean;
 };
 
-type AuthContext<C extends BaseAuthClient> = AuthProviderState & {
-  authClient: C;
+type AuthContext<AC extends AuthClient, E extends Error> = AuthProviderState & {
+  authClient: EnhancedAuthClient<AC, E>;
 };
 
-export function createAuth<C extends BaseAuthClient>(authClient: C) {
-  // Create a React context containing a BaseAuthClient instance.
-  const authContext = createContext<AuthContext<C> | null>(null);
+export function createAuth<AC extends AuthClient, E extends Error = Error>(authClient: AC) {
+  // Create a React context containing an AuthClient instance.
+  const authContext = createContext<AuthContext<AC, E> | null>(null);
 
-  // Create the React Context Provider for the BaseAuthClient instance.
-  const AuthProvider: React.FC<AuthProviderProps> = ({
-    children,
-    ErrorComponent,
-    LoadingComponent,
-  }) => {
+  const enhancedAuthClient = wrapAuthClient(authClient);
+
+  // Create the React Context Provider for the AuthClient instance.
+  const AuthProvider: React.FC<AuthProviderProps> = ({ children, ErrorComponent, LoadingComponent }) => {
     const [isInitFailed, setInitFailed] = useState(false);
-    const { isAuthenticated, isInitialized } = useSyncExternalStore(
-      authClient.subscribe,
-      authClient.getSnapshot
-    );
+    const { isAuthenticated, isInitialized } = useSyncExternalStore(enhancedAuthClient.subscribe, enhancedAuthClient.getSnapshot);
 
     useEffect(() => {
       async function initAuthClient() {
         // Call init function
-        const initSuccess = await authClient.init();
+        const initSuccess = await enhancedAuthClient.init();
         setInitFailed(!initSuccess);
       }
 
@@ -66,7 +63,7 @@ export function createAuth<C extends BaseAuthClient>(authClient: C) {
     return (
       <authContext.Provider
         value={{
-          authClient,
+          authClient: enhancedAuthClient,
           isAuthenticated,
           isInitialized,
         }}
@@ -77,9 +74,8 @@ export function createAuth<C extends BaseAuthClient>(authClient: C) {
   };
 
   // Retrieve the AuthClient from the current context
-  const useAuthClient = function (): C {
+  const useAuthClient = function (): EnhancedAuthClient<AC, E> {
     const ctx = useContext(authContext);
-
     if (!ctx) {
       throw new Error('useAuthClient hook should be used inside AuthProvider');
     }
@@ -93,4 +89,4 @@ export function createAuth<C extends BaseAuthClient>(authClient: C) {
   };
 }
 
-export { BaseAuthClient };
+export type { AuthClient };
