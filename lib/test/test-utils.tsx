@@ -2,8 +2,8 @@
 
 import React from 'react';
 
+import { createAuth } from '../src';
 import type { AuthClient } from '../src';
-import { EnhancedAuthClient } from '../src/auth';
 
 type MockTokens = {
   authToken: string;
@@ -92,7 +92,7 @@ export const createMockAuthClientWithHooks = (hooks: Record<string, any>) => {
   return new MockAuthClientWithHooks();
 };
 
-export const createChild = (useAuthClientHook: () => EnhancedAuthClient<MockAuthClient>) => {
+export const createChild = (useAuthClientHook: ReturnType<typeof createAuth>["useAuthClient"]) => {
   return function () {
     const authClient = useAuthClientHook();
     return (
