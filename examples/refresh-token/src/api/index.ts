@@ -1,28 +1,21 @@
-import axios from 'axios';
-import { BASE_URL } from '../constants';
+import axios from "axios";
 import {
   requestSuccessInterceptor,
   requestErrorInterceptor,
   responseSuccessInterceptor,
   responseErrorInterceptor,
-} from './interceptors';
+} from "./interceptors";
 
 // AXIOS
 // use this APIClient to make service calls
 export const APIClient = axios.create({
-  baseURL: BASE_URL,
+  baseURL: process.env.VITE_BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 // Set request interceptor to add Auth token
-APIClient.interceptors.request.use(
-  requestSuccessInterceptor,
-  requestErrorInterceptor
-);
+APIClient.interceptors.request.use(requestSuccessInterceptor, requestErrorInterceptor);
 
-APIClient.interceptors.response.use(
-  responseSuccessInterceptor,
-  responseErrorInterceptor
-);
+APIClient.interceptors.response.use(responseSuccessInterceptor, responseErrorInterceptor);

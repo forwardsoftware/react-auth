@@ -1,4 +1,3 @@
-import * as React from 'react';
 import AppContent from './AppContent';
 import { AuthProvider } from './auth';
 
