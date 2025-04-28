@@ -43,7 +43,7 @@ class ReqResAuthClient extends BaseAuthClient<
     };
   }
 
-  protected onRefresh(minValidity?: number): Promise<ReqResAuthTokens> {
+  protected onRefresh(): Promise<ReqResAuthTokens> {
     throw new Error('Unsupported method!');
   }
 
