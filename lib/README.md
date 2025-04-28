@@ -2,7 +2,7 @@
 
 > Simplify your Auth flow when working with React apps
 
-[![license](https://img.shields.io/github/license/forwardsoftware/react-auth.svg)](https://github.com/forwardsoftware/react-auth/blob/main/LICENSE) [![CI](https://github.com/forwardsoftware/react-auth/actions/workflows/main.yml/badge.svg)](https://github.com/forwardsoftware/react-auth/actions/workflows/main.yml)
+[![license](https://img.shields.io/github/license/forwardsoftware/react-auth.svg)](https://github.com/forwardsoftware/react-auth/blob/main/LICENSE) [![Build & Test](https://github.com/forwardsoftware/react-auth/actions/workflows/build-test.yml/badge.svg)](https://github.com/forwardsoftware/react-auth/actions/workflows/build-test.yml) [![Github Issues](https://img.shields.io/github/issues/forwardsoftware/react-auth.svg)](https://github.com/forwardsoftware/react-auth/issues)
 
 [![npm](https://img.shields.io/npm/v/@forward-software/react-auth)](https://npmjs.com/package/@forward-software/react-auth) [![NPM downloads](https://img.shields.io/npm/dm/@forward-software/react-auth.svg)](https://npmjs.com/package/@forward-software/react-auth)
 
