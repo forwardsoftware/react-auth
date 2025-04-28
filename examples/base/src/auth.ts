@@ -1,4 +1,4 @@
-import { BaseAuthClient, createAuth } from '../../../lib/dist';
+import { BaseAuthClient, createAuth } from "@forward-software/react-auth";
 
 type AuthCredentials = {};
 
@@ -13,7 +13,7 @@ class MyAuthClient extends BaseAuthClient<AuthTokens, AuthCredentials> {
     return Promise.resolve();
   }
 
-  protected onLogin(credentials?: AuthCredentials): Promise<AuthTokens> {
+  protected onLogin(): Promise<AuthTokens> {
     return new Promise(resolve => {
       setTimeout(
         () =>
@@ -26,7 +26,7 @@ class MyAuthClient extends BaseAuthClient<AuthTokens, AuthCredentials> {
     });
   }
 
-  protected onRefresh(minValidity?: number): Promise<AuthTokens> {
+  protected onRefresh(): Promise<AuthTokens> {
     return new Promise(resolve => {
       setTimeout(
         () =>
