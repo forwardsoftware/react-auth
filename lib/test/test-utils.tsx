@@ -1,7 +1,9 @@
 /* istanbul ignore file */
 
 import React from 'react';
-import { BaseAuthClient } from '../src';
+
+import type { AuthClient } from '../src';
+import { EnhancedAuthClient } from '../src/auth';
 
 type MockTokens = {
   authToken: string;
@@ -13,7 +15,7 @@ type MockCredentials = {
   password: string;
 };
 
-class MockAuthClient implements BaseAuthClient<MockTokens, MockCredentials> {
+class MockAuthClient implements AuthClient<MockTokens, MockCredentials> {
   onInit(): Promise<MockTokens | null> {
     throw new Error('Method not implemented.');
   }
@@ -90,7 +92,7 @@ export const createMockAuthClientWithHooks = (hooks: Record<string, any>) => {
   return new MockAuthClientWithHooks();
 };
 
-export const createChild = (useAuthClientHook: () => MockAuthClient) => {
+export const createChild = (useAuthClientHook: () => EnhancedAuthClient<MockAuthClient>) => {
   return function () {
     const authClient = useAuthClientHook();
     return (
