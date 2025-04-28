@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BaseAuthClient, createAuth } from '../../../lib/dist';
+import { BaseAuthClient, createAuth } from '@forward-software/react-auth';
 
 type ReqResCredentials = {
   email: string;
@@ -17,6 +17,9 @@ class ReqResAuthClient extends BaseAuthClient<
 > {
   private _apiClient = axios.create({
     baseURL: 'https://reqres.in',
+    headers: {
+      "x-api-key": "reqres-free-v1"
+    }
   });
 
   protected onInit(): Promise<void> {

@@ -4,19 +4,21 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "dev": "vite --host",
+    "build": "tsc && vite build",
+    "preview": "vite preview --host"
   },
   "dependencies": {
-    "axios": "^1.8.4",
+    "@forward-software/react-auth": "workspace:^",
+    "axios": "^1.9.0",
     "react": "catalog:",
-    "react-app-polyfill": "^3.0.0",
     "react-dom": "catalog:"
   },
   "devDependencies": {
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "parcel": "2.14.4",
-    "typescript": "catalog:"
+    "@vitejs/plugin-react": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
   }
 }
