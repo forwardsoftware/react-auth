@@ -1,17 +1,23 @@
 {
-  "extends": "../tsconfig.base.json",
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
   "compilerOptions": {
+    "declaration": false,
+    "target": "ES6",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": false,
     "outDir": "./dist",
-    "emitDeclarationOnly": true
+    "rootDir": "./src",
+    "jsx": "react-jsx"
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
-    "dist",
-    "types",
-    "*/__tests__/*"
+    "**/*.test.ts"
   ]
 }

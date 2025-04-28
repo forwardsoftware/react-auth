@@ -13,8 +13,7 @@
     "authentication"
   ],
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "module": "dist/react-auth.esm.js",
+  "types": "dist/index.d.ts",
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",
   "files": [
@@ -22,10 +21,13 @@
     "src"
   ],
   "scripts": {
-    "build": "rimraf ./dist && mkdirp ./dist && tsc --project tsconfig.json && babel src --out-dir ./dist --extensions \".tsx,.ts,.js,.jsx\"",
-    "test": "vitest",
+    "build:code": "tsc --removeComments",
+    "build:types": "tsc --declaration --emitDeclarationOnly",
+    "build": "run-p clean build:*",
     "lint": "eslint src",
-    "test:watch": "vitest watch"
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "clean": "rimraf dist"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.0.0",
@@ -35,11 +37,11 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@types/use-sync-external-store": "^1.5.0",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "catalog:",
     "jsdom": "^26.1.0",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "vite": "^6.3.3",
+    "vite": "catalog:",
     "vitest": "^3.1.2"
   },
   "dependencies": {
