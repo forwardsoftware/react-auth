@@ -132,6 +132,6 @@ MIT
 
 ---
 
-Made with ✨ & ❤️ by [ForWarD Software](https://github.com/Forward-Software) and [contributors](https://github.com/Forward-Software/react-auth/graphs/contributors)
+Made with ✨ & ❤️ by [ForWarD Software](https://github.com/forwardsoftware) and [contributors](https://github.com/forwardsoftware/react-auth/graphs/contributors)
 
 If you found this project to be helpful, please consider contacting us to develop your React and React Native projects.

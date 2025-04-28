@@ -2,10 +2,10 @@
   "name": "@forward-software/react-auth",
   "description": "Simplify your Auth flow when working with React apps",
   "version": "1.1.0",
-  "author": "ForWarD Software (https://github.com/Forward-Software)",
+  "author": "ForWarD Software (https://forwardsoftware.solutions/)",
   "license": "MIT",
-  "repository": "https://github.com/Forward-Software/react-auth",
-  "homepage": "https://github.com/Forward-Software/react-auth#readme",
+  "repository": "https://github.com/forwardsoftware/react-auth",
+  "homepage": "https://github.com/forwardsoftware/react-auth#readme",
   "keywords": [
     "react",
     "react-native",
