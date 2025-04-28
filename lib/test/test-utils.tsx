@@ -13,8 +13,8 @@ type MockCredentials = {
   password: string;
 };
 
-class MockAuthClient extends BaseAuthClient<MockTokens, MockCredentials> {
-  onInit(): Promise<void> {
+class MockAuthClient implements BaseAuthClient<MockTokens, MockCredentials> {
+  onInit(): Promise<MockTokens | null> {
     throw new Error('Method not implemented.');
   }
 
@@ -38,20 +38,13 @@ export const createMockAuthClient = () => {
 export const createMockAuthClientWithHooks = (hooks: Record<string, any>) => {
   // console.log('hooks', hooks);
 
-  class MockAuthClientWithHooks extends BaseAuthClient<
-    MockTokens,
-    MockCredentials
-  > {
-    onInit(): Promise<void> {
-      throw new Error('Method not implemented.');
-    }
-
-    protected onPostInit(): Promise<void> {
+  class MockAuthClientWithHooks extends MockAuthClient {
+    onPostInit(): Promise<void> {
       hooks['onPostInit']?.();
       return Promise.resolve();
     }
 
-    protected onPreLogin(): Promise<void> {
+    onPreLogin(): Promise<void> {
       hooks['onPreLogin']?.();
       return Promise.resolve();
     }
@@ -60,12 +53,12 @@ export const createMockAuthClientWithHooks = (hooks: Record<string, any>) => {
       throw new Error('Method not implemented.');
     }
 
-    protected onPostLogin(isSuccess: boolean): Promise<void> {
+    onPostLogin(isSuccess: boolean): Promise<void> {
       hooks['onPostLogin']?.(isSuccess);
       return Promise.resolve();
     }
 
-    protected onPreRefresh(): Promise<void> {
+    onPreRefresh(): Promise<void> {
       hooks['onPreRefresh']?.();
       return Promise.resolve();
     }
@@ -74,12 +67,12 @@ export const createMockAuthClientWithHooks = (hooks: Record<string, any>) => {
       throw new Error('Method not implemented.');
     }
 
-    protected onPostRefresh(isSuccess: boolean): Promise<void> {
+    onPostRefresh(isSuccess: boolean): Promise<void> {
       hooks['onPostRefresh']?.(isSuccess);
       return Promise.resolve();
     }
 
-    protected onPreLogout(): Promise<void> {
+    onPreLogout(): Promise<void> {
       hooks['onPreLogout']?.();
       return Promise.resolve();
     }
@@ -88,7 +81,7 @@ export const createMockAuthClientWithHooks = (hooks: Record<string, any>) => {
       throw new Error('Method not implemented.');
     }
 
-    protected onPostLogout(isSuccess: boolean): Promise<void> {
+    onPostLogout(isSuccess: boolean): Promise<void> {
       hooks['onPostLogout']?.(isSuccess);
       return Promise.resolve();
     }
