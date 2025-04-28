@@ -16,7 +16,7 @@
     "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@types/node": "^22.14.1",
+    "@types/node": "^22.15.3",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
