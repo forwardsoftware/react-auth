@@ -33,6 +33,18 @@ class ReqResAuthClient implements AuthClient<ReqResAuthTokens, ReqResCredentials
       token: data.token,
     };
   }
+
+  public async register(credentials: ReqResCredentials): Promise<boolean> {
+    try {
+      await this._apiClient.post("/api/register", credentials);
+
+      return true;
+    } catch (err) {
+      console.error("Register call failed", err);
+    }
+
+    return false;
+  }
 }
 
 export const { AuthProvider, authClient, useAuthClient } = createAuth(new ReqResAuthClient());
