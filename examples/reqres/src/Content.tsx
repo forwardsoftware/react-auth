@@ -8,21 +8,8 @@ export const Content: React.FC = () => {
   const authClient = useAuthClient();
   const userCredentials = useUserCredentials();
 
-  const [doRegister, isRegisterLoading] = useAsyncCallback(
-    () =>
-      authClient.register({
-        email: userCredentials.email,
-        password: userCredentials.password,
-      }),
-    [authClient, userCredentials]
-  );
-
   const [doLogin, isLoginLoading] = useAsyncCallback(
-    () =>
-      authClient.login({
-        email: userCredentials.email,
-        password: userCredentials.password,
-      }),
+    () => authClient.login(userCredentials),
     [authClient, userCredentials]
   );
 
@@ -51,13 +38,6 @@ export const Content: React.FC = () => {
 
       <div>
         <button
-          onClick={doRegister}
-          disabled={authClient.isAuthenticated || isRegisterLoading}
-        >
-          Register
-        </button>
-
-        <button
           onClick={doLogin}
           disabled={authClient.isAuthenticated || isLoginLoading}
         >
@@ -72,7 +52,6 @@ export const Content: React.FC = () => {
         </button>
       </div>
 
-      {isRegisterLoading ? <p>Register in progress..</p> : null}
       {isLoginLoading ? <p>Login in progress..</p> : null}
 
       <p>Tokens:</p>
