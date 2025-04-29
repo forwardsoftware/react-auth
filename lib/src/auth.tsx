@@ -128,7 +128,7 @@ export interface AuthClient<T = AuthTokens, C = AuthCredentials> {
  * Extracts token type from an AuthClient implementation
  * @template AC - The AuthClient implementation type
  */
-type AuthClientTokens<AC extends AuthClient> = Partial<ReturnType<AC["onLogin"]>>;
+type AuthClientTokens<AC extends AuthClient> = Partial<Awaited<ReturnType<AC["onLogin"]>>>;
 
 /**
  * Extracts credentials type from an AuthClient implementation
@@ -272,12 +272,12 @@ export function wrapAuthClient<AC extends AuthClient, E extends Error = Error>(a
 
     public async init(): Promise<boolean> {
       try {
-        const tokens = (await authClient.onInit?.()) ?? {};
+        const prevTokens = await authClient.onInit?.();
 
         this.setState({
           isInitialized: true,
-          isAuthenticated: !!tokens,
-          tokens,
+          isAuthenticated: !!prevTokens,
+          tokens: prevTokens || {},
         });
 
         this.emit("initSuccess", undefined);
