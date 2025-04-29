@@ -99,7 +99,7 @@ export interface AuthClient<T = AuthTokens, C = AuthCredentials> {
    * @param {number} [minValidity] - Minimum token validity period in seconds
    * @returns {Promise<T>} - Returns refreshed authentication tokens
    */
-  onRefresh?(minValidity?: number): Promise<T>;
+  onRefresh?(currentTokens: T, minValidity?: number): Promise<T>;
 
   /**
    * Optional post-refresh hook
@@ -413,7 +413,7 @@ export function wrapAuthClient<AC extends AuthClient, E extends Error = Error>(a
       let tokens: AuthClientTokens<AC> = {};
 
       try {
-        tokens = (await authClient.onRefresh?.(minValidity)) ?? {};
+        tokens = (await authClient.onRefresh?.(this.tokens, minValidity)) ?? {};
         isAuthenticated = true;
 
         this.emit("refreshSuccess", undefined);
@@ -546,6 +546,7 @@ export function createAuth<AC extends AuthClient, E extends Error = Error>(authC
 
   return {
     AuthProvider,
+    authClient: enhancedAuthClient,
     useAuthClient,
   };
 }
