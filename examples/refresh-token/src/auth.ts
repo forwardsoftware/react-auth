@@ -1,4 +1,4 @@
-import { BaseAuthClient } from "@forward-software/react-auth";
+import { createAuth, type AuthClient } from "@forward-software/react-auth";
 import axios, { AxiosInstance } from "axios";
 import isJwtTokenExpired from "jwt-check-expiry";
 
@@ -12,12 +12,12 @@ type Credentials = {
   password: string;
 };
 
-class Client extends BaseAuthClient<Tokens, Credentials> {
-  private axiosClient: AxiosInstance | null = null;
+class MyAuthClient implements AuthClient<Tokens, Credentials> {
+  private axiosAuthClient: AxiosInstance | null = null;
 
-  protected async onInit(): Promise<void> {
-    this.axiosClient = axios.create({
-      baseURL: process.env.VITE_BASE_URL,
+  async onInit() {
+    this.axiosAuthClient = axios.create({
+      baseURL: import.meta.env.VITE_BASE_URL,
       headers: {
         "Content-Type": "application/json",
       },
@@ -27,47 +27,46 @@ class Client extends BaseAuthClient<Tokens, Credentials> {
     const tokens = localStorage.getItem("tokens");
 
     if (tokens) {
-      this.setState({
-        isInitialized: true,
-        isAuthenticated: true,
-        tokens: JSON.parse(tokens),
-      });
+      return JSON.parse(tokens);
     }
 
-    return Promise.resolve();
+    return null;
   }
 
-  protected async onLogin(credentials?: Credentials): Promise<Tokens> {
-    if (!this.axiosClient) {
+  async onLogin(credentials?: Credentials): Promise<Tokens> {
+    if (!this.axiosAuthClient) {
       return Promise.reject("axios client not initialized!");
     }
 
     // Replace auth/login with your url without the domain
-    const payload = await this.axiosClient.post("auth/login", {
+    const payload = await this.axiosAuthClient.post("auth/login", {
       username: credentials?.username,
       password: credentials?.password,
     });
 
     localStorage.setItem("tokens", JSON.stringify(payload.data.data));
+
     return payload.data.data;
   }
 
-  protected async onRefresh(): Promise<Tokens> {
-    if (!this.axiosClient) {
+  async onRefresh(currentTokens: Tokens): Promise<Tokens> {
+    if (!this.axiosAuthClient) {
       return Promise.reject("axios client not initialized!");
     }
 
-    if (!!this.tokens.accessToken && !isJwtTokenExpired(this.tokens.accessToken)) return this.tokens;
+    if (!!currentTokens.accessToken && !isJwtTokenExpired(currentTokens.accessToken)) {
+      return currentTokens;
+    }
 
-    const payload = await this.axiosClient.post(
+    const payload = await this.axiosAuthClient.post(
       // Replace jwt/refresh with your url without the domain
       "jwt/refresh",
       {
-        refreshToken: this.tokens.refreshToken,
+        refreshToken: currentTokens.refreshToken,
       },
       {
         headers: {
-          Authorization: `Bearer ${this.tokens.accessToken}`,
+          Authorization: `Bearer ${currentTokens.accessToken}`,
         },
       }
     );
@@ -76,11 +75,11 @@ class Client extends BaseAuthClient<Tokens, Credentials> {
     return payload.data.data;
   }
 
-  protected onLogout(): Promise<void> {
+  onLogout(): Promise<void> {
     localStorage.removeItem("tokens");
     // If you need to call an API to logout, just use the onLogin code to do your stuff
     return Promise.resolve();
   }
 }
 
-export default Client;
+export const { AuthProvider, authClient, useAuthClient } = createAuth(new MyAuthClient());
