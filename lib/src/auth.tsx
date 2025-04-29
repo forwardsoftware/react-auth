@@ -302,7 +302,7 @@ export function wrapAuthClient<AC extends AuthClient, E extends Error = Error>(a
       let isSuccess: boolean = false;
 
       try {
-        const tokens = await authClient.onLogin(params);
+        const tokens = await authClient.onLogin(...params);
 
         this.setState({
           isAuthenticated: !!tokens,
