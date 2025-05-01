@@ -95,9 +95,11 @@ export interface AuthClient<T = AuthTokens, C = AuthCredentials> {
   onPreRefresh?(): Promise<void>;
 
   /**
-   * Optional token refresh handler
-   * @param {number} [minValidity] - Minimum token validity period in seconds
-   * @returns {Promise<T>} - Returns refreshed authentication tokens
+   * Optional token refresh handler.
+   * Implement this method to handle token refresh logic.
+   * @param {T} currentTokens - The current authentication tokens.
+   * @param {number} [minValidity] - Optional minimum token validity period in seconds.
+   * @returns {Promise<T>} - A promise that resolves with the refreshed authentication tokens.
    */
   onRefresh?(currentTokens: T, minValidity?: number): Promise<T>;
 
@@ -469,11 +471,16 @@ export type AuthProviderProps = PropsWithChildren<{
 }>;
 
 /**
- * Creates an authentication context and provider for a React application
- * @template AC - The AuthClient implementation type
- * @template E - The error type used throughout the authentication flow
- * @param authClient - The base authentication client to use
- * @returns An object containing the AuthProvider component and useAuthClient hook
+ * Creates an authentication context and provider for a React application.
+ * It wraps the provided `authClient` with enhanced state management and event handling.
+ *
+ * @template AC - The type of the base `AuthClient` implementation.
+ * @template E - The type of error expected during authentication flows. Defaults to `Error`.
+ * @param {AC} authClient - The base authentication client instance to use.
+ * @returns An object containing:
+ *   - `AuthProvider`: A React component to wrap the application or parts of it.
+ *   - `authClient`: The enhanced authentication client instance.
+ *   - `useAuthClient`: A hook to access the enhanced `authClient` within the `AuthProvider`.
  */
 export function createAuth<AC extends AuthClient, E extends Error = Error>(authClient: AC) {
   // Create a React context containing an AuthClient instance.

@@ -74,7 +74,8 @@ const authClient: AuthClient<AuthTokens, AuthCredentials> = {
   },
 
   // Optional: Called when refresh is requested
-  onRefresh: async (minValidity?: number): Promise<AuthTokens> => {
+  // The current tokens are passed as the first argument
+  onRefresh: async (currentTokens: AuthTokens, minValidity?: number): Promise<AuthTokens> => {
     // Implement the logic required to refresh the current user tokens
     return {
       authToken: '...',
@@ -111,13 +112,14 @@ The `AuthClient` instance can be used directly with the `createAuth` function:
 ```ts
 import { createAuth } from '@forward-software/react-auth';
 
-export const { AuthProvider, useAuthClient } = createAuth(authClient);
+export const { AuthProvider, useAuthClient, authClient: enhancedAuthClient } = createAuth(authClient);
 ```
 
 The `createAuth` function returns:
 
 - `AuthProvider`, the context Provider component that should wrap your app and provide access to your AuthClient
 - `useAuthClient`, the hook to retrieve and interact with your AuthClient
+- `authClient`, the enhanced authentication client instance
 
 #### AuthProvider
 
