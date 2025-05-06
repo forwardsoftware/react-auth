@@ -10,15 +10,11 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
-    reviewers:
-      - "panz3r"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: monthly
-    reviewers:
-      - "panz3r"
 
   - package-ecosystem: "npm"
     directories:
@@ -28,5 +24,3 @@ updates:
     schedule:
       interval: weekly
       day: tuesday
-    reviewers:
-      - "panz3r"
