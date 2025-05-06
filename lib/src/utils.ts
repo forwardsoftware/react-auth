@@ -1,3 +1,26 @@
+// DEFERRED
+
+export class Deferred<T> {
+  private promise: Promise<T>;
+
+  public resolve!: (value: T | PromiseLike<T>) => void;
+
+  public reject!: (reason?: any) => void;
+
+  constructor() {
+    this.promise = new Promise<T>((resolve, reject) => {
+      this.reject = reject;
+      this.resolve = resolve;
+    });
+  }
+
+  public getPromise(): Promise<T> {
+    return this.promise;
+  }
+}
+
+// EVENT EMITTER
+
 type EventsMap = Record<string, any>;
 
 export type EventKey<T extends EventsMap> = string & keyof T;
@@ -21,10 +44,10 @@ export function createEventEmitter<T extends EventsMap>(): Emitter<T> {
       listeners[key] = (listeners[key] || []).concat(fn);
     },
     off(key, fn) {
-      listeners[key] = (listeners[key] || []).filter(f => f !== fn);
+      listeners[key] = (listeners[key] || []).filter((f) => f !== fn);
     },
     emit(key, data) {
-      (listeners[key] || []).forEach(function(fn) {
+      (listeners[key] || []).forEach(function (fn) {
         try {
           fn(data);
         } catch {}

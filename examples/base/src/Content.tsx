@@ -1,6 +1,4 @@
-import * as React from 'react';
 import { useCallback, useState } from 'react';
-import { DependencyList } from 'react';
 
 import { useAuthClient } from './auth';
 
@@ -51,14 +49,14 @@ export const Content: React.FC = () => {
       {isRefreshLoading ? <p>Refresh in progress..</p> : null}
 
       <p>Tokens:</p>
-      <pre>{JSON.stringify(authClient.tokens ?? {}, null, 2)}</pre>
+      <pre>{JSON.stringify(authClient.tokens, null, 2)}</pre>
     </div>
   );
 };
 
 function useAsyncCallback<T extends (...args: never[]) => Promise<unknown>>(
   callback: T,
-  deps: DependencyList
+  deps: React.DependencyList
 ): [T, boolean] {
   const [isLoading, setLoading] = useState(false);
   const cb = useCallback(async (...argsx: never[]) => {

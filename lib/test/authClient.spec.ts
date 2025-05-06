@@ -1,139 +1,193 @@
-import { describe, it, expect, vi, afterEach } from 'vitest';
-import * as rtl from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { describe, it, expect, vi, afterEach } from "vitest";
+import * as rtl from "@testing-library/react";
+import "@testing-library/jest-dom";
 
-import {
-  createMockAuthClient,
-  createMockAuthClientWithHooks,
-} from './test-utils';
+import { wrapAuthClient } from "../src/auth";
+
+import { createMockAuthClient, createMockAuthClientWithHooks } from "./test-utils";
 
 afterEach(rtl.cleanup);
 
-describe('AuthClient', () => {
-  describe('on Init', () => {
-    it('should notify success', async () => {
+describe("AuthClient", () => {
+  describe("on Init", () => {
+    it("should notify success", async () => {
+      // Arrange
+
       const initSuccessEventListener = vi.fn();
 
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onInit').mockResolvedValue(undefined);
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onInit").mockResolvedValueOnce(null);
 
-      authClientStub.on('initSuccess', initSuccessEventListener);
+      const authClient = wrapAuthClient(authClientMock);
+
+      authClient.on("initSuccess", initSuccessEventListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.init();
+        await authClient.init();
       });
+
+      // Assert
 
       expect(initSuccessEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should notify failure', async () => {
-      const initFailureEventListener = vi.fn();
+    it("should notify failure", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      authClientStub.on('initFailed', initFailureEventListener);
+      const authClient = wrapAuthClient(createMockAuthClient());
+
+      const initFailureEventListener = vi.fn();
+      authClient.on("initFailed", initFailureEventListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.init();
+        await authClient.init();
       });
+
+      // Assert
 
       expect(initFailureEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should invoke postInit hook', async () => {
+    it("should invoke postInit hook", async () => {
+      // Arrange
+
       const postInitHook = vi.fn();
 
-      const authClientStub = createMockAuthClientWithHooks({
-        onPostInit: postInitHook,
-      });
-      vi.spyOn(authClientStub, 'onInit').mockResolvedValue(undefined);
+      const authClientMock = createMockAuthClientWithHooks({ onPostInit: postInitHook });
+      vi.spyOn(authClientMock, "onInit").mockResolvedValue(null);
+
+      const authClient = wrapAuthClient(authClientMock);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.init();
+        await authClient.init();
       });
+
+      // Assert
 
       expect(postInitHook).toHaveBeenCalledTimes(1);
     });
   });
 
-  describe('on Login', () => {
-    it('should notify start', async () => {
-      const loginStartedListener = vi.fn();
+  describe("on Login", () => {
+    it("should notify start", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      authClientStub.on('loginStarted', loginStartedListener);
+      const authClient = wrapAuthClient(createMockAuthClient());
+
+      const loginStartedListener = vi.fn();
+      authClient.on("loginStarted", loginStartedListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.login();
+        await authClient.login();
       });
+
+      // Assert
 
       expect(loginStartedListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should notify success', async () => {
-      const loginSuccessEventListener = vi.fn();
+    it("should notify success", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onLogin').mockResolvedValue({
-        authToken: 'tkn',
-        refreshToken: 'tkn',
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onLogin").mockResolvedValue({
+        authToken: "tkn",
+        refreshToken: "tkn",
       });
 
-      authClientStub.on('loginSuccess', loginSuccessEventListener);
+      const authClient = wrapAuthClient(authClientMock);
+
+      const loginSuccessEventListener = vi.fn();
+      authClient.on("loginSuccess", loginSuccessEventListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.login();
+        await authClient.login();
       });
+
+      // Assert
 
       expect(loginSuccessEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should notify failure', async () => {
-      const loginFailureEventListener = vi.fn();
+    it("should notify failure", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      authClientStub.on('loginFailed', loginFailureEventListener);
+      const authClient = wrapAuthClient(createMockAuthClient());
+
+      const loginFailureEventListener = vi.fn();
+      authClient.on("loginFailed", loginFailureEventListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.login();
+        await authClient.login();
       });
+
+      // Assert
 
       expect(loginFailureEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should invoke preLogin and postLogin hooks in case of success', async () => {
+    it("should invoke preLogin and postLogin hooks in case of success", async () => {
+      // Arrange
+
       const preLoginHook = vi.fn();
       const postLoginHook = vi.fn();
 
-      const authClientStub = createMockAuthClientWithHooks({
+      const authClientMock = createMockAuthClientWithHooks({
         onPreLogin: preLoginHook,
         onPostLogin: postLoginHook,
       });
-      vi.spyOn(authClientStub, 'onLogin').mockResolvedValue({
-        authToken: 'tkn',
-        refreshToken: 'tkn',
+      vi.spyOn(authClientMock, "onLogin").mockResolvedValue({
+        authToken: "tkn",
+        refreshToken: "tkn",
       });
 
+      const authClient = wrapAuthClient(authClientMock);
+
+      // Act
+
       await rtl.act(async () => {
-        await authClientStub.login();
+        await authClient.login();
       });
+
+      // Assert
 
       expect(preLoginHook).toHaveBeenCalledTimes(1);
       expect(postLoginHook).toHaveBeenCalledTimes(1);
       expect(postLoginHook).toHaveBeenCalledWith(true);
     });
 
-    it('should invoke preLogin and postLogin hooks in case of failure', async () => {
+    it("should invoke preLogin and postLogin hooks in case of failure", async () => {
+      // Arrange
+
       const preLoginHook = vi.fn();
       const postLoginHook = vi.fn();
 
-      const authClientStub = createMockAuthClientWithHooks({
+      const authClientMock = createMockAuthClientWithHooks({
         onPreLogin: preLoginHook,
         onPostLogin: postLoginHook,
       });
 
+      const authClient = wrapAuthClient(authClientMock);
+
+      // Act
+
       await rtl.act(async () => {
-        await authClientStub.login();
+        await authClient.login();
       });
+
+      // Assert
 
       expect(preLoginHook).toHaveBeenCalledTimes(1);
       expect(postLoginHook).toHaveBeenCalledTimes(1);
@@ -141,125 +195,178 @@ describe('AuthClient', () => {
     });
   });
 
-  describe('on Refresh', () => {
-    it('should notify start', async () => {
-      const refreshStartedListener = vi.fn();
+  describe("on Refresh", () => {
+    it("should notify start", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      authClientStub.on('refreshStarted', refreshStartedListener);
+      const authClient = wrapAuthClient(createMockAuthClient());
+
+      const refreshStartedListener = vi.fn();
+      authClient.on("refreshStarted", refreshStartedListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.refresh();
+        await authClient.refresh();
       });
+
+      // Assert
 
       expect(refreshStartedListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should notify success', async () => {
-      const refreshSuccessEventListener = vi.fn();
+    it("should notify success", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
-        authToken: 'tkn',
-        refreshToken: 'tkn',
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onRefresh").mockResolvedValue({
+        authToken: "tkn",
+        refreshToken: "tkn",
       });
 
-      authClientStub.on('refreshSuccess', refreshSuccessEventListener);
+      const authClient = wrapAuthClient(authClientMock);
+
+      const refreshSuccessEventListener = vi.fn();
+      authClient.on("refreshSuccess", refreshSuccessEventListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.refresh();
+        await authClient.refresh();
       });
+
+      // Assert
 
       expect(refreshSuccessEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should notify failure', async () => {
-      const refreshFailureEventListener = vi.fn();
+    it("should notify failure", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      authClientStub.on('refreshFailed', refreshFailureEventListener);
+      const authClient = wrapAuthClient(createMockAuthClient());
+
+      const refreshFailureEventListener = vi.fn();
+      authClient.on("refreshFailed", refreshFailureEventListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.refresh();
+        await authClient.refresh();
       });
+
+      // Assert
 
       expect(refreshFailureEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should NOT trigger onRefresh twice', async () => {
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
-        authToken: 'tkn',
-        refreshToken: 'tkn',
+    it("should NOT trigger onRefresh twice", async () => {
+      // Arrange
+
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onRefresh").mockResolvedValue({
+        authToken: "tkn",
+        refreshToken: "tkn",
       });
+
+      const authClient = wrapAuthClient(authClientMock);
+
+      // Act
 
       await rtl.act(() => {
-        authClientStub.refresh();
-        authClientStub.refresh();
+        authClient.refresh();
+        authClient.refresh();
       });
 
-      expect(authClientStub.onRefresh).toHaveBeenCalledTimes(1);
+      // Assert
+
+      expect(authClientMock.onRefresh).toHaveBeenCalledTimes(1);
     });
 
-    it('should NOT emit refresh events twice', async () => {
-      const refreshStartedListener = vi.fn();
-      const refreshSuccessEventListener = vi.fn();
-      const refreshFailureEventListener = vi.fn();
+    it("should NOT emit refresh events twice", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
-        authToken: 'tkn',
-        refreshToken: 'tkn',
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onRefresh").mockResolvedValue({
+        authToken: "tkn",
+        refreshToken: "tkn",
       });
 
-      authClientStub.on('refreshSuccess', refreshSuccessEventListener);
-      authClientStub.on('refreshStarted', refreshStartedListener);
-      authClientStub.on('refreshFailed', refreshFailureEventListener);
+      const authClient = wrapAuthClient(authClientMock);
+
+      const refreshStartedListener = vi.fn();
+      authClient.on("refreshStarted", refreshStartedListener);
+
+      const refreshSuccessEventListener = vi.fn();
+      authClient.on("refreshSuccess", refreshSuccessEventListener);
+
+      const refreshFailureEventListener = vi.fn();
+      authClient.on("refreshFailed", refreshFailureEventListener);
+
+      // Act
 
       await rtl.act(() => {
-        authClientStub.refresh();
-        authClientStub.refresh();
+        authClient.refresh();
+        authClient.refresh();
       });
+
+      // Assert
 
       expect(refreshStartedListener).toHaveBeenCalledTimes(1);
       expect(refreshSuccessEventListener).toHaveBeenCalledTimes(1);
       expect(refreshFailureEventListener).toHaveBeenCalledTimes(0);
     });
 
-    it('should invoke preRefresh and postRefresh hooks in case of success', async () => {
+    it("should invoke preRefresh and postRefresh hooks in case of success", async () => {
+      // Arrange
+
       const preRefreshHook = vi.fn();
       const postRefreshHook = vi.fn();
 
-      const authClientStub = createMockAuthClientWithHooks({
+      const authClientMock = createMockAuthClientWithHooks({
         onPreRefresh: preRefreshHook,
         onPostRefresh: postRefreshHook,
       });
-      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
-        authToken: 'tkn',
-        refreshToken: 'tkn',
+
+      vi.spyOn(authClientMock, "onRefresh").mockResolvedValue({
+        authToken: "tkn",
+        refreshToken: "tkn",
       });
 
+      const authClient = wrapAuthClient(authClientMock);
+
+      // Act
+
       await rtl.act(async () => {
-        await authClientStub.refresh();
+        await authClient.refresh();
       });
+
+      // Assert
 
       expect(preRefreshHook).toHaveBeenCalledTimes(1);
       expect(postRefreshHook).toHaveBeenCalledTimes(1);
       expect(postRefreshHook).toHaveBeenCalledWith(true);
     });
 
-    it('should invoke preRefresh and postRefresh hooks in case of failure', async () => {
+    it("should invoke preRefresh and postRefresh hooks in case of failure", async () => {
+      // Arrange
+
       const preRefreshHook = vi.fn();
       const postRefreshHook = vi.fn();
 
-      const authClientStub = createMockAuthClientWithHooks({
+      const authClientMock = createMockAuthClientWithHooks({
         onPreRefresh: preRefreshHook,
         onPostRefresh: postRefreshHook,
       });
 
+      const authClient = wrapAuthClient(authClientMock);
+
+      // Act
+
       await rtl.act(async () => {
-        await authClientStub.refresh();
+        await authClient.refresh();
       });
+
+      // Assert
 
       expect(preRefreshHook).toHaveBeenCalledTimes(1);
       expect(postRefreshHook).toHaveBeenCalledTimes(1);
@@ -267,79 +374,116 @@ describe('AuthClient', () => {
     });
   });
 
-  describe('on logout', () => {
-    it('should notify start', async () => {
-      const logoutStartedListener = vi.fn();
+  describe("on logout", () => {
+    it("should notify start", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      authClientStub.on('logoutStarted', logoutStartedListener);
+      const authClient = wrapAuthClient(createMockAuthClient());
+
+      const logoutStartedListener = vi.fn();
+      authClient.on("logoutStarted", logoutStartedListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.logout();
+        await authClient.logout();
       });
+
+      // Assert
 
       expect(logoutStartedListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should notify success', async () => {
+    it("should notify success", async () => {
+      // Arrange
+
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onLogout").mockResolvedValue(undefined);
+
+      const authClient = wrapAuthClient(authClientMock);
+
       const logoutSuccessEventListener = vi.fn();
+      authClient.on("logoutSuccess", logoutSuccessEventListener);
 
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onLogout').mockResolvedValue(undefined);
-
-      authClientStub.on('logoutSuccess', logoutSuccessEventListener);
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.logout();
+        await authClient.logout();
       });
+
+      // Assert
 
       expect(logoutSuccessEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should notify failure', async () => {
-      const logoutFailureEventListener = vi.fn();
+    it("should notify failure", async () => {
+      // Arrange
 
-      const authClientStub = createMockAuthClient();
-      authClientStub.on('logoutFailed', logoutFailureEventListener);
+      const authClientMock = createMockAuthClient();
+
+      const authClient = wrapAuthClient(authClientMock);
+
+      const logoutFailureEventListener = vi.fn();
+      authClient.on("logoutFailed", logoutFailureEventListener);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.logout();
+        await authClient.logout();
       });
+
+      // Assert
 
       expect(logoutFailureEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should invoke preLogout and postLogout hooks in case of success', async () => {
+    it("should invoke preLogout and postLogout hooks in case of success", async () => {
+      // Arrange
+
       const preLogoutHook = vi.fn();
       const postLogoutHook = vi.fn();
 
-      const authClientStub = createMockAuthClientWithHooks({
+      const authClientMock = createMockAuthClientWithHooks({
         onPreLogout: preLogoutHook,
         onPostLogout: postLogoutHook,
       });
-      vi.spyOn(authClientStub, 'onLogout').mockResolvedValue(undefined);
+      vi.spyOn(authClientMock, "onLogout").mockResolvedValue(undefined);
+
+      const authClient = wrapAuthClient(authClientMock);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.logout();
+        await authClient.logout();
       });
+
+      // Assert
 
       expect(preLogoutHook).toHaveBeenCalledTimes(1);
       expect(postLogoutHook).toHaveBeenCalledTimes(1);
       expect(postLogoutHook).toHaveBeenCalledWith(true);
     });
 
-    it('should invoke preLogout and postLogout hooks in case of failure', async () => {
+    it("should invoke preLogout and postLogout hooks in case of failure", async () => {
+      // Arrange
+
       const preLogoutHook = vi.fn();
       const postLogoutHook = vi.fn();
 
-      const authClientStub = createMockAuthClientWithHooks({
+      const authClientMock = createMockAuthClientWithHooks({
         onPreLogout: preLogoutHook,
         onPostLogout: postLogoutHook,
       });
 
+      const authClient = wrapAuthClient(authClientMock);
+
+      // Act
+
       await rtl.act(async () => {
-        await authClientStub.logout();
+        await authClient.logout();
       });
+
+      // Assert
 
       expect(preLogoutHook).toHaveBeenCalledTimes(1);
       expect(postLogoutHook).toHaveBeenCalledTimes(1);
@@ -347,142 +491,189 @@ describe('AuthClient', () => {
     });
   });
 
-  describe('when requested', () => {
-    it('should return empty tokens by default', async () => {
-      const authClientStub = createMockAuthClient();
+  describe("when requested", () => {
+    it("should return empty tokens by default", async () => {
+      // Arrange
 
-      expect(authClientStub.tokens).toStrictEqual({});
+      const authClient = wrapAuthClient(createMockAuthClient());
+
+      // Assert
+
+      expect(authClient.tokens).toStrictEqual({});
     });
 
-    it('should return current tokens after login', async () => {
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onLogin').mockResolvedValue({
-        authToken: 'a.fake.tkn',
-        refreshToken: 'a.fake.tkn',
+    it("should return current tokens after login", async () => {
+      // Arrange
+
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onLogin").mockResolvedValue({
+        authToken: "a.fake.tkn",
+        refreshToken: "a.fake.tkn",
       });
+
+      const authClient = wrapAuthClient(authClientMock);
+
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.login();
+        await authClient.login();
       });
 
-      expect(authClientStub.tokens).toStrictEqual({
-        authToken: 'a.fake.tkn',
-        refreshToken: 'a.fake.tkn',
+      // Assert
+
+      expect(authClient.tokens).toStrictEqual({
+        authToken: "a.fake.tkn",
+        refreshToken: "a.fake.tkn",
       });
     });
   });
 
-  describe('when event listener is removed', () => {
-    it('should not crash if no listener is defined', async () => {
+  describe("when event listener is removed", () => {
+    it("should not crash if no listener is defined", async () => {
+      // Arrange
+
+      const authClient = wrapAuthClient(createMockAuthClient());
+
       const initSuccessEventListener = vi.fn();
 
-      const authClientStub = createMockAuthClient();
+      // Assert
 
       expect(() => {
-        authClientStub.off('initSuccess', initSuccessEventListener);
+        authClient.off("initSuccess", initSuccessEventListener);
       }).not.toThrow();
 
       expect(initSuccessEventListener).not.toBeCalled();
     });
 
-    it('should not be invoked on login success', async () => {
+    it("should not be invoked on login success", async () => {
+      // Arrange
+
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onLogin").mockResolvedValue({
+        authToken: "tkn",
+        refreshToken: "tkn",
+      });
+
+      const authClient = wrapAuthClient(authClientMock);
+
       const loginSuccessEventListener = vi.fn();
+      authClient.on("loginSuccess", loginSuccessEventListener);
 
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onLogin').mockResolvedValue({
-        authToken: 'tkn',
-        refreshToken: 'tkn',
-      });
-
-      authClientStub.on('loginSuccess', loginSuccessEventListener);
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.login();
+        await authClient.login();
       });
 
-      authClientStub.off('loginSuccess', loginSuccessEventListener);
+      authClient.off("loginSuccess", loginSuccessEventListener);
 
       await rtl.act(async () => {
-        await authClientStub.login();
+        await authClient.login();
       });
+
+      // Assert
 
       expect(loginSuccessEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should not be invoked on login failed', async () => {
+    it("should not be invoked on login failed", async () => {
+      // Arrange
+
+      const authClient = wrapAuthClient(createMockAuthClient());
+
       const loginFailureEventListener = vi.fn();
+      authClient.on("loginFailed", loginFailureEventListener);
 
-      const authClientStub = createMockAuthClient();
-      authClientStub.on('loginFailed', loginFailureEventListener);
-
-      await rtl.act(async () => {
-        await authClientStub.login();
-      });
-
-      authClientStub.off('loginFailed', loginFailureEventListener);
+      // Act
 
       await rtl.act(async () => {
-        await authClientStub.login();
+        await authClient.login();
       });
+
+      authClient.off("loginFailed", loginFailureEventListener);
+
+      await rtl.act(async () => {
+        await authClient.login();
+      });
+
+      // Assert
 
       expect(loginFailureEventListener).toHaveBeenCalledTimes(1);
     });
 
-    it('should not be invoked on refresh success', async () => {
+    it("should not be invoked on refresh success", async () => {
+      // Arrange
+
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onRefresh").mockResolvedValue({
+        authToken: "tkn",
+        refreshToken: "tkn",
+      });
+
+      const authClient = wrapAuthClient(authClientMock);
+
       const refreshStartedListener = vi.fn();
+      authClient.on("refreshStarted", refreshStartedListener);
+
       const refreshSuccessEventListener = vi.fn();
+      authClient.on("refreshSuccess", refreshSuccessEventListener);
+
       const refreshFailureEventListener = vi.fn();
+      authClient.on("refreshFailed", refreshFailureEventListener);
 
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onRefresh').mockResolvedValue({
-        authToken: 'tkn',
-        refreshToken: 'tkn',
-      });
-
-      authClientStub.on('refreshSuccess', refreshSuccessEventListener);
-      authClientStub.on('refreshStarted', refreshStartedListener);
-      authClientStub.on('refreshFailed', refreshFailureEventListener);
+      // Act
 
       await rtl.act(() => {
-        authClientStub.refresh();
+        authClient.refresh();
       });
 
-      authClientStub.off('refreshSuccess', refreshSuccessEventListener);
-      authClientStub.off('refreshStarted', refreshStartedListener);
-      authClientStub.off('refreshFailed', refreshFailureEventListener);
+      authClient.off("refreshSuccess", refreshSuccessEventListener);
+      authClient.off("refreshStarted", refreshStartedListener);
+      authClient.off("refreshFailed", refreshFailureEventListener);
 
       await rtl.act(() => {
-        authClientStub.refresh();
+        authClient.refresh();
       });
+
+      // Assert
 
       expect(refreshStartedListener).toHaveBeenCalledTimes(1);
       expect(refreshSuccessEventListener).toHaveBeenCalledTimes(1);
       expect(refreshFailureEventListener).toHaveBeenCalledTimes(0);
     });
 
-    it('should not be invoked on refresh failed', async () => {
+    it("should not be invoked on refresh failed", async () => {
+      // Arrange
+
+      const authClientMock = createMockAuthClient();
+      vi.spyOn(authClientMock, "onRefresh").mockRejectedValue(null);
+
+      const authClient = wrapAuthClient(authClientMock);
+
       const refreshStartedListener = vi.fn();
+      authClient.on("refreshStarted", refreshStartedListener);
+
       const refreshSuccessEventListener = vi.fn();
+      authClient.on("refreshSuccess", refreshSuccessEventListener);
+
       const refreshFailureEventListener = vi.fn();
+      authClient.on("refreshFailed", refreshFailureEventListener);
 
-      const authClientStub = createMockAuthClient();
-      vi.spyOn(authClientStub, 'onRefresh').mockRejectedValue(null);
-
-      authClientStub.on('refreshSuccess', refreshSuccessEventListener);
-      authClientStub.on('refreshStarted', refreshStartedListener);
-      authClientStub.on('refreshFailed', refreshFailureEventListener);
+      // Act
 
       await rtl.act(() => {
-        authClientStub.refresh();
+        authClient.refresh();
       });
 
-      authClientStub.off('refreshSuccess', refreshSuccessEventListener);
-      authClientStub.off('refreshStarted', refreshStartedListener);
-      authClientStub.off('refreshFailed', refreshFailureEventListener);
+      authClient.off("refreshSuccess", refreshSuccessEventListener);
+      authClient.off("refreshStarted", refreshStartedListener);
+      authClient.off("refreshFailed", refreshFailureEventListener);
 
       await rtl.act(() => {
-        authClientStub.refresh();
+        authClient.refresh();
       });
+
+      // Assert
 
       expect(refreshStartedListener).toHaveBeenCalledTimes(1);
       expect(refreshSuccessEventListener).toHaveBeenCalledTimes(0);
