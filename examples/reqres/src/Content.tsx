@@ -17,12 +17,9 @@ export const Content: React.FC = () => {
     [authClient, userCredentials]
   );
 
+
   const [doLogin, isLoginLoading] = useAsyncCallback(
-    () =>
-      authClient.login({
-        email: userCredentials.email,
-        password: userCredentials.password,
-      }),
+    () => authClient.login(userCredentials),
     [authClient, userCredentials]
   );
 

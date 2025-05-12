@@ -15,7 +15,7 @@ describe('AuthProvider', () => {
       const authClientStub = createMockAuthClient();
       const authClientInitSpy = vi
         .spyOn(authClientStub, 'onInit')
-        .mockResolvedValue(undefined);
+        .mockResolvedValue(null);
 
       const { AuthProvider } = createAuth(authClientStub);
 
