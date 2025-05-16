@@ -1,7 +1,7 @@
 {
   "name": "@forward-software/react-auth",
   "description": "Simplify your Auth flow when working with React apps",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": "ForWarD Software (https://forwardsoftware.solutions/)",
   "license": "MIT",
   "repository": "https://github.com/forwardsoftware/react-auth",
