@@ -10,8 +10,8 @@ catalogs:
       specifier: ^19.1.7
       version: 19.1.7
     '@types/react-dom':
-      specifier: ^19.1.4
-      version: 19.1.5
+      specifier: ^19.1.6
+      version: 19.1.6
     '@vitejs/plugin-react':
       specifier: ^4.4.1
       version: 4.5.1
@@ -62,7 +62,7 @@ importers:
         version: 19.1.7
       '@types/react-dom':
         specifier: 'catalog:'
-        version: 19.1.5(@types/react@19.1.7)
+        version: 19.1.6(@types/react@19.1.7)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
         version: 4.5.1(vite@6.3.5(@types/node@24.0.0)(lightningcss@1.29.3)(terser@5.39.0))
@@ -96,7 +96,7 @@ importers:
         version: 19.1.7
       '@types/react-dom':
         specifier: 'catalog:'
-        version: 19.1.5(@types/react@19.1.7)
+        version: 19.1.6(@types/react@19.1.7)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
         version: 4.5.1(vite@6.3.5(@types/node@24.0.0)(lightningcss@1.29.3)(terser@5.39.0))
@@ -127,7 +127,7 @@ importers:
         version: 19.1.7
       '@types/react-dom':
         specifier: 'catalog:'
-        version: 19.1.5(@types/react@19.1.7)
+        version: 19.1.6(@types/react@19.1.7)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
         version: 4.5.1(vite@6.3.5(@types/node@24.0.0)(lightningcss@1.29.3)(terser@5.39.0))
@@ -152,7 +152,7 @@ importers:
         version: 6.6.3
       '@testing-library/react':
         specifier: ^16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.5(@types/react@19.1.7))(@types/react@19.1.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.7))(@types/react@19.1.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@types/node':
         specifier: ^24.0.0
         version: 24.0.0
@@ -161,7 +161,7 @@ importers:
         version: 19.1.7
       '@types/react-dom':
         specifier: 'catalog:'
-        version: 19.1.5(@types/react@19.1.7)
+        version: 19.1.6(@types/react@19.1.7)
       '@types/use-sync-external-store':
         specifier: ^1.5.0
         version: 1.5.0
@@ -638,8 +638,8 @@ packages:
   '@types/node@24.0.0':
     resolution: {integrity: sha512-yZQa2zm87aRVcqDyH5+4Hv9KYgSdgwX1rFnGvpbzMaC7YAljmhBET93TPiTd3ObwTL+gSpIzPKg5BqVxdCvxKg==}
 
-  '@types/react-dom@19.1.5':
-    resolution: {integrity: sha512-CMCjrWucUBZvohgZxkjd6S9h0nZxXjzus6yDfUb+xLxYM7VvjKNH1tQrE9GWLql1XoOP4/Ds3bwFqShHUYraGg==}
+  '@types/react-dom@19.1.6':
+    resolution: {integrity: sha512-4hOiT/dwO8Ko0gV1m/TJZYk3y0KBnY9vzDh7W+DH17b2HFSOGgdj33dhihPeuy3l0q23+4e+hoXHV6hCC4dCXw==}
     peerDependencies:
       '@types/react': ^19.0.0
 
@@ -1905,7 +1905,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.5(@types/react@19.1.7))(@types/react@19.1.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.7))(@types/react@19.1.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@babel/runtime': 7.27.0
       '@testing-library/dom': 10.4.0
@@ -1913,7 +1913,7 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
     optionalDependencies:
       '@types/react': 19.1.7
-      '@types/react-dom': 19.1.5(@types/react@19.1.7)
+      '@types/react-dom': 19.1.6(@types/react@19.1.7)
 
   '@types/aria-query@5.0.4': {}
 
@@ -1952,7 +1952,7 @@ snapshots:
     dependencies:
       undici-types: 7.8.0
 
-  '@types/react-dom@19.1.5(@types/react@19.1.7)':
+  '@types/react-dom@19.1.6(@types/react@19.1.7)':
     dependencies:
       '@types/react': 19.1.7
 
