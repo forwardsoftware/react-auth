@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@forward-software/react-auth": "workspace:^",
-    "axios": "^1.10.0",
+    "axios": "^1.11.0",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
