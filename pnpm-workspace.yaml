@@ -9,4 +9,4 @@ catalog:
   "react": "^19.1.1"
   "react-dom": "^19.1.1"
   "typescript": "^5.9.2"
-  "vite": "^7.1.2"
+  "vite": "^7.1.3"
