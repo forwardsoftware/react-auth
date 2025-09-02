@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Run release-please command
         id: release
-        uses: googleapis/release-please-action@a02a34c4d625f9be7cb89156071d8567266a2445
+        uses: googleapis/release-please-action@c2a5a2bd6a758a0937f1ddb1e8950609867ed15c
 
   build-and-publish:
     name: Build & Publish
