@@ -1,6 +1,7 @@
 {
   "name": "react-auth",
   "description": "Simplify your Auth flow within React apps",
+  "version": "2.0.0",
   "author": "ForWarD Software (https://forwardsoftware.solutions/)",
   "license": "MIT",
   "keywords": [
@@ -11,7 +12,10 @@
   ],
   "homepage": "https://github.com/forwardsoftware/react-auth#readme",
   "bugs": "https://github.com/forwardsoftware/react-auth/issues",
-  "repository": "https://github.com/forwardsoftware/react-auth",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forwardsoftware/react-auth.git"
+  },
   "scripts": {},
   "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
   "devDependencies": {
