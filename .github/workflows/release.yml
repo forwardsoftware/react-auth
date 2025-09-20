@@ -64,7 +64,5 @@ jobs:
         run: pnpm build
 
       - name: Publish package at ${{ matrix.path }}
-        run: npm publish --provenance --access public
+        run: npm publish
         working-directory: ${{ matrix.path }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
