@@ -24,3 +24,7 @@ updates:
     schedule:
       interval: weekly
       day: tuesday
+    commit-message:
+      include: scope
+      prefix: "fix"
+      prefix-development: "chore"
