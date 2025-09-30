@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@types/react':
-      specifier: ^19.1.13
-      version: 19.1.13
+      specifier: ^19.1.16
+      version: 19.1.16
     '@types/react-dom':
       specifier: ^19.1.9
       version: 19.1.9
@@ -59,10 +59,10 @@ importers:
     devDependencies:
       '@types/react':
         specifier: 'catalog:'
-        version: 19.1.13
+        version: 19.1.16
       '@types/react-dom':
         specifier: 'catalog:'
-        version: 19.1.9(@types/react@19.1.13)
+        version: 19.1.9(@types/react@19.1.16)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
         version: 5.0.3(vite@7.1.7(@types/node@24.6.0)(lightningcss@1.29.3)(terser@5.39.0))
@@ -93,10 +93,10 @@ importers:
     devDependencies:
       '@types/react':
         specifier: 'catalog:'
-        version: 19.1.13
+        version: 19.1.16
       '@types/react-dom':
         specifier: 'catalog:'
-        version: 19.1.9(@types/react@19.1.13)
+        version: 19.1.9(@types/react@19.1.16)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
         version: 5.0.3(vite@7.1.7(@types/node@24.6.0)(lightningcss@1.29.3)(terser@5.39.0))
@@ -124,10 +124,10 @@ importers:
     devDependencies:
       '@types/react':
         specifier: 'catalog:'
-        version: 19.1.13
+        version: 19.1.16
       '@types/react-dom':
         specifier: 'catalog:'
-        version: 19.1.9(@types/react@19.1.13)
+        version: 19.1.9(@types/react@19.1.16)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
         version: 5.0.3(vite@7.1.7(@types/node@24.6.0)(lightningcss@1.29.3)(terser@5.39.0))
@@ -152,16 +152,16 @@ importers:
         version: 6.9.0
       '@testing-library/react':
         specifier: ^16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.9(@types/react@19.1.16))(@types/react@19.1.16)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@types/node':
         specifier: ^24.6.0
         version: 24.6.0
       '@types/react':
         specifier: 'catalog:'
-        version: 19.1.13
+        version: 19.1.16
       '@types/react-dom':
         specifier: 'catalog:'
-        version: 19.1.9(@types/react@19.1.13)
+        version: 19.1.9(@types/react@19.1.16)
       '@types/use-sync-external-store':
         specifier: ^1.5.0
         version: 1.5.0
@@ -650,8 +650,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.1.13':
-    resolution: {integrity: sha512-hHkbU/eoO3EG5/MZkuFSKmYqPbSVk5byPFa3e7y/8TybHiLMACgI8seVYlicwk7H5K/rI2px9xrQp/C+AUDTiQ==}
+  '@types/react@19.1.16':
+    resolution: {integrity: sha512-WBM/nDbEZmDUORKnh5i1bTnAz6vTohUf9b8esSMu+b24+srbaxa04UbJgWx78CVfNXA20sNu0odEIluZDFdCog==}
 
   '@types/use-sync-external-store@1.5.0':
     resolution: {integrity: sha512-5dyB8nLC/qogMrlCizZnYWQTA4lnb/v+It+sqNl5YnSRAPMlIqY/X0Xn+gZw8vOL+TgTTr28VEbn3uf8fUtAkw==}
@@ -1887,15 +1887,15 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.9(@types/react@19.1.16))(@types/react@19.1.16)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@babel/runtime': 7.28.2
       '@testing-library/dom': 10.4.1
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
     optionalDependencies:
-      '@types/react': 19.1.13
-      '@types/react-dom': 19.1.9(@types/react@19.1.13)
+      '@types/react': 19.1.16
+      '@types/react-dom': 19.1.9(@types/react@19.1.16)
 
   '@types/aria-query@5.0.4': {}
 
@@ -1932,11 +1932,11 @@ snapshots:
     dependencies:
       undici-types: 7.13.0
 
-  '@types/react-dom@19.1.9(@types/react@19.1.13)':
+  '@types/react-dom@19.1.9(@types/react@19.1.16)':
     dependencies:
-      '@types/react': 19.1.13
+      '@types/react': 19.1.16
 
-  '@types/react@19.1.13':
+  '@types/react@19.1.16':
     dependencies:
       csstype: 3.1.3
 
