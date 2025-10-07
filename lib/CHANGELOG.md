@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/forwardsoftware/react-auth/compare/v2.0.0...v2.0.1) (2025-10-07)
+
+
+### Bug Fixes
+
+* **deps:** bump use-sync-external-store from 1.5.0 to 1.6.0 ([#104](https://github.com/forwardsoftware/react-auth/issues/104)) ([5ed760d](https://github.com/forwardsoftware/react-auth/commit/5ed760d89633e3bf1c76ef159231d9348334f958))
+
 ## [2.0.0](https://github.com/forwardsoftware/react-auth/compare/v1.1.0...v2.0.0) (2025-05-13)
 
 
