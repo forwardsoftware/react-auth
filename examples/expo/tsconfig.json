@@ -1,0 +1,13 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@/*": ["./*"],
+      // @IMPORTANT: This is needed for the workspace package to be imported correctly
+      // It can be removed if the workspace package is not used
+      "@forward-software/react-auth/*": ["../../lib/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+}
