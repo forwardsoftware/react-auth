@@ -1,6 +1,6 @@
 import { BASE_URL } from '@/src/constants';
 import { MMKVStorage } from '@/src/utilities/mmkv';
-import type { AuthClient } from '@forward-software/react-auth/dist';
+import type { AuthClient } from '@forward-software/react-auth';
 import axios, { AxiosInstance } from 'axios';
 import isJwtTokenExpired from 'jwt-check-expiry';
 

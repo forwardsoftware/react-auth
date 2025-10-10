@@ -136,10 +136,10 @@ importers:
         specifier: ^1.0.10
         version: 1.0.10
       react:
-        specifier: 19.1.0
+        specifier: 'catalog:'
         version: 19.1.0
       react-dom:
-        specifier: 19.1.0
+        specifier: 'catalog:'
         version: 19.1.0(react@19.1.0)
       react-native:
         specifier: 0.81.4
@@ -164,7 +164,7 @@ importers:
         version: 0.5.1(@babel/core@7.28.4)(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
     devDependencies:
       '@types/react':
-        specifier: ~19.1.0
+        specifier: 'catalog:'
         version: 19.1.17
       babel-plugin-module-resolver:
         specifier: ^5.0.2
@@ -176,7 +176,7 @@ importers:
         specifier: ~10.0.0
         version: 10.0.0(eslint@9.37.0)(typescript@5.9.3)
       typescript:
-        specifier: ~5.9.2
+        specifier: 'catalog:'
         version: 5.9.3
 
   examples/refresh-token:
