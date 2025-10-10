@@ -4,10 +4,11 @@
 # the repo. Unless a later match takes precedence,
 # @panz3r will be requested for review when someone 
 # opens a pull request.
-*             @panz3r
+*               @panz3r
 
 # Owners of the examples
-/examples/*   @panz3r
+/examples/*     @panz3r
+/examples/expo  @IronTony
 
 # Owners of the main library
-/lib          @panz3r
+/lib            @panz3r
