@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/forwardsoftware/react-auth/compare/v2.0.1...v2.0.2) (2025-10-10)
+
+
+### Bug Fixes
+
+* **lib:** update `react-native` entry in lib `package.json` ([#111](https://github.com/forwardsoftware/react-auth/issues/111)) ([0056377](https://github.com/forwardsoftware/react-auth/commit/00563779025f023929f0b0966bd6d78e2b812dcb))
+
 ## [2.0.1](https://github.com/forwardsoftware/react-auth/compare/v2.0.0...v2.0.1) (2025-10-07)
 
 
