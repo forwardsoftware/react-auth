@@ -1,0 +1,18 @@
+name: Dependabot CI
+
+on:
+  pull_request:
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+      contents: write
+
+    steps:
+      - uses: fastify/github-action-merge-dependabot@1b2ed42db8f9d81a46bac83adedfc03eb5149dff # v3.11.2
+        with:
+          use-github-auto-merge: true
+          merge-method: squash
