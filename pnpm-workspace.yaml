@@ -4,7 +4,7 @@ packages:
 
 catalog:
   "@types/react": ^19.2.0
-  "@types/react-dom": ^19.2.0
+  "@types/react-dom": ^19.2.3
   "@vitejs/plugin-react": ^5.1.1
   react: ^19.2.0
   react-dom: ^19.2.0
