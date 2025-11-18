@@ -45,7 +45,7 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "vite": "catalog:",
-    "vitest": "^3.1.2"
+    "vitest": "^4.0.10"
   },
   "dependencies": {
     "use-sync-external-store": "^1.6.0"
