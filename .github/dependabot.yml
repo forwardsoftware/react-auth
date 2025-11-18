@@ -20,6 +20,8 @@ updates:
     directories:
       - "/"
       - "/lib"
+    exclude-paths:
+      - "examples/*"
     schedule:
       interval: daily
       time: "11:00"
