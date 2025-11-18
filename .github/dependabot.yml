@@ -29,6 +29,21 @@ updates:
       include: scope
       prefix: "fix"
       prefix-development: "chore"
+    groups:
+      react:
+        patterns:
+          - "@types/react*"
+          - "react*"
+      vite:
+        patterns:
+          - "@vitejs/*"
+          - "vite"
+          - "vite-*"
+      testing:
+        patterns:
+          - "@testing-library/*"
+          - "jsdom"
+          - "vitest"
 
   - package-ecosystem: "npm"
     directories:
@@ -41,3 +56,10 @@ updates:
       include: scope
       prefix: "chore"
       prefix-development: "chore"
+    groups:
+      expo:
+        patterns:
+          - "@expo/*"
+          - "expo"
+          - "expo-*"
+          - "eslint-config-expo"
