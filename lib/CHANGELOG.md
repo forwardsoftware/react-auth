@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/forwardsoftware/react-auth/compare/v2.0.2...v2.0.3) (2025-11-18)
+
+
+### Bug Fixes
+
+* update dependencies to fix vulnerability issues ([#136](https://github.com/forwardsoftware/react-auth/issues/136)) ([8caadeb](https://github.com/forwardsoftware/react-auth/commit/8caadeb72abc0ec7c1f856dbfa24cf42bf0e17fc))
+
 ## [2.0.2](https://github.com/forwardsoftware/react-auth/compare/v2.0.1...v2.0.2) (2025-10-10)
 
 
