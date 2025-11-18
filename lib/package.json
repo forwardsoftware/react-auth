@@ -41,7 +41,7 @@
     "@types/react-dom": "catalog:",
     "@types/use-sync-external-store": "^1.5.0",
     "@vitejs/plugin-react": "catalog:",
-    "jsdom": "^27.0.0",
+    "jsdom": "^27.2.0",
     "react": "catalog:",
     "react-dom": "catalog:",
     "vite": "catalog:",
