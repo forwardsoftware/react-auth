@@ -12,3 +12,7 @@
 
 # Owners of the main library
 /lib            @panz3r
+
+# Make dependency files owner-free
+package.json
+pnpm-lock.yaml
