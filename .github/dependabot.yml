@@ -20,11 +20,22 @@ updates:
     directories:
       - "/"
       - "/lib"
+    schedule:
+      interval: daily
+      time: "11:00"
+    commit-message:
+      include: scope
+      prefix: "fix"
+      prefix-development: "chore"
+
+  - package-ecosystem: "npm"
+    directories:
       - "/examples/*"
     schedule:
       interval: weekly
       day: tuesday
+      time: "11:00"
     commit-message:
       include: scope
-      prefix: "fix"
+      prefix: "chore"
       prefix-development: "chore"
