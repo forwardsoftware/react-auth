@@ -15,13 +15,6 @@ export class GoogleAuthClient implements AuthClient<GoogleAuthTokens, GoogleAuth
   private configured = false;
 
   constructor(config: GoogleNativeAuthConfig) {
-    if (!config.storage) {
-      throw new Error(
-        'GoogleAuthClient (native): a storage adapter is required. ' +
-        'Pass a TokenStorage implementation (e.g., MMKV or AsyncStorage wrapper).'
-      );
-    }
-
     this.config = {
       scopes: DEFAULT_SCOPES,
       persistTokens: true,

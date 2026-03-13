@@ -5,6 +5,7 @@
 
 const GSI_SCRIPT_SRC = 'https://accounts.google.com/gsi/client';
 const GSI_SCRIPT_ID = '__google-gsi-script';
+const GSI_SCRIPT_TIMEOUT_MS = 10_000;
 
 type GsiCredentialResponse = {
   credential: string;
@@ -32,6 +33,7 @@ type GsiInitConfig = {
   ux_mode?: 'popup' | 'redirect';
   login_uri?: string;
   hosted_domain?: string;
+  nonce?: string;
 };
 
 interface GoogleAccountsId {
@@ -79,15 +81,34 @@ export function loadGsiScript(): Promise<void> {
       return;
     }
 
+    let settled = false;
+    const timeoutId = setTimeout(() => {
+      if (!settled) {
+        settled = true;
+        scriptLoadPromise = null;
+        reject(new Error('Google Identity Services script load timed out'));
+      }
+    }, GSI_SCRIPT_TIMEOUT_MS);
+
     const script = document.createElement('script');
     script.id = GSI_SCRIPT_ID;
     script.src = GSI_SCRIPT_SRC;
     script.async = true;
     script.defer = true;
-    script.onload = () => resolve();
+    script.onload = () => {
+      if (!settled) {
+        settled = true;
+        clearTimeout(timeoutId);
+        resolve();
+      }
+    };
     script.onerror = () => {
-      scriptLoadPromise = null;
-      reject(new Error('Failed to load Google Identity Services script'));
+      if (!settled) {
+        settled = true;
+        clearTimeout(timeoutId);
+        scriptLoadPromise = null;
+        reject(new Error('Failed to load Google Identity Services script'));
+      }
     };
     document.head.appendChild(script);
   });

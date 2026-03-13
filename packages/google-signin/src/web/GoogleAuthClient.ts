@@ -98,7 +98,9 @@ export class GoogleAuthClient implements AuthClient<GoogleAuthTokens, GoogleAuth
       const payload = idToken.split('.')[1];
       if (!payload) return undefined;
 
-      const decoded = JSON.parse(atob(payload));
+      // Convert base64url to standard base64
+      const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
+      const decoded = JSON.parse(atob(base64));
       if (typeof decoded.exp === 'number') {
         return decoded.exp * 1000;
       }

@@ -31,16 +31,6 @@ describe('GoogleAuthClient (Native)', () => {
     });
   });
 
-  describe('constructor', () => {
-    it('should throw when no storage is provided', () => {
-      expect(() => {
-        new GoogleAuthClient({
-          clientId: 'test-client-id',
-        } as any);
-      }).toThrow('storage adapter is required');
-    });
-  });
-
   describe('onInit', () => {
     it('should configure the native module and return null when no tokens are stored', async () => {
       const configureSpy = vi.spyOn(GoogleSignInModule, 'configure');

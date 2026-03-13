@@ -3,6 +3,7 @@ import GoogleSignIn
 
 public class GoogleSignInModule: Module {
   private var clientId: String?
+  private var additionalScopes: [String] = []
 
   public func definition() -> ModuleDefinition {
     Name("GoogleSignIn")
@@ -18,7 +19,7 @@ public class GoogleSignInModule: Module {
       GIDSignIn.sharedInstance.configuration = gidConfig
 
       if let scopes = config["scopes"] as? [String], !scopes.isEmpty {
-        // Scopes are requested during signIn, stored for later use
+        self.additionalScopes = scopes
       }
     }
 
@@ -33,7 +34,8 @@ public class GoogleSignInModule: Module {
         return
       }
 
-      GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { signInResult, error in
+      let scopes = self.additionalScopes
+      GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController, hint: nil, additionalScopes: scopes) { signInResult, error in
         if let error = error {
           promise.reject(GoogleSignInError.signInFailed(error.localizedDescription))
           return

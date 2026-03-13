@@ -49,6 +49,7 @@ export function GoogleSignInButton({
         ux_mode: config.ux_mode,
         login_uri: config.redirect_uri,
         hosted_domain: config.hosted_domain,
+        nonce: config.nonce,
       });
 
       if (buttonRef.current) {

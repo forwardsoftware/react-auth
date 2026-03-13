@@ -46,12 +46,16 @@ export type GoogleWebAuthConfig = GoogleAuthConfig & {
   ux_mode?: 'popup' | 'redirect';
   redirect_uri?: string;
   hosted_domain?: string;
+  /** Nonce to bind the ID token to a session and prevent replay attacks. */
+  nonce?: string;
 };
 
 /**
  * React Native-specific configuration
  */
-export type GoogleNativeAuthConfig = GoogleAuthConfig & {
+export type GoogleNativeAuthConfig = Omit<GoogleAuthConfig, 'storage'> & {
+  /** Storage adapter is required on native (e.g., MMKV or AsyncStorage wrapper). */
+  storage: TokenStorage;
   iosClientId?: string;
   webClientId?: string;
   offlineAccess?: boolean;
