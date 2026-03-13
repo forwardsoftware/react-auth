@@ -48,12 +48,13 @@ public class GoogleSignInModule: Module {
 
         let user = result.user
 
-        var response: [String: Any] = [:]
-
-        if let idToken = user.idToken?.tokenString {
-          response["idToken"] = idToken
+        guard let idToken = user.idToken?.tokenString else {
+          promise.reject(GoogleSignInError.signInFailed("No ID token returned"))
+          return
         }
 
+        var response: [String: Any] = [:]
+        response["idToken"] = idToken
         response["accessToken"] = user.accessToken.tokenString
 
         if let serverAuthCode = result.serverAuthCode {
@@ -76,12 +77,13 @@ public class GoogleSignInModule: Module {
           return
         }
 
-        var response: [String: Any] = [:]
-
-        if let idToken = user.idToken?.tokenString {
-          response["idToken"] = idToken
+        guard let idToken = user.idToken?.tokenString else {
+          promise.reject(GoogleSignInError.signInFailed("No ID token returned"))
+          return
         }
 
+        var response: [String: Any] = [:]
+        response["idToken"] = idToken
         response["accessToken"] = user.accessToken.tokenString
 
         promise.resolve(response)
@@ -105,12 +107,13 @@ public class GoogleSignInModule: Module {
           return
         }
 
-        var response: [String: Any] = [:]
-
-        if let idToken = user.idToken?.tokenString {
-          response["idToken"] = idToken
+        guard let idToken = user.idToken?.tokenString else {
+          promise.reject(GoogleSignInError.tokenRefreshFailed("No ID token returned after refresh"))
+          return
         }
 
+        var response: [String: Any] = [:]
+        response["idToken"] = idToken
         response["accessToken"] = user.accessToken.tokenString
 
         promise.resolve(response)

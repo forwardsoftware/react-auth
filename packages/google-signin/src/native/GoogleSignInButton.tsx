@@ -24,6 +24,7 @@ export function GoogleSignInButton({
 
     setIsLoading(true);
     try {
+      GoogleSignInModule.configure(config);
       const credentials = await GoogleSignInModule.signIn();
       onCredential(credentials);
     } catch (err) {
