@@ -1,0 +1,60 @@
+{
+  "name": "@forward-software/react-auth-google",
+  "description": "Google Sign-In adapter for @forward-software/react-auth — Web and React Native",
+  "version": "1.0.0",
+  "author": "ForWarD Software (https://forwardsoftware.solutions/)",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "react-native": "dist/index.native.js",
+  "source": "src/index.ts",
+  "exports": {
+    ".": {
+      "react-native": "./dist/index.native.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "ios",
+    "android",
+    "expo-module.config.json"
+  ],
+  "scripts": {
+    "build:code": "tsc --removeComments",
+    "build:types": "tsc --declaration --emitDeclarationOnly",
+    "build": "npm-run-all clean build:*",
+    "lint": "eslint src",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^25.2.3",
+    "@types/react": "catalog:",
+    "jsdom": "^28.1.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "rimraf": "^6.1.3",
+    "typescript": "catalog:",
+    "vitest": "^4.0.18"
+  },
+  "peerDependencies": {
+    "@forward-software/react-auth": ">=2.0.0",
+    "react": ">=16.8",
+    "expo-modules-core": ">=2.0.0",
+    "react-native": ">=0.73.0"
+  },
+  "peerDependenciesMeta": {
+    "expo-modules-core": {
+      "optional": true
+    },
+    "react-native": {
+      "optional": true
+    }
+  }
+}
