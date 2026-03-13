@@ -77,7 +77,35 @@ export function loadGsiScript(): Promise<void> {
   scriptLoadPromise = new Promise<void>((resolve, reject) => {
     const existingScript = document.getElementById(GSI_SCRIPT_ID);
     if (existingScript) {
-      resolve();
+      if (window.google?.accounts?.id) {
+        resolve();
+        return;
+      }
+
+      let settled = false;
+      const timeoutId = setTimeout(() => {
+        if (!settled) {
+          settled = true;
+          scriptLoadPromise = null;
+          reject(new Error('Google Identity Services script load timed out'));
+        }
+      }, GSI_SCRIPT_TIMEOUT_MS);
+
+      existingScript.addEventListener('load', () => {
+        if (!settled) {
+          settled = true;
+          clearTimeout(timeoutId);
+          resolve();
+        }
+      });
+      existingScript.addEventListener('error', () => {
+        if (!settled) {
+          settled = true;
+          clearTimeout(timeoutId);
+          scriptLoadPromise = null;
+          reject(new Error('Failed to load Google Identity Services script'));
+        }
+      });
       return;
     }
 

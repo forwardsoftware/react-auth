@@ -12,6 +12,10 @@
     ".": {
       "react-native": "./dist/index.native.js",
       "default": "./dist/index.js"
+    },
+    "./web/gsi": {
+      "types": "./dist/web/gsi.d.ts",
+      "default": "./dist/web/gsi.js"
     }
   },
   "files": [

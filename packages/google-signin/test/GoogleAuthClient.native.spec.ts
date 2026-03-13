@@ -2,6 +2,11 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { MockTokenStorage, createMockIdToken, createExpiredMockIdToken } from './test-utils';
 import { DEFAULT_STORAGE_KEY } from '../src/types';
 
+// Mock react-native Platform
+vi.mock('react-native', () => ({
+  Platform: { OS: 'ios' },
+}));
+
 // Mock the native module
 vi.mock('expo-modules-core', () => ({
   requireNativeModule: () => ({

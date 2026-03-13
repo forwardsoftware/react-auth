@@ -1,6 +1,10 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { GoogleAuthClient } from '../src/web/GoogleAuthClient';
-import { MockTokenStorage, createMockIdToken, createExpiredMockIdToken } from './test-utils';
+import {
+  MockTokenStorage,
+  createMockIdToken,
+  createExpiredMockIdToken,
+} from './test-utils';
 import { DEFAULT_STORAGE_KEY } from '../src/types';
 
 describe('GoogleAuthClient (Web)', () => {
@@ -61,7 +65,10 @@ describe('GoogleAuthClient (Web)', () => {
         persistTokens: false,
       });
 
-      const tokens = { idToken: createMockIdToken(), expiresAt: Date.now() + 3600000 };
+      const tokens = {
+        idToken: createMockIdToken(),
+        expiresAt: Date.now() + 3600000,
+      };
       storage.setItem(DEFAULT_STORAGE_KEY, JSON.stringify(tokens));
 
       const result = await clientNoPersist.onInit();
@@ -96,13 +103,15 @@ describe('GoogleAuthClient (Web)', () => {
     });
 
     it('should throw when no credentials are provided', async () => {
-      await expect(client.onLogin()).rejects.toThrow('credentials with idToken are required');
+      await expect(client.onLogin()).rejects.toThrow(
+        'credentials with idToken are required',
+      );
     });
 
     it('should throw when credentials have no idToken', async () => {
-      await expect(
-        client.onLogin({ idToken: '' })
-      ).rejects.toThrow('credentials with idToken are required');
+      await expect(client.onLogin({ idToken: '' })).rejects.toThrow(
+        'credentials with idToken are required',
+      );
     });
 
     it('should not persist when persistTokens is false', async () => {

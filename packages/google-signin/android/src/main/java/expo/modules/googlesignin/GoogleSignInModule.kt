@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 class GoogleSignInModule : Module() {
     private var clientId: String? = null
     private var webClientId: String? = null
-    private var requestServerAuthCode: Boolean = false
     private val scope = CoroutineScope(Dispatchers.Main)
 
     override fun definition() = ModuleDefinition {
@@ -31,14 +30,6 @@ class GoogleSignInModule : Module() {
                 ?: throw CodedException("MISSING_CLIENT_ID", "clientId is required in the configuration", null)
 
             webClientId = config["webClientId"] as? String ?: clientId
-
-            // Android Credential Manager does not support OAuth scopes directly.
-            // When custom scopes are requested, enable server auth code so the
-            // backend can exchange it for scoped access tokens.
-            @Suppress("UNCHECKED_CAST")
-            val scopes = config["scopes"] as? List<String> ?: emptyList()
-            val defaultScopes = listOf("openid", "profile", "email")
-            requestServerAuthCode = config["offlineAccess"] == true || scopes.any { it !in defaultScopes }
         }
 
         AsyncFunction("signIn") { promise: Promise ->

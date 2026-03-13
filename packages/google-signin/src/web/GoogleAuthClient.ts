@@ -93,14 +93,19 @@ export class GoogleAuthClient implements AuthClient<GoogleAuthTokens, GoogleAuth
    * Extracts the `exp` claim from a JWT id_token to determine expiration time.
    * Returns epoch milliseconds, or undefined if the token can't be parsed.
    */
+  private base64UrlDecode(input: string): string {
+    const base64 = input.replace(/-/g, '+').replace(/_/g, '/');
+    const padded = base64.padEnd(base64.length + ((4 - (base64.length % 4)) % 4), '=');
+    return atob(padded);
+  }
+
   private extractExpiration(idToken: string): number | undefined {
     try {
       const payload = idToken.split('.')[1];
       if (!payload) return undefined;
 
-      // Convert base64url to standard base64
-      const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
-      const decoded = JSON.parse(atob(base64));
+      const decodedJson = this.base64UrlDecode(payload);
+      const decoded = JSON.parse(decodedJson);
       if (typeof decoded.exp === 'number') {
         return decoded.exp * 1000;
       }

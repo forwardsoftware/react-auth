@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import type { StyleProp, ViewStyle } from 'react-native';
 import type { GoogleAuthCredentials, GoogleNativeAuthConfig } from '../types';
 import * as GoogleSignInModule from './GoogleSignInModule';
 
@@ -6,7 +7,7 @@ type GoogleSignInButtonProps = {
   config: GoogleNativeAuthConfig;
   onCredential: (credentials: GoogleAuthCredentials) => void;
   onError?: (error: Error) => void;
-  style?: Record<string, unknown>;
+  style?: StyleProp<ViewStyle>;
   disabled?: boolean;
 };
 

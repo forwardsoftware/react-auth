@@ -1,4 +1,5 @@
 import { requireNativeModule } from 'expo-modules-core';
+import { Platform } from 'react-native';
 import type { GoogleAuthCredentials, GoogleNativeAuthConfig } from '../types';
 
 type NativeGoogleSignInModule = {
@@ -18,8 +19,13 @@ type NativeGoogleSignInModule = {
 const NativeModule = requireNativeModule<NativeGoogleSignInModule>('GoogleSignIn');
 
 export function configure(config: GoogleNativeAuthConfig): void {
+  const clientId =
+    (Platform.OS === 'ios' || Platform.OS === 'macos') && config.iosClientId
+      ? config.iosClientId
+      : config.clientId;
+
   NativeModule.configure({
-    clientId: config.clientId,
+    clientId,
     webClientId: config.webClientId,
     scopes: config.scopes,
     offlineAccess: config.offlineAccess,
