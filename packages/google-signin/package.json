@@ -41,6 +41,8 @@
     "react-dom": "catalog:",
     "rimraf": "^6.1.3",
     "typescript": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "vite": "catalog:",
     "vitest": "^4.0.18"
   },
   "peerDependencies": {

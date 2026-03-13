@@ -14,7 +14,7 @@ npm install @forward-software/react-auth @forward-software/react-auth-google
 
 ### Platform requirements
 
-**Web** - No additional dependencies. The package loads Google Identity Services (GSI) script automatically.
+**Web** - No additional dependencies. The package loads the Google Identity Services (GSI) script automatically (with a 10-second timeout).
 
 **React Native / Expo** - Requires a development build (not compatible with Expo Go):
 
@@ -97,6 +97,7 @@ const googleAuth = new GoogleAuthClient({
   ux_mode: 'popup',                          // 'popup' | 'redirect'
   redirect_uri: undefined,                   // required if ux_mode is 'redirect'
   hosted_domain: undefined,                  // restrict to a G Suite domain
+  nonce: undefined,                          // binds the ID token to a session (replay attack prevention)
 });
 ```
 
@@ -203,7 +204,9 @@ const googleAuth = new GoogleAuthClient({
 });
 ```
 
-> **Note:** On React Native, a `storage` adapter is **required**. The adapter throws an error if none is provided. Use [react-native-mmkv](https://github.com/mrousavy/react-native-mmkv) (recommended) or wrap AsyncStorage with the `TokenStorage` interface.
+> **Note:** On React Native, `storage` is a **required** field in the TypeScript type. Your project will not compile without providing a `TokenStorage` implementation. Use [react-native-mmkv](https://github.com/mrousavy/react-native-mmkv) (recommended) or wrap AsyncStorage with the `TokenStorage` interface.
+>
+> **Android scopes:** Android Credential Manager does not support OAuth scopes directly. If you request scopes beyond `openid`, `profile`, and `email`, the adapter will include a `serverAuthCode` in the response. Exchange this code on your backend for scoped access tokens via the Google OAuth2 token endpoint.
 
 ### GoogleSignInButton (React Native)
 

@@ -66,7 +66,7 @@ export function GoogleSignInButton({
         err instanceof Error ? err : new Error('Failed to initialize Google Sign-In')
       );
     }
-  }, [config.clientId, config.ux_mode, config.redirect_uri, config.hosted_domain, theme, size, text, shape, width]);
+  }, [config.clientId, config.ux_mode, config.redirect_uri, config.hosted_domain, config.nonce, theme, size, text, shape, width]);
 
   useEffect(() => {
     initialize();
