@@ -9,6 +9,7 @@ type GoogleSignInButtonProps = {
   onError?: (error: Error) => void;
   style?: StyleProp<ViewStyle>;
   disabled?: boolean;
+  label?: string;
 };
 
 export function GoogleSignInButton({
@@ -17,6 +18,7 @@ export function GoogleSignInButton({
   onError,
   style,
   disabled = false,
+  label = 'Sign in with Google',
 }: GoogleSignInButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -74,7 +76,7 @@ export function GoogleSignInButton({
               color: '#3c4043',
             }}
           >
-            Sign in with Google
+            {label}
           </Text>
         </View>
       )}
