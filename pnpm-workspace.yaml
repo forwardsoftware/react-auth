@@ -1,6 +1,5 @@
 packages:
   - lib
-  - examples/*
 
 catalog:
   "@types/react": ^19.2.14
