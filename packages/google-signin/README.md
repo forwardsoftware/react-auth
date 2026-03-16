@@ -221,7 +221,7 @@ Renders a styled button that triggers the native Google Sign-In flow.
   }}
   onCredential={(credentials) => authClient.login(credentials)}
   onError={(err) => Alert.alert('Error', err.message)}
-  style={{ marginTop: 20 }}
+  style={{ marginTop: 30 }}
   disabled={false}
 />
 ```
