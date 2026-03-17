@@ -1,21 +1,23 @@
 # Each line is a file pattern followed by one or more owners.
+# Later matches take precedence over earlier ones.
 
-# These owners will be the default owners for everything in
-# the repo. Unless a later match takes precedence,
-# @panz3r will be requested for review when someone 
-# opens a pull request.
-*               @panz3r
+# Default owner for everything
+*                               @panz3r
 
-# Owners of the examples
-/examples/*     @panz3r
-/examples/expo  @IronTony
+# Core library
+/lib/                           @panz3r
 
-# Owners of the main library
-/lib            @panz3r
+# Adapter packages (React Native)
+/packages/google-signin/        @IronTony
 
-# Owners of the sub-packages
-/packages/google-signin   @IronTony
+# Examples
+/examples/expo/                 @IronTony
+
+# CI/CD and repository configuration
+/.github/                       @panz3r
 
 # Make dependency files owner-free
 package.json
+*/package.json
+pnpm-workspace.yaml
 pnpm-lock.yaml
