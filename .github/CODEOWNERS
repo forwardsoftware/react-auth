@@ -13,6 +13,9 @@
 # Owners of the main library
 /lib            @panz3r
 
+# Owners of the sub-packages
+/packages/google-signin   @IronTony
+
 # Make dependency files owner-free
 package.json
 pnpm-lock.yaml
