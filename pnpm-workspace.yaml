@@ -1,13 +1,17 @@
 packages:
   - lib
   - packages/*
-  - examples/*
 
 catalog:
   '@types/react': ^19.2.14
   '@types/react-dom': ^19.2.3
   '@vitejs/plugin-react': ^6.0.1
+  jsdom: ^29.0.0
   react: ^19.2.4
   react-dom: ^19.2.4
+  rimraf: ^6.0.0
   typescript: ^5.9.3
   vite: ^8.0.0
+  vitest: ^4.0.18
+
+autoInstallPeers: false
