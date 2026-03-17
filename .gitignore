@@ -334,3 +334,6 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,intellij,visualstudiocode,node
 
+# Copilot instructions (local overrides)
+.github/copilot-instructions.md
+
