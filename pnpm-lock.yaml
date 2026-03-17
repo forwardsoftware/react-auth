@@ -21,12 +21,18 @@ catalogs:
     react-dom:
       specifier: ^19.2.4
       version: 19.2.4
+    rimraf:
+      specifier: ^6.0.0
+      version: 6.1.3
     typescript:
       specifier: ^5.9.3
       version: 5.9.3
     vite:
       specifier: ^8.0.0
       version: 8.0.0
+    vitest:
+      specifier: ^4.0.18
+      version: 4.1.0
 
 importers:
 
@@ -36,7 +42,7 @@ importers:
         specifier: 8.0.4
         version: 8.0.4
       rimraf:
-        specifier: 6.1.3
+        specifier: 'catalog:'
         version: 6.1.3
       tslib:
         specifier: 2.8.1
@@ -88,7 +94,7 @@ importers:
         specifier: 'catalog:'
         version: 8.0.0(@types/node@25.5.0)(terser@5.46.1)(yaml@2.8.2)
       vitest:
-        specifier: ^4.0.18
+        specifier: 'catalog:'
         version: 4.1.0(@types/node@25.5.0)(jsdom@29.0.0)(vite@8.0.0(@types/node@25.5.0)(terser@5.46.1)(yaml@2.8.2))
 
   packages/google-signin:
@@ -131,7 +137,7 @@ importers:
         specifier: 'catalog:'
         version: 19.2.4(react@19.2.4)
       rimraf:
-        specifier: ^6.1.3
+        specifier: 'catalog:'
         version: 6.1.3
       typescript:
         specifier: 'catalog:'
@@ -140,7 +146,7 @@ importers:
         specifier: 'catalog:'
         version: 8.0.0(@types/node@25.5.0)(terser@5.46.1)(yaml@2.8.2)
       vitest:
-        specifier: ^4.0.18
+        specifier: 'catalog:'
         version: 4.1.0(@types/node@25.5.0)(jsdom@29.0.0)(vite@8.0.0(@types/node@25.5.0)(terser@5.46.1)(yaml@2.8.2))
 
 packages:
