@@ -147,31 +147,13 @@ The `createAuth` function wraps your `AuthClient` implementation with an `Enhanc
 - `subscribe(() => { })`, subscribe to AuthClient state changes
 - `getSnapshot()`, returns the current state of the AuthClient
 
-### React components
-
-Setup React components to interact with the AuthClient using the `createAuth` function exported by this library
-
-```ts
-import { createAuth } from '@forward-software/react-auth';
-
-export const { AuthProvider, useAuthClient } = createAuth(authClient);
-```
-
-the `createAuth` function returns:
-
-- `AuthProvider`, the context Provider component that should wrap your app and provide access to your AuthClient
-- `useAuthClient`, the hook to retrieve and interact with your AuthClient
-
-#### AuthProvider
-
-The context Provider component that should wrap your app and provide access to your AuthClient, this component also accepts 2 additional props
-
-- `ErrorComponent`, displayed when the AuthClient initialization fails
-- `LoadingComponent`, displayed while the AuthClient is being initialized
-
 ## Examples
 
-The `examples` folder contains some examples of how you can integrate this library in your React app.
+The [`examples`](https://github.com/forwardsoftware/react-auth/tree/main/examples) folder in the repository contains some examples of how you can integrate this library in your React app.
+
+## Contributing
+
+Contributions are welcome! Please read the [Contributing Guide](https://github.com/forwardsoftware/react-auth/blob/main/CONTRIBUTING.md) and the [Code of Conduct](https://github.com/forwardsoftware/react-auth/blob/main/CODE_OF_CONDUCT.md) before submitting a pull request.
 
 ## Credits
 

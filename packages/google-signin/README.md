@@ -2,6 +2,10 @@
 
 > Google Sign-In adapter for [@forward-software/react-auth](https://github.com/forwardsoftware/react-auth) - Web and React Native
 
+[![license](https://img.shields.io/github/license/forwardsoftware/react-auth.svg)](https://github.com/forwardsoftware/react-auth/blob/main/LICENSE) [![Build & Test](https://github.com/forwardsoftware/react-auth/actions/workflows/build-test.yml/badge.svg)](https://github.com/forwardsoftware/react-auth/actions/workflows/build-test.yml) [![Github Issues](https://img.shields.io/github/issues/forwardsoftware/react-auth.svg)](https://github.com/forwardsoftware/react-auth/issues)
+
+[![npm](https://img.shields.io/npm/v/@forward-software/react-auth-google)](https://npmjs.com/package/@forward-software/react-auth-google) [![NPM downloads](https://img.shields.io/npm/dm/@forward-software/react-auth-google.svg)](https://npmjs.com/package/@forward-software/react-auth-google)
+
 Self-contained Google Sign-In integration with no external auth wrapper dependencies. Provides a ready-made `AuthClient` implementation and a drop-in `GoogleSignInButton` for both platforms.
 
 ---
@@ -349,6 +353,10 @@ Available via `import { GoogleSignInModule } from '@forward-software/react-auth-
 
 ---
 
+## Contributing
+
+Contributions are welcome! Please read the [Contributing Guide](https://github.com/forwardsoftware/react-auth/blob/main/CONTRIBUTING.md) and the [Code of Conduct](https://github.com/forwardsoftware/react-auth/blob/main/CODE_OF_CONDUCT.md) before submitting a pull request.
+
 ## License
 
 MIT
@@ -356,3 +364,5 @@ MIT
 ---
 
 Made with ✨ & ❤️ by [ForWarD Software](https://github.com/forwardsoftware) and [contributors](https://github.com/forwardsoftware/react-auth/graphs/contributors)
+
+If you found this project to be helpful, please consider contacting us to develop your React and React Native projects.

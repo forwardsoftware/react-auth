@@ -7,6 +7,51 @@ body:
     attributes:
       value: Thanks for taking the time to fill out this bug report! We'll try to help you as soon as possible so please provide as much information as you can.
 
+  - type: dropdown
+    id: package
+    attributes:
+      label: Which package is affected?
+      multiple: true
+      options:
+        - "@forward-software/react-auth"
+        - "@forward-software/react-auth-google"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of the library are you using?
+      placeholder: ex. v2.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: What environment are you seeing the problem on?
+      multiple: true
+      options:
+        - ReactJS (specify Browser below)
+        - React Native (Android)
+        - React Native (iOS)
+        - React Native (Web)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Chrome
+        - Firefox
+        - Microsoft Edge
+        - Safari
+        - Others
+
   - type: textarea
     id: what-happened
     attributes:
@@ -30,39 +75,6 @@ body:
       description: Tell us how we can reproduce this issue. Please be specific and provide sample code if you can
     validations:
       required: true
-
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: What version of the library are you using?
-      placeholder: ex. v1.0.0
-    validations:
-      required: true
-
-  - type: dropdown
-    id: environment
-    attributes:
-      label: What environment are you seeing the problem on?
-      multiple: true
-      options:
-        - ReactJS (specify Browser below)
-        - React Native (Android)
-        - React Native (iOS)
-    validations:
-      required: true
-
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Chrome
-        - Firefox
-        - Microsoft Edge
-        - Safari
-        - Others
 
   - type: textarea
     id: logs
