@@ -62,6 +62,9 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
+      - name: Install peerDependencies
+        run: pnpm install --no-frozen-lockfile --config.auto-install-peers=true
+
       - name: Build package
         working-directory: ${{ matrix.path }}
         run: pnpm build
