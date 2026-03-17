@@ -4,6 +4,23 @@
   "version": "1.1.0",
   "author": "ForWarD Software (https://forwardsoftware.solutions/)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forwardsoftware/react-auth.git",
+    "directory": "packages/google-signin"
+  },
+  "homepage": "https://github.com/forwardsoftware/react-auth/tree/main/packages/google-signin#readme",
+  "keywords": [
+    "react",
+    "react-native",
+    "auth",
+    "authentication",
+    "google",
+    "gsi",
+    "google-sign-in",
+    "expo",
+    "expo-modules-core"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "react-native": "dist/index.native.js",
