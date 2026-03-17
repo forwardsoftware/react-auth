@@ -6,9 +6,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/forwardsoftware/react-auth.git"
+    "url": "git+https://github.com/forwardsoftware/react-auth.git",
+    "directory": "lib"
   },
-  "homepage": "https://github.com/forwardsoftware/react-auth#readme",
+  "homepage": "https://github.com/forwardsoftware/react-auth/tree/main/lib#readme",
   "keywords": [
     "react",
     "react-native",
