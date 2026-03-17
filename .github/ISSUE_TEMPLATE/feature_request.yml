@@ -7,6 +7,17 @@ body:
     attributes:
       value: Thanks for taking the time to fill out this feature request! We'll try to help you as soon as possible so please provide as much information as you can.
 
+  - type: dropdown
+    id: package
+    attributes:
+      label: Which package is this for?
+      multiple: true
+      options:
+        - "@forward-software/react-auth"
+        - "@forward-software/react-auth-google"
+    validations:
+      required: true
+
   - type: textarea
     id: related-issue
     attributes:
@@ -37,3 +48,12 @@ body:
       label: Additional context
       description: |
         Add any other context or screenshots about the feature request here.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/forwardsoftware/react-auth/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

@@ -1,3 +1,12 @@
+## Affected Package(s)
+
+<!-- Check all that apply -->
+
+- [ ] `@forward-software/react-auth` (lib)
+- [ ] `@forward-software/react-auth-google` (packages/google-signin)
+- [ ] Examples
+- [ ] CI/CD / Repository configuration
+
 ## Related Issue(s)
 
 <!-- 
@@ -19,13 +28,21 @@ Link the relevant issue(s) here, if any. E.g.,
 * 
 * 
 
+## Breaking Changes
+
+<!-- If this PR introduces breaking changes, describe them here. Otherwise, write "None". -->
+<!-- Breaking changes require a `feat!:` or `fix!:` commit prefix for proper versioning. -->
+
+None
+
 ## How to Test
 
 1.  **CI Checks:** Verify that all automated tests (`Vitest`) and build steps pass successfully on this PR.
 2.  **Local Verification (Optional):**
-    * Run `pnpm install` (or equivalent).
-    * Run the development server (`pnpm dev` or equivalent) for the library or examples to ensure Vite starts correctly.
-    * Run a build (`pnpm build` or equivalent) to ensure it completes successfully.
+    * Run `pnpm install` to install dependencies.
+    * Run `pnpm --filter <affected-package> test` to run tests for the affected package.
+    * Run `pnpm --filter <affected-package> build` to verify the build succeeds.
+    * Run `pnpm --filter <affected-package> lint` to check for linting errors.
 
 ## Checklist
 
@@ -39,6 +56,7 @@ Link the relevant issue(s) here, if any. E.g.,
 * [ ] I have reviewed my own code and lock file changes
 * [ ] I have checked for any potential security implications
 * [ ] I have verified the changes work as expected
+* [ ] My commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) format
 
 ## Notes for Reviewers
 
