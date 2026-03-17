@@ -6,6 +6,9 @@
   "packages": {
     "lib": {
       "include-component-in-tag": false
+    },
+    "packages/google-signin": {
+      "include-component-in-tag": true
     }
   }
 }
