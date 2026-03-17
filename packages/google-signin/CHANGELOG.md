@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/forwardsoftware/react-auth/compare/react-auth-google-v1.1.0...react-auth-google-v1.1.1) (2026-03-17)
+
+
+### Bug Fixes
+
+* **google-signin:** update package.json with missing details ([#223](https://github.com/forwardsoftware/react-auth/issues/223)) ([6f7378d](https://github.com/forwardsoftware/react-auth/commit/6f7378dc6601fef182cc53f8f936bfe7aabcf004))
+
 ## [1.1.0](https://github.com/forwardsoftware/react-auth/compare/react-auth-google-v1.0.0...react-auth-google-v1.1.0) (2026-03-17)
 
 
