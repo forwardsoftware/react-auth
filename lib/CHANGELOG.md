@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://github.com/forwardsoftware/react-auth/compare/v2.0.3...v2.0.4) (2026-03-17)
+
+
+### Bug Fixes
+
+* **core-lib:** update package.json with missing details ([#225](https://github.com/forwardsoftware/react-auth/issues/225)) ([8d7debd](https://github.com/forwardsoftware/react-auth/commit/8d7debdab50726159878802860e9454388b551ec))
+
 ## [2.0.3](https://github.com/forwardsoftware/react-auth/compare/v2.0.2...v2.0.3) (2025-11-18)
 
 
