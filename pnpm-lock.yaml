@@ -103,8 +103,8 @@ importers:
   packages/google-signin:
     devDependencies:
       '@forward-software/react-auth':
-        specifier: workspace:*
-        version: link:../../lib
+        specifier: ^2.0.0
+        version: 2.0.3(react@19.2.4)
       '@testing-library/dom':
         specifier: ^10.4.1
         version: 10.4.1
@@ -230,6 +230,11 @@ packages:
     peerDependenciesMeta:
       '@noble/hashes':
         optional: true
+
+  '@forward-software/react-auth@2.0.3':
+    resolution: {integrity: sha512-Y/3Rbhpq7IGKDW78Hhc1W3vh48+bjuLcgFG1lQbXMgvRYzRKpIHhdsA+CdIC29vSsesbsKSUlxAlMpP4VMPJPQ==}
+    peerDependencies:
+      react: '>=16.8'
 
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
@@ -1062,6 +1067,11 @@ snapshots:
     optional: true
 
   '@exodus/bytes@1.15.0': {}
+
+  '@forward-software/react-auth@2.0.3(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+      use-sync-external-store: 1.6.0(react@19.2.4)
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
