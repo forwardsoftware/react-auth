@@ -1,6 +1,6 @@
 # React Auth - Expo Example
 
-This is an example implementation of [react-auth](https://github.com/webbable/react-auth) using Expo and React Native.
+This is an example implementation of [react-auth](https://github.com/forwardsoftware/react-auth) using Expo and React Native.
 
 ## Prerequisites
 
