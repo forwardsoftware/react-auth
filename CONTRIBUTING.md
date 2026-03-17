@@ -58,7 +58,7 @@ We actively welcome your pull requests:
 #### Use a consistent Coding Style
 
 This project uses [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) to maintain a unified coding style.
-Before committing your changes remember to run `yarn lint` and check possible warnings and errors.
+Before committing your changes remember to run `pnpm -r lint` and check possible warnings and errors.
 
 #### Any contributions you make will be under the MIT Software License
 
