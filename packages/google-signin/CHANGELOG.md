@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/forwardsoftware/react-auth/compare/react-auth-google-v1.1.1...react-auth-google-v1.1.2) (2026-03-18)
+
+
+### Bug Fixes
+
+* Android method renamed ([#227](https://github.com/forwardsoftware/react-auth/issues/227)) ([2a485c9](https://github.com/forwardsoftware/react-auth/commit/2a485c92354006e401b54c6fd15212a170f04624))
+
 ## [1.1.1](https://github.com/forwardsoftware/react-auth/compare/react-auth-google-v1.1.0...react-auth-google-v1.1.1) (2026-03-17)
 
 
