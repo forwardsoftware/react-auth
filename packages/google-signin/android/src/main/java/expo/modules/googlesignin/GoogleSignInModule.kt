@@ -6,7 +6,7 @@ import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetCredentialResponse
-import com.google.android.libraries.identity.googleid.GetGoogleIdTokenCredentialRequest
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import expo.modules.kotlin.Promise
@@ -79,7 +79,7 @@ class GoogleSignInModule : Module() {
 
             val credentialManager = CredentialManager.create(activity)
 
-            val googleIdOption = GetGoogleIdTokenCredentialRequest.Builder()
+            val googleIdOption = GetGoogleIdOption.Builder()
                 .setFilterByAuthorizedAccounts(true)
                 .setServerClientId(serverClientId)
                 .build()
@@ -115,7 +115,7 @@ class GoogleSignInModule : Module() {
 
             val credentialManager = CredentialManager.create(activity)
 
-            val googleIdOption = GetGoogleIdTokenCredentialRequest.Builder()
+            val googleIdOption = GetGoogleIdOption.Builder()
                 .setFilterByAuthorizedAccounts(true)
                 .setServerClientId(serverClientId)
                 .build()
