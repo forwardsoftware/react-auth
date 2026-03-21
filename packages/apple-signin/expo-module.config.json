@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["AppleSignInModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.applesignin.AppleSignInModule"]
+  }
+}
