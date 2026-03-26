@@ -11,7 +11,7 @@ catalog:
   react-dom: ^19.2.4
   rimraf: ^6.0.0
   typescript: ^5.9.3
-  vite: ^8.0.2
+  vite: ^8.0.3
   vitest: ^4.1.1
 
 autoInstallPeers: false
