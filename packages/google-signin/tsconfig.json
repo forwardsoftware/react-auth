@@ -2,7 +2,8 @@
   "compilerOptions": {
     "declaration": false,
     "target": "ES6",
-    "moduleResolution": "node",
+    "lib": ["ES2017", "DOM"],
+    "moduleResolution": "bundler",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
