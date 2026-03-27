@@ -14,6 +14,7 @@ This is a monorepo for **React Auth**, a library that simplifies authentication 
 | --- | --- | --- | --- |
 | Core library | `lib/` | `@forward-software/react-auth` | Framework-agnostic auth primitives: `AuthClient` interface, `createAuth()`, `AuthProvider`, `useAuthClient` hook, `EnhancedAuthClient` wrapper with event emitter and state management |
 | Google Sign-In adapter | `packages/google-signin/` | `@forward-software/react-auth-google` | Ready-made `AuthClient` implementation and `GoogleSignInButton` for Web (Google Identity Services) and React Native (Expo native module) |
+| Apple Sign-In adapter | `packages/apple-signin/` | `@forward-software/react-auth-apple` | Ready-made `AuthClient` implementation and `AppleSignInButton` for Web (Sign in with Apple JS) and React Native (Expo native module) |
 
 ### Examples
 

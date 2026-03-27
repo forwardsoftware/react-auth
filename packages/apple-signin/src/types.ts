@@ -89,6 +89,8 @@ export type AppleNativeAuthConfig = Omit<AppleAuthConfig, 'storage'> & {
    * to convert the POST into a deep link redirect back to your app.
    */
   androidRedirectUri?: string;
+  /** Opaque state value for CSRF protection (used on Android OAuth flow). */
+  state?: string;
 };
 
 export const DEFAULT_SCOPES: AppleScope[] = ['name', 'email'];

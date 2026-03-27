@@ -93,16 +93,23 @@ export class AppleAuthClient implements AuthClient<AppleAuthTokens, AppleAuthCre
 
     // Check credential state if user ID is available
     if (currentTokens.user) {
-      const state = await AppleSignInModule.getCredentialState(currentTokens.user);
-      if (state === 'authorized') {
-        return currentTokens;
+      try {
+        const state = await AppleSignInModule.getCredentialState(currentTokens.user);
+        if (state === 'authorized') {
+          return currentTokens;
+        }
+        throw new Error(
+          `Apple credential state is '${state}'. User must re-authenticate.`
+        );
+      } catch (err) {
+        if (err instanceof Error && err.message.includes('credential state')) {
+          throw err;
+        }
+        // Android UNSUPPORTED or other native error -- fall through to expiry check
       }
-      throw new Error(
-        `Apple credential state is '${state}'. User must re-authenticate.`
-      );
     }
 
-    // Without a user ID, check token expiry
+    // Check token expiry as fallback when user ID is unavailable or credential state cannot be determined
     if (currentTokens.expiresAt && Date.now() < currentTokens.expiresAt) {
       return currentTokens;
     }

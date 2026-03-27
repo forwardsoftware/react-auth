@@ -1,6 +1,12 @@
 # @forward-software/react-auth-apple
 
-Apple Sign-In adapter for [`@forward-software/react-auth`](https://github.com/forwardsoftware/react-auth) with support for **Web** and **React Native** (Expo).
+> Apple Sign-In adapter for [@forward-software/react-auth](https://github.com/forwardsoftware/react-auth) - Web and React Native
+
+[![license](https://img.shields.io/github/license/forwardsoftware/react-auth.svg)](https://github.com/forwardsoftware/react-auth/blob/main/LICENSE) [![Build & Test](https://github.com/forwardsoftware/react-auth/actions/workflows/build-test.yml/badge.svg)](https://github.com/forwardsoftware/react-auth/actions/workflows/build-test.yml) [![Github Issues](https://img.shields.io/github/issues/forwardsoftware/react-auth.svg)](https://github.com/forwardsoftware/react-auth/issues)
+
+[![npm](https://img.shields.io/npm/v/@forward-software/react-auth-apple)](https://npmjs.com/package/@forward-software/react-auth-apple) [![NPM downloads](https://img.shields.io/npm/dm/@forward-software/react-auth-apple.svg)](https://npmjs.com/package/@forward-software/react-auth-apple)
+
+Self-contained Apple Sign-In integration with no external auth wrapper dependencies. Provides a ready-made `AuthClient` implementation and a drop-in `AppleSignInButton` for both platforms.
 
 ## Installation
 
@@ -217,6 +223,7 @@ const state = await AppleSignInModule.getCredentialState(credentials.user);
 - `AppleSignInModule.configure(config)` - Configure the native module
 - `AppleSignInModule.signIn()` - Trigger native sign-in
 - `AppleSignInModule.getCredentialState(userID)` - Check credential state (iOS only)
+- `AppleSignInModule.handleCallback(params)` - Complete a pending Android sign-in from a deep-link callback
 - `AppleSignInModule.signOut()` - Sign out (no-op, clears JS-side storage)
 
 ## License
