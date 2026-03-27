@@ -184,6 +184,8 @@ Adapter packages live under `packages/` and should follow these conventions:
 9. **Update documentation**:
    - `README.md` — add the new package to the **Packages** table (with npm badge and description).
    - `SECURITY.md` — add the new package and its supported version to the **Supported Versions** table.
+   - `CONTRIBUTING.md` — update any section that lists existing packages (e.g., architecture overview, examples).
+   - `AGENTS.md` — update the Project overview packages table and any architecture sections that reference existing packages.
    - Create a `README.md` in the package directory with install instructions, quick start, API reference, and consistent badges/footer (follow the structure of `packages/google-signin/README.md`).
 
 ## Testing
@@ -215,7 +217,7 @@ cd lib && pnpm vitest run -t "should notify success"
 - Tests use the **Arrange / Act / Assert** pattern with explicit comments.
 - Use `vi.spyOn()` for mocking existing methods; use `vi.fn()` for standalone stubs.
 - React components are tested with `@testing-library/react` (`render`, `act`, `cleanup`).
-- Always call `rtl.cleanup` in `afterEach`.
+- When using `@testing-library/react`, always call `rtl.cleanup` in an `afterEach` hook.
 
 ### Test file template
 
@@ -265,7 +267,7 @@ This project uses [ESLint](https://eslint.org/) to maintain a unified coding sty
 - **TypeScript** strict mode is enabled in all packages.
 - **Target**: ES6.
 - **JSX transform**: `react-jsx`.
-- Use single quotes for strings (following the existing code style).
+- Follow the linter and existing file style for quote usage (single vs double).
 - Export types with `export type` when exporting only type information.
 
 ### Import ordering
@@ -330,9 +332,9 @@ Always use `import type` for imports that are only used as types.
 This project follows [Conventional Commits](https://www.conventionalcommits.org/), which Release Please uses to determine version bumps and generate changelogs.
 
 ```
-feat: add token expiration event                    # → minor version bump (0.x.0)
-fix: prevent duplicate refresh calls                # → patch version bump (0.0.x)
-fix!: change onRefresh signature                    # → major version bump (x.0.0) — breaking change
+feat: add token expiration event                    # → minor bump (x.y.0)
+fix: prevent duplicate refresh calls                # → patch bump (x.y.z)
+fix!: change onRefresh signature                    # → major bump (x.0.0) — breaking change
 chore: update dev dependencies                      # → no release
 docs: update README examples                        # → no release
 test: add missing logout tests                      # → no release
@@ -387,7 +389,5 @@ This project handles authentication tokens and credentials. Please follow these 
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under its [MIT License](LICENSE).
-
-In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project.
+By contributing, you agree that your contributions will be licensed under the same [MIT License](LICENSE) that covers this project.
 Feel free to contact the maintainers if that's a concern.
