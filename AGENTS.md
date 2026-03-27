@@ -353,6 +353,8 @@ Adapter packages live under `packages/` and must:
 9. **Update documentation**:
    - `README.md` — add the new package to the **Packages** table (with npm badge and description).
    - `SECURITY.md` — add the new package and its supported version to the **Supported Versions** table.
+   - `CONTRIBUTING.md` — update any section that lists existing packages (e.g., architecture overview, examples).
+   - `AGENTS.md` — update the Project overview packages table and any architecture sections that reference existing packages.
    - Create a `README.md` in the package directory with install instructions, quick start, API reference, and consistent badges/footer (follow the structure of `packages/google-signin/README.md`).
 
 ### Adapter package script conventions

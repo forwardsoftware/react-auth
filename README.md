@@ -83,22 +83,12 @@ This project is a monorepo managed with [pnpm workspaces](https://pnpm.io/worksp
 ```
 react-auth/
 ├── lib/                        # @forward-software/react-auth (core library)
-│   ├── src/                    # Source code
-│   └── test/                   # Unit tests
 ├── packages/
 │   └── google-signin/          # @forward-software/react-auth-google (Google Sign-In adapter)
-│       ├── src/
-│       │   ├── web/            # Web implementation (Google Identity Services)
-│       │   └── native/         # React Native implementation (Expo module)
-│       ├── android/            # Android native module
-│       ├── ios/                # iOS native module
-│       └── test/               # Unit tests
-└── examples/                   # Example applications
-    ├── base/                   # Basic React example
-    ├── reqres/                 # ReqRes API example
-    ├── refresh-token/          # Token refresh example
-    └── expo/                   # React Native (Expo) example
+└── examples/                   # Example applications (base, reqres, refresh-token, expo)
 ```
+
+For a detailed breakdown of the source layout and architecture, see the [Contributing Guide](CONTRIBUTING.md#project-architecture).
 
 ## Getting Started
 
@@ -113,19 +103,7 @@ react-auth/
 pnpm install
 ```
 
-### Building
-
-```sh
-# Build all packages
-pnpm -r build
-```
-
-### Testing
-
-```sh
-# Run tests across all packages
-pnpm -r test
-```
+See the [Contributing Guide](CONTRIBUTING.md#repository-setup) for the full list of build, test, and lint commands.
 
 ## Contributing
 
