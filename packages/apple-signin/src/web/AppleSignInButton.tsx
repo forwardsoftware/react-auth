@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import type { AppleAuthCredentials, AppleWebAuthConfig } from '../types';
 import { DEFAULT_SCOPES } from '../types';
+import { AppleLogo } from '../AppleLogo';
 import { loadAppleIdScript, initializeAppleAuth, signInWithApple } from './appleid';
 
 type AppleSignInButtonColor = 'black' | 'white' | 'white-outline';
@@ -29,13 +30,6 @@ const BUTTON_STYLES: Record<AppleSignInButtonColor, { bg: string; text: string; 
   'white': { bg: '#ffffff', text: '#000000', border: '#ffffff' },
   'white-outline': { bg: '#ffffff', text: '#000000', border: '#000000' },
 };
-
-const APPLE_LOGO_SVG_SOURCE =
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 20" fill="currentColor"><path d="M15.5 14.7c-.4.9-.6 1.3-1.1 2.1-.7 1.1-1.7 2.5-2.9 2.5-1.1 0-1.4-.7-2.9-.7-1.5 0-1.9.7-3 .7-1.2 0-2.1-1.2-2.8-2.3C1.2 14.6.5 11.4 1.6 9.2c.8-1.5 2.1-2.4 3.5-2.4 1.3 0 2.2.8 3.2.8 1 0 1.7-.8 3.1-.8 1.2 0 2.4.7 3.2 1.8-2.8 1.5-2.4 5.5.3 6.7l-.4-.6zM11.3 4.5c.5-.7.9-1.6.8-2.5-.8.1-1.7.5-2.3 1.2-.5.6-1 1.5-.8 2.4.9 0 1.7-.4 2.3-1.1z"/></svg>';
-const APPLE_LOGO_SVG =
-  typeof btoa === 'function'
-    ? `data:image/svg+xml;base64,${btoa(APPLE_LOGO_SVG_SOURCE)}`
-    : `data:image/svg+xml,${encodeURIComponent(APPLE_LOGO_SVG_SOURCE)}`;
 
 export function AppleSignInButton({
   config,
@@ -102,9 +96,10 @@ export function AppleSignInButton({
 
       onCredentialRef.current(credentials);
     } catch (err) {
-      onErrorRef.current?.(
-        err instanceof Error ? err : new Error('Apple Sign-In failed')
-      );
+      const error = err instanceof Error
+        ? err
+        : new Error(typeof err === 'object' && err !== null ? JSON.stringify(err) : 'Apple Sign-In failed');
+      onErrorRef.current?.(error);
     } finally {
       setIsLoading(false);
     }
@@ -134,16 +129,7 @@ export function AppleSignInButton({
         lineHeight: 1,
       }}
     >
-      <img
-        src={APPLE_LOGO_SVG}
-        alt=""
-        style={{
-          width: 16,
-          height: 20,
-          marginRight: 8,
-          filter: color === 'black' ? 'invert(1)' : 'none',
-        }}
-      />
+      <AppleLogo color={style.text} />
       {displayLabel}
     </button>
   );

@@ -118,22 +118,126 @@ No additional setup is needed beyond enabling the **Sign in with Apple** capabil
 
 ### Android
 
-Apple Sign-In on Android uses a web-based OAuth flow via Chrome Custom Tabs. This requires a **backend intermediary** because Apple uses `response_mode=form_post`:
+Apple Sign-In on Android uses a web-based OAuth flow via Chrome Custom Tabs. Because Apple uses `response_mode=form_post`, a **backend proxy** is required to receive Apple's POST response and redirect it back to your app via a deep link.
 
-1. Your backend receives the POST from Apple at your `androidRedirectUri`
-2. It extracts the `id_token` and `code` from the POST body
-3. It redirects back to your app via a deep link with these parameters
+#### How it works
+
+1. The app opens a Chrome Custom Tab pointing to Apple's authorization page
+2. The user signs in on Apple's page
+3. Apple **POSTs** the `id_token` and `code` to your registered redirect URI (your backend)
+4. Your backend extracts the tokens from the POST body and redirects to your app using a deep link
+5. The app receives the deep link, calls `handleCallback()`, and the sign-in promise resolves
+
+#### 1. Apple Developer Console
+
+You need a **Services ID** (separate from your App ID):
+
+1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list/serviceId)
+2. Create or select a **Services ID** (e.g., `com.example.app.service`)
+3. Enable **Sign in with Apple** and click **Configure**
+4. Set the **Primary App ID** to your app (it must have Sign in with Apple capability enabled)
+5. Add your backend's **Domain** (e.g., `api.example.com`)
+6. Add the **Return URL** pointing to your backend callback endpoint (e.g., `https://api.example.com/auth/apple/callback`)
+
+#### 2. Backend proxy
+
+A minimal Express server that receives Apple's POST and redirects to your app:
+
+```js
+const express = require('express');
+const app = express();
+
+const APP_SCHEME = 'myapp'; // Your app's URL scheme
+
+app.use(express.urlencoded({ extended: true }));
+
+app.post('/auth/apple/callback', (req, res) => {
+  const { id_token, code, state, user } = req.body;
+
+  const params = new URLSearchParams();
+  if (id_token) params.set('id_token', id_token);
+  if (code) params.set('code', code);
+  if (state) params.set('state', state);
+  if (user) params.set('user', user);
+
+  // Redirect to the app via deep link
+  res.redirect(302, `${APP_SCHEME}://auth/apple?${params.toString()}`);
+});
+
+app.listen(3000);
+```
+
+#### 3. App URL scheme
+
+Make sure your app has a URL scheme configured in `app.json`:
+
+```json
+{
+  "expo": {
+    "scheme": "myapp"
+  }
+}
+```
+
+#### 4. Deep link handler
+
+Create a route to handle the callback deep link. With Expo Router, add a file at `app/auth/apple.tsx`:
+
+```tsx
+import { useEffect } from 'react';
+import { Platform } from 'react-native';
+import { useLocalSearchParams, router } from 'expo-router';
+import { AppleSignInModule } from '@forward-software/react-auth-apple';
+
+export default function AppleCallback() {
+  const params = useLocalSearchParams<{ id_token?: string; code?: string; user?: string }>();
+
+  useEffect(() => {
+    if (Platform.OS === 'android' && params.id_token) {
+      AppleSignInModule.handleCallback({
+        id_token: params.id_token,
+        code: params.code,
+        user: params.user,
+      });
+    }
+    router.replace('/login');
+  }, [params]);
+
+  return null;
+}
+```
+
+When the deep link `myapp://auth/apple?id_token=...&code=...` arrives, Expo Router matches it to this route. The route calls `handleCallback()` to resolve the pending sign-in promise, then navigates to the login screen where the auth state updates.
+
+#### 5. App configuration
+
+Pass the `androidRedirectUri` in both the client and button config. On Android, use the Services ID as `clientId` (not your app bundle ID):
+
+```tsx
+import { Platform } from 'react-native';
+
+const ANDROID_REDIRECT_URI = 'https://api.example.com/auth/apple/callback';
+
+const appleClient = new AppleAuthClient({
+  clientId: Platform.OS === 'android' ? 'com.example.app.service' : 'com.example.app',
+  storage,
+  ...(Platform.OS === 'android' && { androidRedirectUri: ANDROID_REDIRECT_URI }),
+});
+```
 
 ```tsx
 <AppleSignInButton
   config={{
-    clientId: 'com.example.service',
+    clientId: Platform.OS === 'android' ? 'com.example.app.service' : 'com.example.app',
     storage,
-    androidRedirectUri: 'https://api.example.com/auth/apple/android-callback',
+    ...(Platform.OS === 'android' && { androidRedirectUri: ANDROID_REDIRECT_URI }),
   }}
   onCredential={(credentials) => auth.login(credentials)}
+  onError={(error) => console.error(error)}
 />
 ```
+
+> **Note:** On iOS, the `clientId` should be your App Bundle ID. On Android, it must be the Apple Services ID since the flow uses web-based OAuth.
 
 ## Button Props
 

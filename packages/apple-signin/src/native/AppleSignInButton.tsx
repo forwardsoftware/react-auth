@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 import type { AppleAuthCredentials, AppleNativeAuthConfig } from '../types';
+import { AppleLogo } from '../AppleLogo';
 import * as AppleSignInModule from './AppleSignInModule';
 
 type AppleSignInButtonColor = 'black' | 'white';
@@ -87,21 +88,5 @@ export function AppleSignInButton({
         </View>
       )}
     </Pressable>
-  );
-}
-
-function AppleLogo({ color }: { color: string }) {
-  const { Text } = require('react-native');
-
-  return (
-    <Text
-      style={{
-        fontSize: 20,
-        fontWeight: '700',
-        color,
-      }}
-    >
-      {'\uF8FF'}
-    </Text>
   );
 }

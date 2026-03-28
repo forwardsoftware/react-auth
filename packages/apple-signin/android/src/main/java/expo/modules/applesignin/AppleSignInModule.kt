@@ -1,6 +1,8 @@
 package expo.modules.applesignin
 
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import androidx.browser.customtabs.CustomTabsIntent
 import expo.modules.kotlin.Promise
 import expo.modules.kotlin.exception.CodedException
@@ -22,9 +24,25 @@ class AppleSignInModule : Module() {
     private var nonce: String? = null
     private var state: String? = null
     private var pendingPromise: Promise? = null
+    private var signInInProgress = false
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun definition() = ModuleDefinition {
         Name("AppleSignIn")
+
+        OnActivityEntersForeground {
+            if (signInInProgress) {
+                // Delay slightly to allow handleCallback to resolve the promise first
+                // if the user completed sign-in (deep link fires before this).
+                handler.postDelayed({
+                    if (signInInProgress) {
+                        signInInProgress = false
+                        pendingPromise?.reject(CodedException("CANCELLED", "Sign-in was cancelled by the user", null))
+                        pendingPromise = null
+                    }
+                }, 1000)
+            }
+        }
 
         Function("configure") { config: Map<String, Any?> ->
             clientId = config["clientId"] as? String
@@ -66,11 +84,13 @@ class AppleSignInModule : Module() {
 
             pendingPromise?.reject(CodedException("CANCELLED", "Sign-in was superseded by a new request", null))
             pendingPromise = promise
+            signInInProgress = true
 
             try {
                 val customTabsIntent = CustomTabsIntent.Builder().build()
                 customTabsIntent.launchUrl(activity, uriBuilder.build())
             } catch (e: Exception) {
+                signInInProgress = false
                 pendingPromise = null
                 promise.reject(CodedException("SIGN_IN_FAILED", "Failed to launch Apple Sign-In: ${e.message}", e))
             }
@@ -81,6 +101,7 @@ class AppleSignInModule : Module() {
          * with the Apple Sign-In response parameters.
          */
         Function("handleCallback") { params: Map<String, Any?> ->
+            signInInProgress = false
             val promise = pendingPromise
             if (promise == null) {
                 throw CodedException("NO_PENDING_SIGN_IN", "No pending sign-in to handle", null)
