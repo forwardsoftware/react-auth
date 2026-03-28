@@ -103,8 +103,8 @@ importers:
   packages/apple-signin:
     devDependencies:
       '@forward-software/react-auth':
-        specifier: ^2.0.0
-        version: 2.0.3(react@19.2.4)
+        specifier: ^2.0.4
+        version: 2.0.4(react@19.2.4)
       '@testing-library/dom':
         specifier: ^10.4.1
         version: 10.4.1
@@ -158,7 +158,7 @@ importers:
     devDependencies:
       '@forward-software/react-auth':
         specifier: ^2.0.0
-        version: 2.0.3(react@19.2.4)
+        version: 2.0.4(react@19.2.4)
       '@testing-library/dom':
         specifier: ^10.4.1
         version: 10.4.1
@@ -427,8 +427,8 @@ packages:
       '@noble/hashes':
         optional: true
 
-  '@forward-software/react-auth@2.0.3':
-    resolution: {integrity: sha512-Y/3Rbhpq7IGKDW78Hhc1W3vh48+bjuLcgFG1lQbXMgvRYzRKpIHhdsA+CdIC29vSsesbsKSUlxAlMpP4VMPJPQ==}
+  '@forward-software/react-auth@2.0.4':
+    resolution: {integrity: sha512-12b/q56hBcU8EtfnGE2drIAqrHde+KfJnPT0HvtEuBGyPY++blkwsgQQKXQ9YykUONYg2FDt28dxds8DEweQdA==}
     peerDependencies:
       react: '>=16.8'
 
@@ -2445,7 +2445,7 @@ snapshots:
 
   '@exodus/bytes@1.15.0': {}
 
-  '@forward-software/react-auth@2.0.3(react@19.2.4)':
+  '@forward-software/react-auth@2.0.4(react@19.2.4)':
     dependencies:
       react: 19.2.4
       use-sync-external-store: 1.6.0(react@19.2.4)
