@@ -55,10 +55,6 @@ importers:
         version: 6.0.2
 
   lib:
-    dependencies:
-      use-sync-external-store:
-        specifier: ^1.6.0
-        version: 1.6.0(react@19.2.4)
     devDependencies:
       '@testing-library/dom':
         specifier: ^10.4.1
@@ -78,9 +74,6 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.2.3(@types/react@19.2.14)
-      '@types/use-sync-external-store':
-        specifier: ^1.5.0
-        version: 1.5.0
       '@vitejs/plugin-react':
         specifier: 'catalog:'
         version: 6.0.1(vite@8.0.3(@types/node@25.5.0))
@@ -397,9 +390,6 @@ packages:
 
   '@types/react@19.2.14':
     resolution: {integrity: sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==}
-
-  '@types/use-sync-external-store@1.5.0':
-    resolution: {integrity: sha512-5dyB8nLC/qogMrlCizZnYWQTA4lnb/v+It+sqNl5YnSRAPMlIqY/X0Xn+gZw8vOL+TgTTr28VEbn3uf8fUtAkw==}
 
   '@vitejs/plugin-react@6.0.1':
     resolution: {integrity: sha512-l9X/E3cDb+xY3SWzlG1MOGt2usfEHGMNIaegaUGFsLkb3RCn/k8/TOXBcab+OndDI4TBtktT8/9BwwW8Vi9KUQ==}
@@ -1190,8 +1180,6 @@ snapshots:
   '@types/react@19.2.14':
     dependencies:
       csstype: 3.2.3
-
-  '@types/use-sync-external-store@1.5.0': {}
 
   '@vitejs/plugin-react@6.0.1(vite@8.0.3(@types/node@25.5.0))':
     dependencies:

@@ -40,7 +40,6 @@
     "@types/node": "^25.2.3",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@types/use-sync-external-store": "^1.5.0",
     "@vitejs/plugin-react": "catalog:",
     "jsdom": "catalog:",
     "react": "catalog:",
@@ -48,9 +47,7 @@
     "vite": "catalog:",
     "vitest": "catalog:"
   },
-  "dependencies": {
-    "use-sync-external-store": "^1.6.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": ">=16.8"
   }
