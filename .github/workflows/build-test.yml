@@ -18,6 +18,7 @@ jobs:
         package:
           - "@forward-software/react-auth"
           - "@forward-software/react-auth-google"
+          - "@forward-software/react-auth-apple"
       fail-fast: false
 
     runs-on: "ubuntu-latest"
@@ -52,6 +53,7 @@ jobs:
         package:
           - "@forward-software/react-auth"
           - "@forward-software/react-auth-google"
+          - "@forward-software/react-auth-apple"
       fail-fast: false
 
     runs-on: "ubuntu-latest"

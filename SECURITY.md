@@ -33,6 +33,7 @@ Security updates are provided for the latest major version of each package:
 | --- | --- |
 | `@forward-software/react-auth` | `2.x` |
 | `@forward-software/react-auth-google` | `1.x` |
+| `@forward-software/react-auth-apple` | `1.x` |
 
 ## Scope
 
