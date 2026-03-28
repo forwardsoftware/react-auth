@@ -91,31 +91,45 @@ export class AppleAuthClient implements AuthClient<AppleAuthTokens, AppleAuthCre
       this.configured = true;
     }
 
-    // Check credential state if user ID is available
+    // First, honor local expiry. If token is still valid, check for revocation.
+    if (currentTokens.expiresAt && Date.now() < currentTokens.expiresAt) {
+      if (currentTokens.user) {
+        try {
+          const state = await AppleSignInModule.getCredentialState(currentTokens.user);
+          if (state !== 'authorized') {
+            throw new Error(
+              `Apple credential state is '${state}'. User must re-authenticate.`
+            );
+          }
+        } catch (err) {
+          if (err instanceof Error && err.message.includes('credential state')) {
+            throw err;
+          }
+          // Android UNSUPPORTED or other native error -- treat non-expired token as valid
+        }
+      }
+      return currentTokens;
+    }
+
+    // Token is expired or has no known expiry.
+    // Use getCredentialState only for a clearer error, not to keep using expired tokens.
     if (currentTokens.user) {
       try {
         const state = await AppleSignInModule.getCredentialState(currentTokens.user);
-        if (state === 'authorized') {
-          return currentTokens;
+        if (state !== 'authorized') {
+          throw new Error(
+            `Apple credential state is '${state}'. User must re-authenticate.`
+          );
         }
-        throw new Error(
-          `Apple credential state is '${state}'. User must re-authenticate.`
-        );
       } catch (err) {
         if (err instanceof Error && err.message.includes('credential state')) {
           throw err;
         }
-        // Android UNSUPPORTED or other native error -- fall through to expiry check
       }
     }
 
-    // Check token expiry as fallback when user ID is unavailable or credential state cannot be determined
-    if (currentTokens.expiresAt && Date.now() < currentTokens.expiresAt) {
-      return currentTokens;
-    }
-
     throw new Error(
-      'Apple identity token has expired and no user ID is available to check credential state. User must re-authenticate.'
+      'Apple identity token has expired or is otherwise invalid. User must re-authenticate.'
     );
   }
 

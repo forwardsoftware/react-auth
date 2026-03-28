@@ -182,11 +182,16 @@ const response = await signInWithApple();
 
 ```ts
 // React Native
+import { Platform } from 'react-native';
 import { AppleSignInModule } from '@forward-software/react-auth-apple';
 
 AppleSignInModule.configure({ scopes: ['name', 'email'] });
 const credentials = await AppleSignInModule.signIn();
-const state = await AppleSignInModule.getCredentialState(credentials.user);
+
+// getCredentialState is iOS-only; it rejects with UNSUPPORTED on Android
+if (Platform.OS === 'ios') {
+  const state = await AppleSignInModule.getCredentialState(credentials.user);
+}
 ```
 
 ## Token Behavior

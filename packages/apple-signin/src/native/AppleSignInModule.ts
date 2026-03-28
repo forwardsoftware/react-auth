@@ -60,5 +60,8 @@ export type HandleCallbackParams = {
  * with the Apple Sign-In response parameters.
  */
 export function handleCallback(params: HandleCallbackParams): void {
+  if (Platform.OS !== 'android') {
+    throw new Error('AppleSignIn.handleCallback is only supported on Android.');
+  }
   return NativeModule.handleCallback(params);
 }

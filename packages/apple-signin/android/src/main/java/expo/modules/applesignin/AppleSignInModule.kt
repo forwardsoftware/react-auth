@@ -64,6 +64,7 @@ class AppleSignInModule : Module() {
             nonce?.let { uriBuilder.appendQueryParameter("nonce", it) }
             state?.let { uriBuilder.appendQueryParameter("state", it) }
 
+            pendingPromise?.reject(CodedException("CANCELLED", "Sign-in was superseded by a new request", null))
             pendingPromise = promise
 
             try {

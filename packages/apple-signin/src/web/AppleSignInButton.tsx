@@ -112,6 +112,7 @@ export function AppleSignInButton({
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       disabled={isLoading}
       style={{
