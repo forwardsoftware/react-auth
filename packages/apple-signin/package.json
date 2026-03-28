@@ -1,0 +1,92 @@
+{
+  "name": "@forward-software/react-auth-apple",
+  "description": "Apple Sign-In adapter for @forward-software/react-auth - Web and React Native/Expo",
+  "version": "1.0.0",
+  "author": "ForWarD Software (https://forwardsoftware.solutions/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forwardsoftware/react-auth.git",
+    "directory": "packages/apple-signin"
+  },
+  "homepage": "https://github.com/forwardsoftware/react-auth/tree/main/packages/apple-signin#readme",
+  "keywords": [
+    "react",
+    "react-native",
+    "auth",
+    "authentication",
+    "apple",
+    "apple-sign-in",
+    "sign-in-with-apple",
+    "expo",
+    "expo-modules-core"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "react-native": "dist/index.native.js",
+  "source": "src/index.ts",
+  "exports": {
+    ".": {
+      "react-native": "./dist/index.native.js",
+      "default": "./dist/index.js"
+    },
+    "./web/appleid": {
+      "types": "./dist/web/appleid.d.ts",
+      "default": "./dist/web/appleid.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "ios",
+    "android",
+    "expo-module.config.json",
+    "react-auth-apple.podspec"
+  ],
+  "scripts": {
+    "build:code": "tsc --removeComments",
+    "build:types": "tsc --declaration --emitDeclarationOnly",
+    "build": "npm-run-all clean build:*",
+    "lint": "eslint src",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@forward-software/react-auth": "^2.0.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^25.2.3",
+    "@types/react": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "expo-modules-core": "^55.0.17",
+    "jsdom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-native": "^0.84.1",
+    "react-native-svg": "^15.15.4",
+    "rimraf": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "@forward-software/react-auth": ">=2.0.0",
+    "expo-modules-core": ">=2.0.0",
+    "react": ">=16.8",
+    "react-native": ">=0.73.0",
+    "react-native-svg": ">=13.0.0"
+  },
+  "peerDependenciesMeta": {
+    "expo-modules-core": {
+      "optional": true
+    },
+    "react-native": {
+      "optional": true
+    },
+    "react-native-svg": {
+      "optional": true
+    }
+  }
+}

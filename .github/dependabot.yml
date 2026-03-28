@@ -21,6 +21,7 @@ updates:
       - "/"
       - "/lib"
       - "/packages/google-signin"
+      - "/packages/apple-signin"
     exclude-paths:
       - "examples/*"
     schedule:

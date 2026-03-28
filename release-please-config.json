@@ -9,6 +9,9 @@
     },
     "packages/google-signin": {
       "include-component-in-tag": true
+    },
+    "packages/apple-signin": {
+      "include-component-in-tag": true
     }
   }
 }

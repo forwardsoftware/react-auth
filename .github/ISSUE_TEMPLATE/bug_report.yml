@@ -15,6 +15,7 @@ body:
       options:
         - "@forward-software/react-auth"
         - "@forward-software/react-auth-google"
+        - "@forward-software/react-auth-apple"
     validations:
       required: true
 

@@ -9,6 +9,7 @@
 
 # Adapter packages (React Native)
 /packages/google-signin/        @IronTony
+/packages/apple-signin/         @IronTony
 
 # Examples
 /examples/expo/                 @IronTony

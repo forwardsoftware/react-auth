@@ -11,7 +11,8 @@ This monorepo contains the following packages:
 | Package | Version | Description |
 | --- | --- | --- |
 | [`@forward-software/react-auth`](./lib) | [![npm](https://img.shields.io/npm/v/@forward-software/react-auth)](https://npmjs.com/package/@forward-software/react-auth) | Core library — provides `AuthClient`, `AuthProvider`, `createAuth`, and `useAuthClient` for integrating authentication flows in any React or React Native app |
-| [`@forward-software/react-auth-google`](./packages/google-signin) | [![npm](https://img.shields.io/npm/v/@forward-software/react-auth-google)](https://npmjs.com/package/@forward-software/react-auth-google) | Google Sign-In adapter — ready-made `AuthClient` implementation and drop-in `GoogleSignInButton` for Web and React Native (Expo) |
+| [`@forward-software/react-auth-google`](./packages/google-signin) | [![npm](https://img.shields.io/npm/v/@forward-software/react-auth-google)](https://npmjs.com/package/@forward-software/react-auth-google) | Google Sign-In adapter -- ready-made `AuthClient` implementation and drop-in `GoogleSignInButton` for Web and React Native (Expo) |
+| [`@forward-software/react-auth-apple`](./packages/apple-signin) | [![npm](https://img.shields.io/npm/v/@forward-software/react-auth-apple)](https://npmjs.com/package/@forward-software/react-auth-apple) | Apple Sign-In adapter -- ready-made `AuthClient` implementation and drop-in `AppleSignInButton` for Web and React Native (Expo) |
 
 ## Examples
 
@@ -74,7 +75,7 @@ function LoginButton() {
 
 For more details, see the [`@forward-software/react-auth` README](./lib/README.md).
 
-> **Looking for a ready-made integration?** The [`@forward-software/react-auth-google`](./packages/google-signin) package provides a drop-in Google Sign-In adapter with a pre-built `AuthClient` and `GoogleSignInButton` for both Web and React Native. See its [README](./packages/google-signin/README.md) for setup instructions.
+> **Looking for a ready-made integration?** The [`@forward-software/react-auth-google`](./packages/google-signin) package provides a drop-in Google Sign-In adapter and the [`@forward-software/react-auth-apple`](./packages/apple-signin) package provides Apple Sign-In -- both with a pre-built `AuthClient` and sign-in button for Web and React Native. See their READMEs for setup instructions.
 
 ## Project Structure
 
@@ -84,8 +85,25 @@ This project is a monorepo managed with [pnpm workspaces](https://pnpm.io/worksp
 react-auth/
 ├── lib/                        # @forward-software/react-auth (core library)
 ├── packages/
-│   └── google-signin/          # @forward-software/react-auth-google (Google Sign-In adapter)
-└── examples/                   # Example applications (base, reqres, refresh-token, expo)
+│   ├── google-signin/          # @forward-software/react-auth-google (Google Sign-In adapter)
+│   │   ├── src/
+│   │   │   ├── web/            # Web implementation (Google Identity Services)
+│   │   │   └── native/         # React Native implementation (Expo module)
+│   │   ├── android/            # Android native module
+│   │   ├── ios/                # iOS native module
+│   │   └── test/               # Unit tests
+│   └── apple-signin/           # @forward-software/react-auth-apple (Apple Sign-In adapter)
+│       ├── src/
+│       │   ├── web/            # Web implementation (Sign in with Apple JS)
+│       │   └── native/         # React Native implementation (Expo module)
+│       ├── android/            # Android native module
+│       ├── ios/                # iOS native module
+│       └── test/               # Unit tests
+└── examples/                   # Example applications
+    ├── base/                   # Basic React example
+    ├── reqres/                 # ReqRes API example
+    ├── refresh-token/          # Token refresh example
+    └── expo/                   # React Native (Expo) example
 ```
 
 For a detailed breakdown of the source layout and architecture, see the [Contributing Guide](CONTRIBUTING.md#project-architecture).
