@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
-import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
 import { createEventEmitter, Deferred, EventReceiver } from "./utils";
 import type { EventKey } from "./utils";
@@ -453,23 +452,6 @@ export function wrapAuthClient<AC extends AuthClient, E extends Error = Error>(a
 }
 
 /**
- * Represents the current state of the authentication provider
- */
-type AuthProviderState = {
-  isAuthenticated: boolean;
-  isInitialized: boolean;
-};
-
-/**
- * The authentication context containing both the state and the enhanced auth client
- * @template AC - The AuthClient implementation type
- * @template E - The error type used throughout the authentication flow
- */
-type AuthContext<AC extends AuthClient, E extends Error> = AuthProviderState & {
-  authClient: EnhancedAuthClient<AC, E>;
-};
-
-/**
  * Props that can be passed to AuthProvider
  */
 export type AuthProviderProps = PropsWithChildren<{
@@ -483,81 +465,6 @@ export type AuthProviderProps = PropsWithChildren<{
    */
   LoadingComponent?: React.ReactNode;
 }>;
-
-/**
- * Creates an authentication context and provider for a React application.
- * It wraps the provided `authClient` with enhanced state management and event handling.
- *
- * @template AC - The type of the base `AuthClient` implementation.
- * @template E - The type of error expected during authentication flows. Defaults to `Error`.
- * @param {AC} authClient - The base authentication client instance to use.
- * @returns An object containing:
- *   - `AuthProvider`: A React component to wrap the application or parts of it.
- *   - `authClient`: The enhanced authentication client instance.
- *   - `useAuthClient`: A hook to access the enhanced `authClient` within the `AuthProvider`.
- */
-export function createAuth<AC extends AuthClient, E extends Error = Error>(authClient: AC) {
-  // Create a React context containing an AuthClient instance.
-  const authContext = createContext<AuthContext<AC, E> | null>(null);
-
-  const enhancedAuthClient = wrapAuthClient<AC, E>(authClient);
-
-  // Create the React Context Provider for the AuthClient instance.
-  const AuthProvider: React.FC<AuthProviderProps> = ({ children, ErrorComponent, LoadingComponent }) => {
-    const [isInitFailed, setInitFailed] = useState(false);
-    const { isAuthenticated, isInitialized } = useSyncExternalStore(enhancedAuthClient.subscribe, enhancedAuthClient.getSnapshot);
-
-    useEffect(() => {
-      async function initAuthClient() {
-        // Call init function
-        const initSuccess = await enhancedAuthClient.init();
-        setInitFailed(!initSuccess);
-      }
-
-      // Init AuthClient
-      initAuthClient();
-    }, []);
-
-    if (!!ErrorComponent && isInitFailed) {
-      return ErrorComponent;
-    }
-
-    if (!!LoadingComponent && !isInitialized) {
-      return LoadingComponent;
-    }
-
-    return (
-      <authContext.Provider
-        value={{
-          authClient: enhancedAuthClient,
-          isAuthenticated,
-          isInitialized,
-        }}
-      >
-        {children}
-      </authContext.Provider>
-    );
-  };
-
-  /**
-   * Hook to access the authentication client within the AuthProvider
-   * @throws Error if used outside of an AuthProvider
-   */
-  const useAuthClient = function (): EnhancedAuthClient<AC, E> {
-    const ctx = useContext(authContext);
-    if (!ctx) {
-      throw new Error('useAuthClient hook should be used inside AuthProvider');
-    }
-
-    return ctx.authClient;
-  };
-
-  return {
-    AuthProvider,
-    authClient: enhancedAuthClient,
-    useAuthClient,
-  };
-}
 
 /**
  * Creates an authentication context and provider supporting multiple auth clients.
@@ -581,7 +488,7 @@ export function createMultiAuth<M extends Record<string, AuthClient>, E extends 
       acc[id] = wrapAuthClient<M[typeof id], E>(authClientsMap[id]);
       return acc;
     },
-    {} as EnhancedMap,
+    Object.create(null) as EnhancedMap,
   );
 
   const clientsList = (Object.keys(enhancedClientsMap) as (keyof M)[]).map(
@@ -599,12 +506,13 @@ export function createMultiAuth<M extends Record<string, AuthClient>, E extends 
 
     useEffect(() => {
       async function initAllClients() {
-        try {
-          const results = await Promise.all(clientsList.map((client) => client.init()));
-          setInitState({ allInitialized: true, failed: results.some((r: boolean) => !r) });
-        } catch {
-          setInitState({ allInitialized: true, failed: true });
-        }
+        // Each client's init() is wrapped with .catch() so that a rejection from one client
+        // (e.g. an onPostInit error) does not short-circuit the others; all clients always
+        // get the chance to finish initializing before we update the provider state.
+        const results = await Promise.all(
+          clientsList.map((client) => client.init().catch((): boolean => false)),
+        );
+        setInitState({ allInitialized: true, failed: results.some((r) => !r) });
       }
 
       initAllClients();
@@ -646,5 +554,43 @@ export function createMultiAuth<M extends Record<string, AuthClient>, E extends 
     AuthProvider,
     authClients: enhancedClientsMap,
     useAuth,
+  };
+}
+
+/**
+ * Creates an authentication context and provider for a React application.
+ * It wraps the provided `authClient` with enhanced state management and event handling.
+ *
+ * This is a convenience wrapper around `createMultiAuth` for the common single-provider case.
+ * Internally it registers the client under the key `'default'` and re-exports a
+ * `useAuthClient` hook that delegates to `useAuth('default')`.
+ *
+ * @template AC - The type of the base `AuthClient` implementation.
+ * @template E - The type of error expected during authentication flows. Defaults to `Error`.
+ * @param {AC} authClient - The base authentication client instance to use.
+ * @returns An object containing:
+ *   - `AuthProvider`: A React component to wrap the application or parts of it.
+ *   - `authClient`: The enhanced authentication client instance.
+ *   - `useAuthClient`: A hook to access the enhanced `authClient` within the `AuthProvider`.
+ */
+export function createAuth<AC extends AuthClient, E extends Error = Error>(authClient: AC) {
+  const { AuthProvider, authClients, useAuth } = createMultiAuth<{ default: AC }, E>({ default: authClient });
+
+  /**
+   * Hook to access the authentication client within the AuthProvider
+   * @throws Error if used outside of an AuthProvider
+   */
+  const useAuthClient = function (): EnhancedAuthClient<AC, E> {
+    try {
+      return useAuth('default');
+    } catch {
+      throw new Error('useAuthClient hook should be used inside AuthProvider');
+    }
+  };
+
+  return {
+    AuthProvider,
+    authClient: authClients.default,
+    useAuthClient,
   };
 }
