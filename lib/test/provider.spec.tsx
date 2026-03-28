@@ -52,9 +52,11 @@ describe('AuthProvider', () => {
 
     it('should diplay LoadingComponent if provided', async () => {
       const authClientStub = createMockAuthClient();
+      vi.spyOn(authClientStub, 'onInit').mockResolvedValue(null);
 
       const { AuthProvider } = createAuth(authClientStub);
 
+      // Act — render before async init completes
       const tester = rtl.render(
         <AuthProvider
           LoadingComponent={
@@ -65,12 +67,14 @@ describe('AuthProvider', () => {
         </AuthProvider>
       );
 
-      await rtl.act(() => flushPromises());
-
+      // Assert — LoadingComponent must be visible while the client is still initializing
       expect(tester.getByTestId('LoadingComponent')).toBeVisible();
       expect(tester.getByTestId('LoadingComponent')).toHaveTextContent(
         'Loading...'
       );
+
+      // Allow init to finish so afterEach cleanup is not left with pending state
+      await rtl.act(() => flushPromises());
     });
 
     it('should diplay ErrorComponent if provided', async () => {

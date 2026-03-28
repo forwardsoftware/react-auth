@@ -147,6 +147,65 @@ The `createAuth` function wraps your `AuthClient` implementation with an `Enhanc
 - `subscribe(() => { })`, subscribe to AuthClient state changes
 - `getSnapshot()`, returns the current state of the AuthClient
 
+---
+
+### Use multiple AuthClients
+
+When your app needs to support multiple authentication providers simultaneously (e.g. username/password alongside Google Sign-In), use `createMultiAuth`:
+
+```ts
+import { createMultiAuth } from '@forward-software/react-auth';
+
+export const { AuthProvider, authClients, useAuth } = createMultiAuth({
+  credentials: credentialsAuthClient,
+  google: googleAuthClient,
+});
+```
+
+The `createMultiAuth` function accepts a map of `{ id: AuthClient }` pairs and returns:
+
+- `AuthProvider`, the context Provider component that initialises **all** clients and provides access to them
+- `authClients`, a map of enhanced authentication clients keyed by the IDs you provided
+- `useAuth`, a hook that accepts a client ID and returns the corresponding enhanced auth client
+
+#### AuthProvider
+
+The same `LoadingComponent` and `ErrorComponent` props are supported.  `LoadingComponent` is shown until **all** clients finish initializing.  `ErrorComponent` is shown if **any** client's initialization fails.
+
+```tsx
+<AuthProvider
+  LoadingComponent={<Spinner />}
+  ErrorComponent={<ErrorPage />}
+>
+  <App />
+</AuthProvider>
+```
+
+#### useAuth
+
+The `useAuth` hook is generic — the return type is automatically narrowed to the exact `EnhancedAuthClient` type for the key you provide:
+
+```tsx
+function MyComponent() {
+  // Each call is fully typed based on the key
+  const credentialsClient = useAuth('credentials');
+  const googleClient      = useAuth('google');
+
+  return (
+    <>
+      <button onClick={() => credentialsClient.login({ username, password })}>
+        Sign in with credentials
+      </button>
+      <button onClick={() => googleClient.login()}>
+        Sign in with Google
+      </button>
+    </>
+  );
+}
+```
+
+Each client provides the same `EnhancedAuthClient` interface described above.
+
 ## Examples
 
 The [`examples`](https://github.com/forwardsoftware/react-auth/tree/main/examples) folder in the repository contains some examples of how you can integrate this library in your React app.
