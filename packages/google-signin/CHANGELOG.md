@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/forwardsoftware/react-auth/compare/react-auth-google-v1.1.2...react-auth-google-v1.1.3) (2026-03-28)
+
+
+### Bug Fixes
+
+* **deps:** bump typescript from 5.9.3 to 6.0.2 ([#234](https://github.com/forwardsoftware/react-auth/issues/234)) ([631b117](https://github.com/forwardsoftware/react-auth/commit/631b1174e7146578457a26bf059c7cc8634b13dc))
+
 ## [1.1.2](https://github.com/forwardsoftware/react-auth/compare/react-auth-google-v1.1.1...react-auth-google-v1.1.2) (2026-03-18)
 
 
