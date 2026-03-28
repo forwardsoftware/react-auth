@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/forwardsoftware/react-auth/compare/v2.0.5...v2.1.0) (2026-03-28)
+
+
+### Features
+
+* **react-auth:** add `createMultiAuth` for multi-provider support ([#241](https://github.com/forwardsoftware/react-auth/issues/241)) ([581697d](https://github.com/forwardsoftware/react-auth/commit/581697db65a2cbb5e92938592e4eefdfacda7f6b))
+
 ## [2.0.5](https://github.com/forwardsoftware/react-auth/compare/v2.0.4...v2.0.5) (2026-03-28)
 
 
