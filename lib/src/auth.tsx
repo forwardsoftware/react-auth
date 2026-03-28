@@ -433,9 +433,23 @@ export type EnhancedAuthClient<AC extends AuthClient, E extends Error> = AC & Au
  * @returns {EnhancedAuthClient<AC, E>} - An enhanced authentication client with additional features
  */
 export function wrapAuthClient<AC extends AuthClient, E extends Error = Error>(authClient: AC): EnhancedAuthClient<AC, E> {
-  Object.setPrototypeOf(AuthClientEnhancements.prototype, authClient);
+  // Build a per-instance prototype so that wrapping multiple clients does not cause
+  // one client's methods to bleed into another.
+  // Chain: instance → perInstanceProto (enhancement methods) → authClient (raw AC methods)
+  const perInstanceProto = Object.create(authClient);
+  Object.getOwnPropertyNames(AuthClientEnhancements.prototype)
+    .filter((name) => name !== 'constructor')
+    .forEach((name) => {
+      const descriptor = Object.getOwnPropertyDescriptor(AuthClientEnhancements.prototype, name);
+      if (descriptor) {
+        Object.defineProperty(perInstanceProto, name, descriptor);
+      }
+    });
 
-  return new AuthClientEnhancements<AC, E>(authClient) as unknown as EnhancedAuthClient<AC, E>;
+  const instance = new AuthClientEnhancements<AC, E>(authClient);
+  Object.setPrototypeOf(instance, perInstanceProto);
+
+  return instance as unknown as EnhancedAuthClient<AC, E>;
 }
 
 /**
@@ -542,5 +556,95 @@ export function createAuth<AC extends AuthClient, E extends Error = Error>(authC
     AuthProvider,
     authClient: enhancedAuthClient,
     useAuthClient,
+  };
+}
+
+/**
+ * Creates an authentication context and provider supporting multiple auth clients.
+ * Each client is identified by a string key.
+ *
+ * @template M - A map of client IDs to AuthClient implementations.
+ * @template E - The type of error expected during authentication flows. Defaults to `Error`.
+ * @param {M} authClientsMap - A map of auth client IDs to their instances.
+ * @returns An object containing:
+ *   - `AuthProvider`: A React component to wrap the application or parts of it.
+ *   - `authClients`: The map of enhanced authentication clients.
+ *   - `useAuth`: A hook that accepts a client ID and returns the corresponding enhanced auth client.
+ */
+export function createMultiAuth<M extends Record<string, AuthClient>, E extends Error = Error>(
+  authClientsMap: M,
+) {
+  type EnhancedMap = { [K in keyof M]: EnhancedAuthClient<M[K], E> };
+
+  const enhancedClientsMap = (Object.keys(authClientsMap) as (keyof M)[]).reduce(
+    (acc, id) => {
+      acc[id] = wrapAuthClient<M[typeof id], E>(authClientsMap[id]);
+      return acc;
+    },
+    {} as EnhancedMap,
+  );
+
+  const clientsList = (Object.keys(enhancedClientsMap) as (keyof M)[]).map(
+    (id) => enhancedClientsMap[id],
+  );
+
+  const multiAuthContext = createContext<EnhancedMap | null>(null);
+
+  // Create the React Context Provider for all AuthClient instances.
+  const AuthProvider: React.FC<AuthProviderProps> = ({ children, ErrorComponent, LoadingComponent }) => {
+    const [initState, setInitState] = useState<{ allInitialized: boolean; failed: boolean }>({
+      allInitialized: clientsList.length === 0,
+      failed: false,
+    });
+
+    useEffect(() => {
+      async function initAllClients() {
+        try {
+          const results = await Promise.all(clientsList.map((client) => client.init()));
+          setInitState({ allInitialized: true, failed: results.some((r: boolean) => !r) });
+        } catch {
+          setInitState({ allInitialized: true, failed: true });
+        }
+      }
+
+      initAllClients();
+    }, []);
+
+    if (!!ErrorComponent && initState.failed) {
+      return ErrorComponent;
+    }
+
+    if (!!LoadingComponent && !initState.allInitialized) {
+      return LoadingComponent;
+    }
+
+    return (
+      <multiAuthContext.Provider value={enhancedClientsMap}>
+        {children}
+      </multiAuthContext.Provider>
+    );
+  };
+
+  /**
+   * Hook to access a specific authentication client by its ID within the AuthProvider.
+   * @throws Error if used outside of an AuthProvider
+   * @throws Error if the provided id is not registered in the clients map
+   */
+  const useAuth = function <K extends keyof M>(id: K): EnhancedAuthClient<M[K], E> {
+    const ctx = useContext(multiAuthContext);
+    if (!ctx) {
+      throw new Error('useAuth hook should be used inside AuthProvider');
+    }
+    const client = ctx[id];
+    if (!client) {
+      throw new Error(`useAuth: no auth client registered for id "${String(id)}"`);
+    }
+    return client;
+  };
+
+  return {
+    AuthProvider,
+    authClients: enhancedClientsMap,
+    useAuth,
   };
 }
