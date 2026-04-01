@@ -37,7 +37,7 @@ class MyAuthClient implements AuthClient<AuthTokens, AuthCredentials> {
 
   async onLogin(credentials?: AuthCredentials): Promise<AuthTokens> {
     if (!this.axiosAuthClient) {
-      return Promise.reject('axios client not initialized!');
+      return Promise.reject(new Error('axios client not initialized!'));
     }
 
     // Replace auth/login with your url without the domain
@@ -54,7 +54,7 @@ class MyAuthClient implements AuthClient<AuthTokens, AuthCredentials> {
 
   async onRefresh(currentTokens: AuthTokens): Promise<AuthTokens> {
     if (!this.axiosAuthClient) {
-      return Promise.reject('axios client not initialized!');
+      return Promise.reject(new Error('axios client not initialized!'));
     }
 
     if (

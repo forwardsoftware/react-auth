@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { useCallback, useState } from 'react';
-import { DependencyList } from 'react';
+import React, { useCallback, useState } from 'react';
+import type { DependencyList } from 'react';
 
 import { useAuthClient } from './auth';
 
@@ -110,9 +109,11 @@ function useAsyncCallback<T extends (...args: never[]) => Promise<unknown>>(
   const [isLoading, setLoading] = useState(false);
   const cb = useCallback(async (...argsx: never[]) => {
     setLoading(true);
-    const res = await callback(...argsx);
-    setLoading(false);
-    return res;
+    try {
+      return await callback(...argsx);
+    } finally {
+      setLoading(false);
+    }
   }, deps) as T;
 
   return [cb, isLoading];

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
-    "@forward-software/react-auth": "2.0.3",
+    "@forward-software/react-auth": "2.1.0",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
@@ -46,7 +46,7 @@
     "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
-    "typescript": "^5.1.6"
+    "typescript": "^6.0.0"
   },
   "private": true
 }

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { DependencyList, FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
+import type { DependencyList } from 'react';
 import { useAuthClient } from './auth';
 
 function useUserCredentials() {
@@ -35,9 +35,11 @@ function useAsyncCallback<T extends (...args: never[]) => Promise<unknown>>(
 
   const cb = useCallback(async (...argsx: never[]) => {
     setLoading(true);
-    const res = await callback(...argsx);
-    setLoading(false);
-    return res;
+    try {
+      return await callback(...argsx);
+    } finally {
+      setLoading(false);
+    }
   }, deps) as T;
 
   return [cb, isLoading];
