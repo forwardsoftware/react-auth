@@ -305,6 +305,20 @@ if (Platform.OS === 'ios') {
 - **Credential State**: On iOS, you can check if the user's Apple ID is still authorized via `getCredentialState()`. This is used during token refresh instead of silent re-authentication.
 - **No Client-Side Refresh**: Apple does not support client-side token refresh. When the identity token expires, the user must re-authenticate.
 
+## Platform Notes
+
+### Renewal & Maintenance
+
+- Apple Sign-In **keys do not expire**. Once generated, they remain valid indefinitely.
+- Your Services ID is tied to your Apple Developer Program membership, which renews annually. If your membership lapses, Sign in with Apple stops working for all your apps.
+- There are no certificates to rotate specifically for Sign in with Apple (unlike APNs push certificates).
+
+### iOS Version Notes
+
+- Sign in with Apple requires **iOS 13+**. The Expo native module targets iOS 13 by default via the `AuthenticationServices` framework.
+- On **iOS 15+**, Apple added support for detecting credential state changes (revoked, transferred) more reliably.
+- The `ASAuthorizationAppleIDButton` (used by `AppleSignInButton` on native) automatically adapts its appearance to the system iOS version.
+
 ## API Reference
 
 ### Types
