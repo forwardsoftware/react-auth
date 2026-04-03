@@ -54,49 +54,6 @@ importers:
         specifier: 'catalog:'
         version: 6.0.2
 
-  examples/showcase:
-    dependencies:
-      '@forward-software/react-auth':
-        specifier: workspace:*
-        version: link:../../lib
-      react:
-        specifier: 'catalog:'
-        version: 19.2.4
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.2.4(react@19.2.4)
-    devDependencies:
-      '@testing-library/dom':
-        specifier: ^10.4.1
-        version: 10.4.1
-      '@testing-library/jest-dom':
-        specifier: ^6.9.1
-        version: 6.9.1
-      '@testing-library/react':
-        specifier: ^16.3.2
-        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.2.14
-      '@types/react-dom':
-        specifier: 'catalog:'
-        version: 19.2.3(@types/react@19.2.14)
-      '@vitejs/plugin-react':
-        specifier: 'catalog:'
-        version: 6.0.1(vite@8.0.3(@types/node@25.5.1)(terser@5.46.1)(yaml@2.8.2))
-      jsdom:
-        specifier: 'catalog:'
-        version: 29.0.1
-      typescript:
-        specifier: 'catalog:'
-        version: 6.0.2
-      vite:
-        specifier: 'catalog:'
-        version: 8.0.3(@types/node@25.5.1)(terser@5.46.1)(yaml@2.8.2)
-      vitest:
-        specifier: 'catalog:'
-        version: 4.1.2(@types/node@25.5.1)(jsdom@29.0.1)(vite@8.0.3(@types/node@25.5.1)(terser@5.46.1)(yaml@2.8.2))
-
   lib:
     devDependencies:
       '@testing-library/dom':

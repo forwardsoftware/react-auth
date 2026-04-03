@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 
-import type { PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 import { createAuth } from '@forward-software/react-auth';
 import type { AuthClient } from '@forward-software/react-auth';
@@ -46,7 +46,7 @@ export function createTestAuth(client?: AuthClient<TestTokens, TestCredentials>)
   return createAuth(client ?? new TestAuthClient());
 }
 
-export function createTestWrapper(AuthProvider: React.FC<PropsWithChildren>) {
+export function createTestWrapper(AuthProvider: FC<PropsWithChildren>) {
   return function Wrapper({ children }: PropsWithChildren) {
     return <AuthProvider>{children}</AuthProvider>;
   };

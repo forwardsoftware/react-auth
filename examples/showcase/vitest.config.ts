@@ -7,6 +7,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@forward-software/react-auth': path.resolve(__dirname, '../../lib/src/index.ts'),
+      react: path.resolve(__dirname, 'node_modules/react'),
+      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
     },
   },
   test: {

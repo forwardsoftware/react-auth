@@ -41,14 +41,18 @@ export class MockAuthClient implements AuthClient<MockTokens, MockCredentials> {
   async onInit(): Promise<MockTokens | null> {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
-      const parsed = JSON.parse(stored);
-      if (
-        typeof parsed?.accessToken === 'string' &&
-        typeof parsed?.refreshToken === 'string' &&
-        typeof parsed?.expiresAt === 'number' &&
-        parsed.expiresAt > Date.now()
-      ) {
-        return parsed as MockTokens;
+      try {
+        const parsed = JSON.parse(stored);
+        if (
+          typeof parsed?.accessToken === 'string' &&
+          typeof parsed?.refreshToken === 'string' &&
+          typeof parsed?.expiresAt === 'number' &&
+          parsed.expiresAt > Date.now()
+        ) {
+          return parsed as MockTokens;
+        }
+      } catch {
+        localStorage.removeItem(STORAGE_KEY);
       }
     }
     return null;
