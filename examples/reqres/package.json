@@ -9,16 +9,16 @@
     "preview": "vite preview --host"
   },
   "dependencies": {
-    "@forward-software/react-auth": "2.0.3",
-    "axios": "^1.12.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@forward-software/react-auth": "2.1.0",
+    "axios": "^1.14.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.0",
-    "typescript": "^5.1.6",
-    "vite": "^5.0.0"
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "typescript": "^6.0.0",
+    "vite": "^8.0.3"
   }
 }

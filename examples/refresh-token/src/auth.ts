@@ -35,7 +35,7 @@ class MyAuthClient implements AuthClient<Tokens, Credentials> {
 
   async onLogin(credentials?: Credentials): Promise<Tokens> {
     if (!this.axiosAuthClient) {
-      return Promise.reject("axios client not initialized!");
+      return Promise.reject(new Error("axios client not initialized!"));
     }
 
     // Replace auth/login with your url without the domain
@@ -51,7 +51,7 @@ class MyAuthClient implements AuthClient<Tokens, Credentials> {
 
   async onRefresh(currentTokens: Tokens): Promise<Tokens> {
     if (!this.axiosAuthClient) {
-      return Promise.reject("axios client not initialized!");
+      return Promise.reject(new Error("axios client not initialized!"));
     }
 
     if (!!currentTokens.accessToken && !isJwtTokenExpired(currentTokens.accessToken)) {

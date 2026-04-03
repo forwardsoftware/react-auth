@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import type { DependencyList } from 'react';
 
 import { useAuthClient } from './auth';
 
@@ -56,14 +57,16 @@ export const Content: React.FC = () => {
 
 function useAsyncCallback<T extends (...args: never[]) => Promise<unknown>>(
   callback: T,
-  deps: React.DependencyList
+  deps: DependencyList
 ): [T, boolean] {
   const [isLoading, setLoading] = useState(false);
   const cb = useCallback(async (...argsx: never[]) => {
     setLoading(true);
-    const res = await callback(...argsx);
-    setLoading(false);
-    return res;
+    try {
+      return await callback(...argsx);
+    } finally {
+      setLoading(false);
+    }
   }, deps) as T;
 
   return [cb, isLoading];

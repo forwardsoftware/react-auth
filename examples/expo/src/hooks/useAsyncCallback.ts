@@ -7,9 +7,11 @@ export function useAsyncCallback<
 
   const cb = useCallback(async (...argsx: never[]) => {
     setLoading(true);
-    const res = await callback(...argsx);
-    setLoading(false);
-    return res;
+    try {
+      return await callback(...argsx);
+    } finally {
+      setLoading(false);
+    }
   }, deps) as T;
 
   return [cb, isLoading];
