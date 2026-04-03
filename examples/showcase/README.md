@@ -19,6 +19,7 @@ A comprehensive example demonstrating **all key features** of [`@forward-softwar
 | All lifecycle hooks (`onPre*` / `onPost*`) | `MockAuthClient` |
 | Error handling for failed login | `LoginForm` |
 | `useAsyncCallback` with error tracking | `src/hooks/useAsyncCallback.ts` |
+| `createMultiAuth` (multiple providers) | Not demonstrated — see [core library docs](../../lib/README.md) |
 
 ## Prerequisites
 
@@ -32,6 +33,12 @@ From the **repository root**:
 ```bash
 pnpm install
 ```
+
+## Local Development
+
+When developing inside the monorepo, `@forward-software/react-auth` imports resolve to the **local lib source** via build-tool aliases configured in `vite.config.ts`, `vitest.config.ts`, and `tsconfig.json`. No workspace linking is required.
+
+Users installing from npm get the published version specified in `package.json` (`^2.0.0`).
 
 ## Running
 

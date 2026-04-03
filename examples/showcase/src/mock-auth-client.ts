@@ -41,16 +41,21 @@ export class MockAuthClient implements AuthClient<MockTokens, MockCredentials> {
   async onInit(): Promise<MockTokens | null> {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
-      const tokens: MockTokens = JSON.parse(stored);
-      if (tokens.expiresAt > Date.now()) {
-        return tokens;
+      const parsed = JSON.parse(stored);
+      if (
+        typeof parsed?.accessToken === 'string' &&
+        typeof parsed?.refreshToken === 'string' &&
+        typeof parsed?.expiresAt === 'number' &&
+        parsed.expiresAt > Date.now()
+      ) {
+        return parsed as MockTokens;
       }
     }
     return null;
   }
 
   async onPostInit(): Promise<void> {
-    console.log('[MockAuthClient] Post-init complete');
+    // Post-initialization hook — no-op in this demo
   }
 
   async onPreLogin(): Promise<void> {
@@ -69,8 +74,8 @@ export class MockAuthClient implements AuthClient<MockTokens, MockCredentials> {
     return tokens;
   }
 
-  async onPostLogin(isSuccess: boolean): Promise<void> {
-    console.log(`[MockAuthClient] Post-login: ${isSuccess ? 'success' : 'failure'}`);
+  async onPostLogin(_isSuccess: boolean): Promise<void> {
+    // Post-login hook — no-op in this demo
   }
 
   async onPreRefresh(): Promise<void> {
@@ -83,8 +88,8 @@ export class MockAuthClient implements AuthClient<MockTokens, MockCredentials> {
     return tokens;
   }
 
-  async onPostRefresh(isSuccess: boolean): Promise<void> {
-    console.log(`[MockAuthClient] Post-refresh: ${isSuccess ? 'success' : 'failure'}`);
+  async onPostRefresh(_isSuccess: boolean): Promise<void> {
+    // Post-refresh hook — no-op in this demo
   }
 
   async onPreLogout(): Promise<void> {
@@ -95,7 +100,7 @@ export class MockAuthClient implements AuthClient<MockTokens, MockCredentials> {
     localStorage.removeItem(STORAGE_KEY);
   }
 
-  async onPostLogout(isSuccess: boolean): Promise<void> {
-    console.log(`[MockAuthClient] Post-logout: ${isSuccess ? 'success' : 'failure'}`);
+  async onPostLogout(_isSuccess: boolean): Promise<void> {
+    // Post-logout hook — no-op in this demo
   }
 }
