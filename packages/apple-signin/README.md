@@ -309,15 +309,15 @@ if (Platform.OS === 'ios') {
 
 ### Renewal & Maintenance
 
-- Apple Sign-In **keys do not expire**. Once generated, they remain valid indefinitely.
+- Apple Sign-In **keys do not automatically expire**. Once generated, they remain valid until they are revoked or deleted.
 - Your Services ID is tied to your Apple Developer Program membership, which renews annually. If your membership lapses, Sign in with Apple stops working for all your apps.
 - There are no certificates to rotate specifically for Sign in with Apple (unlike APNs push certificates).
 
 ### iOS Version Notes
 
-- Sign in with Apple requires **iOS 13+**. The Expo native module targets iOS 13 by default via the `AuthenticationServices` framework.
-- On **iOS 15+**, Apple added support for detecting credential state changes (revoked, transferred) more reliably.
-- The `ASAuthorizationAppleIDButton` (used by `AppleSignInButton` on native) automatically adapts its appearance to the system iOS version.
+- Sign in with Apple is available on Apple platforms starting with **iOS 13+**, but this library currently requires **iOS 15.1+** on iOS because its CocoaPods deployment target is set to 15.1.
+- On **iOS 15+**, Apple provides more reliable support for detecting credential state changes (for example, revoked or transferred credentials) via `getCredentialState()`.
+- On native, `AppleSignInButton` is a custom React Native button styled for Sign in with Apple; its appearance is defined by this package rather than by Apple's `ASAuthorizationAppleIDButton`.
 
 ## API Reference
 
