@@ -80,6 +80,7 @@ Located in `examples/`. These are **not** published — they exist for documenta
 - `examples/reqres/` — authenticates against the ReqRes API
 - `examples/refresh-token/` — demonstrates token refresh with Axios interceptors
 - `examples/expo/` — React Native (Expo) integration
+- `examples/showcase/` — comprehensive example of all library features
 
 ### Core library (`lib/`)
 
@@ -187,6 +188,67 @@ Adapter packages live under `packages/` and should follow these conventions:
    - `CONTRIBUTING.md` — update any section that lists existing packages (e.g., architecture overview, examples).
    - `AGENTS.md` — update the Project overview packages table and any architecture sections that reference existing packages.
    - Create a `README.md` in the package directory with install instructions, quick start, API reference, and consistent badges/footer (follow the structure of `packages/google-signin/README.md`).
+
+## Contributing examples
+
+Examples live in `examples/` and exist for documentation and manual testing. They are **not** published and are **not** part of the pnpm workspace.
+
+### Convention: referencing the core library
+
+Example apps follow a **two-layer** convention for depending on `@forward-software/react-auth`:
+
+1. **`package.json`** — lists the latest published version (e.g. `"2.1.0"`). This makes the example buildable as a standalone project.
+2. **Build-tool / TypeScript alias** — when developing inside the monorepo, the bundler resolves the import to the local lib source (`../../lib/src/index.ts`), so changes to `lib/` are reflected immediately without a separate build step.
+
+**Vite-based examples** configure the alias in `vite.config.ts` and `tsconfig.json`:
+
+```ts
+// vite.config.ts
+import path from 'node:path';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@forward-software/react-auth': path.resolve(__dirname, '../../lib/src/index.ts'),
+    },
+  },
+});
+```
+
+```json
+// tsconfig.json — under "compilerOptions"
+{
+  "paths": {
+    "@forward-software/react-auth": ["./../../lib/src/index.ts"]
+  }
+}
+```
+
+**Expo / React Native examples** configure the alias in `babel.config.js` via `babel-plugin-module-resolver`:
+
+```js
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: [
+      ['module-resolver', { alias: { '@forward-software/react-auth': '../../lib' } }],
+    ],
+  };
+};
+```
+
+### Adding a new example
+
+1. Create the example under `examples/<name>/`.
+2. Add `@forward-software/react-auth` as a dependency with the **current published version** in `package.json`.
+3. Configure the bundler path alias and TypeScript `paths` mapping as shown above.
+4. Mark the package as `"private": true` in `package.json`.
+5. Do **not** add the example to `pnpm-workspace.yaml` — examples install their own dependencies independently.
+6. Add the example to the tables in `CONTRIBUTING.md`, `AGENTS.md`, and `examples/README.md`.
 
 ## Testing
 
