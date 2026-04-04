@@ -24,7 +24,7 @@ class MockAuthClient implements AuthClient<MockTokens, MockCredentials> {
     throw new Error('Method not implemented.');
   }
 
-  onRefresh(_minValidity?: number): Promise<MockTokens> {
+  onRefresh(_currentTokens: MockTokens, _minValidity?: number): Promise<MockTokens> {
     throw new Error('Method not implemented.');
   }
 
@@ -65,7 +65,7 @@ export const createMockAuthClientWithHooks = (hooks: Record<string, any>) => {
       return Promise.resolve();
     }
 
-    onRefresh(_minValidity?: number): Promise<MockTokens> {
+    onRefresh(_currentTokens: MockTokens, _minValidity?: number): Promise<MockTokens> {
       throw new Error('Method not implemented.');
     }
 
