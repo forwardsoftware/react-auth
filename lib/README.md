@@ -155,12 +155,12 @@ The `subscribe` and `getSnapshot` methods are intentionally declared as bound ar
 
 ```tsx
 import { useSyncExternalStore } from 'react';
-import { enhancedAuthClient } from './auth'; // the authClient returned by createAuth
+import { authClient } from './auth'; // the authClient returned by createAuth
 
 function MyComponent() {
   const { isInitialized, isAuthenticated, tokens } = useSyncExternalStore(
-    enhancedAuthClient.subscribe,
-    enhancedAuthClient.getSnapshot,
+    authClient.subscribe,
+    authClient.getSnapshot,
   );
 
   if (!isInitialized) return <LoadingSpinner />;
