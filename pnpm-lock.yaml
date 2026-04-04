@@ -1,7 +1,7 @@
 lockfileVersion: '9.0'
 
 settings:
-  autoInstallPeers: false
+  autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 catalogs:
@@ -148,6 +148,13 @@ importers:
         version: 4.1.2(@types/node@25.5.1)(jsdom@29.0.1)(vite@8.0.3(@types/node@25.5.1)(terser@5.46.1)(yaml@2.8.2))
 
   packages/google-signin:
+    dependencies:
+      expo-modules-core:
+        specifier: '>=2.0.0'
+        version: 55.0.20(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.4))(react@19.2.4)
+      react-native:
+        specifier: '>=0.73.0'
+        version: 0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.4)
     devDependencies:
       '@forward-software/react-auth':
         specifier: ^2.0.0
@@ -493,6 +500,8 @@ packages:
   '@react-native/codegen@0.84.1':
     resolution: {integrity: sha512-n1RIU0QAavgCg1uC5+s53arL7/mpM+16IBhJ3nCFSd/iK5tUmCwxQDcIDC703fuXfpub/ZygeSjVN8bcOWn0gA==}
     engines: {node: '>= 20.19.4'}
+    peerDependencies:
+      '@babel/core': '*'
 
   '@react-native/community-cli-plugin@0.84.1':
     resolution: {integrity: sha512-f6a+mJEJ6Joxlt/050TqYUr7uRRbeKnz8lnpL7JajhpsgZLEbkJRjH8HY5QiLcRdUwWFtizml4V+vcO3P4RxoQ==}
@@ -2540,7 +2549,7 @@ snapshots:
 
   '@react-native/assets-registry@0.84.1': {}
 
-  '@react-native/codegen@0.84.1':
+  '@react-native/codegen@0.84.1(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/parser': 7.29.2
@@ -2549,8 +2558,6 @@ snapshots:
       nullthrows: 1.1.1
       tinyglobby: 0.2.15
       yargs: 17.7.2
-    transitivePeerDependencies:
-      - supports-color
 
   '@react-native/community-cli-plugin@0.84.1':
     dependencies:
@@ -3870,7 +3877,7 @@ snapshots:
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@react-native/assets-registry': 0.84.1
-      '@react-native/codegen': 0.84.1
+      '@react-native/codegen': 0.84.1(@babel/core@7.29.0)
       '@react-native/community-cli-plugin': 0.84.1
       '@react-native/gradle-plugin': 0.84.1
       '@react-native/js-polyfills': 0.84.1

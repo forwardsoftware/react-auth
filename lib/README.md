@@ -147,6 +147,36 @@ The `createAuth` function wraps your `AuthClient` implementation with an `Enhanc
 - `subscribe(() => { })`, subscribe to AuthClient state changes
 - `getSnapshot()`, returns the current state of the AuthClient
 
+#### Reactive auth state with `useSyncExternalStore`
+
+`EnhancedAuthClient` is designed to work directly with React's [`useSyncExternalStore`](https://react.dev/reference/react/useSyncExternalStore) hook. This is the **recommended pattern for reading auth state inside components**, especially in multi-component layouts where auth changes must propagate correctly without relying on loading-state workarounds.
+
+The `subscribe` and `getSnapshot` methods are intentionally declared as bound arrow-function properties so they can be passed **directly** to `useSyncExternalStore` without wrapping:
+
+```tsx
+import { useSyncExternalStore } from 'react';
+import { enhancedAuthClient } from './auth'; // the authClient returned by createAuth
+
+function MyComponent() {
+  const { isInitialized, isAuthenticated, tokens } = useSyncExternalStore(
+    enhancedAuthClient.subscribe,
+    enhancedAuthClient.getSnapshot,
+  );
+
+  if (!isInitialized) return <LoadingSpinner />;
+  if (!isAuthenticated) return <LoginPage />;
+
+  return <Dashboard tokens={tokens} />;
+}
+```
+
+The snapshot returned by `getSnapshot()` contains:
+- `isInitialized` — `true` once the client's `onInit` hook has completed
+- `isAuthenticated` — `true` when the user is logged in and tokens are present
+- `tokens` — the current tokens returned by `login` or `refresh`, or `null` when not authenticated
+
+Any call to `login()`, `refresh()`, or `logout()` triggers a state update and re-renders all components that are subscribed via `useSyncExternalStore`.
+
 ---
 
 ### Use multiple AuthClients
