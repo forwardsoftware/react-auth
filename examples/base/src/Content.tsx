@@ -59,22 +59,25 @@ export const Content: React.FC = () => {
   );
 };
 
+type AsyncCallbackState = { isLoading: boolean; error: unknown };
+
 function useAsyncCallback<T extends (...args: never[]) => Promise<unknown>>(
   callback: T,
   deps: DependencyList
 ): [T, boolean, unknown] {
-  const [isLoading, setLoading] = useState(false);
-  const [error, setError] = useState<unknown>(null);
+  const [{ isLoading, error }, setState] = useState<AsyncCallbackState>({
+    isLoading: false,
+    error: null,
+  });
   const cb = useCallback(async (...argsx: never[]) => {
-    setLoading(true);
-    setError(null);
+    setState({ isLoading: true, error: null });
     try {
       return await callback(...argsx);
     } catch (err) {
-      setError(err);
-    } finally {
-      setLoading(false);
+      setState({ isLoading: false, error: err });
+      return;
     }
+    setState({ isLoading: false, error: null });
   }, deps) as T;
 
   return [cb, isLoading, error];
