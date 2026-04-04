@@ -18,12 +18,62 @@ This is a monorepo for **React Auth**, a library that simplifies authentication 
 
 ### Examples
 
-Located in `examples/`. These are **not** published — they exist for documentation and manual testing only.
+Located in `examples/`. These are **not** published — they exist for documentation and manual testing only. They are **not** part of the pnpm workspace; each example manages its own dependencies.
 
-- `examples/base/` — minimal Vite + React example
-- `examples/reqres/` — authenticates against the ReqRes API
-- `examples/refresh-token/` — demonstrates token refresh with Axios interceptors
-- `examples/expo/` — React Native (Expo) integration
+| Example | Path | Description |
+| --- | --- | --- |
+| Base | `examples/base/` | Minimal Vite + React example |
+| ReqRes | `examples/reqres/` | Authenticates against the ReqRes API |
+| Refresh Token | `examples/refresh-token/` | Token refresh with Axios interceptors |
+| Expo | `examples/expo/` | React Native (Expo) integration |
+| Showcase | `examples/showcase/` | Comprehensive example of all library features |
+
+#### Convention: referencing the core library in examples
+
+All examples follow a **two-layer** convention for depending on `@forward-software/react-auth`:
+
+1. **`package.json`** — lists the latest published version (e.g. `"2.1.0"`). This makes the example buildable as a standalone project.
+2. **Build-tool / TypeScript alias** — when developing inside the monorepo, the bundler resolves the import to the local lib source (`../../lib/src/index.ts`), so changes to `lib/` are reflected immediately without a separate build step.
+
+**Vite-based examples** add the alias in `vite.config.ts`:
+
+```ts
+resolve: {
+  alias: {
+    '@forward-software/react-auth': path.resolve(__dirname, '../../lib/src/index.ts'),
+  },
+},
+```
+
+And a matching `paths` entry in `tsconfig.json` under `compilerOptions`:
+
+```json
+{
+  "paths": {
+    "@forward-software/react-auth": ["./../../lib/src/index.ts"]
+  }
+}
+```
+
+**Expo / React Native examples** use `babel-plugin-module-resolver` in `babel.config.js`:
+
+```js
+plugins: [
+  ['module-resolver', { alias: { '@forward-software/react-auth': '../../lib' } }],
+],
+```
+
+And a matching `paths` entry in `tsconfig.json` under `compilerOptions` for IDE/tsc resolution (uses a wildcard because `expo/tsconfig.base` does not need `baseUrl`):
+
+```json
+{
+  "paths": {
+    "@forward-software/react-auth/*": ["../../lib/*"]
+  }
+}
+```
+
+When adding a new example, apply the same two-layer setup and update the tables in `CONTRIBUTING.md`, `AGENTS.md`, and `examples/README.md`.
 
 ---
 
