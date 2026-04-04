@@ -49,9 +49,9 @@ export const Content: React.FC = () => {
       {isLoginLoading ? <p>Login in progress..</p> : null}
       {isRefreshLoading ? <p>Refresh in progress..</p> : null}
 
-      {loginError != null ? <p>Login error: {loginError instanceof Error ? loginError.message : 'An error occurred'}</p> : null}
-      {refreshError != null ? <p>Refresh error: {refreshError instanceof Error ? refreshError.message : 'An error occurred'}</p> : null}
-      {logoutError != null ? <p>Logout error: {logoutError instanceof Error ? logoutError.message : 'An error occurred'}</p> : null}
+      {loginError != null ? <p role="alert">Login error: {loginError instanceof Error ? loginError.message : 'An error occurred'}</p> : null}
+      {refreshError != null ? <p role="alert">Refresh error: {refreshError instanceof Error ? refreshError.message : 'An error occurred'}</p> : null}
+      {logoutError != null ? <p role="alert">Logout error: {logoutError instanceof Error ? logoutError.message : 'An error occurred'}</p> : null}
 
       <p>Tokens:</p>
       <pre>{JSON.stringify(authClient.tokens, null, 2)}</pre>
@@ -64,21 +64,21 @@ type AsyncCallbackState = { isLoading: boolean; error: unknown };
 function useAsyncCallback<T extends (...args: never[]) => Promise<unknown>>(
   callback: T,
   deps: DependencyList
-): [T, boolean, unknown] {
+): [(...args: Parameters<T>) => Promise<unknown>, boolean, unknown] {
   const [{ isLoading, error }, setState] = useState<AsyncCallbackState>({
     isLoading: false,
     error: null,
   });
-  const cb = useCallback(async (...argsx: never[]) => {
+  const cb = useCallback(async (...argsx: Parameters<T>) => {
     setState({ isLoading: true, error: null });
     try {
-      return await callback(...argsx);
+      const result = await callback(...argsx);
+      setState({ isLoading: false, error: null });
+      return result;
     } catch (err) {
       setState({ isLoading: false, error: err });
-      return;
     }
-    setState({ isLoading: false, error: null });
-  }, deps) as T;
+  }, deps);
 
   return [cb, isLoading, error];
 }
