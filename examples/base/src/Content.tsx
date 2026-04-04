@@ -6,14 +6,14 @@ import { useAuthClient } from './auth';
 export const Content: React.FC = () => {
   const authClient = useAuthClient();
 
-  const [doLogin, isLoginLoading] = useAsyncCallback(() => authClient.login(), [
+  const [doLogin, isLoginLoading, loginError] = useAsyncCallback(() => authClient.login(), [
     authClient,
   ]);
-  const [doRefresh, isRefreshLoading] = useAsyncCallback(
+  const [doRefresh, isRefreshLoading, refreshError] = useAsyncCallback(
     () => authClient.refresh(),
     [authClient]
   );
-  const [doLogout, isLogoutLoading] = useAsyncCallback(
+  const [doLogout, isLogoutLoading, logoutError] = useAsyncCallback(
     () => authClient.logout(),
     [authClient]
   );
@@ -49,6 +49,10 @@ export const Content: React.FC = () => {
       {isLoginLoading ? <p>Login in progress..</p> : null}
       {isRefreshLoading ? <p>Refresh in progress..</p> : null}
 
+      {loginError != null ? <p>Login error: {loginError instanceof Error ? loginError.message : 'An error occurred'}</p> : null}
+      {refreshError != null ? <p>Refresh error: {refreshError instanceof Error ? refreshError.message : 'An error occurred'}</p> : null}
+      {logoutError != null ? <p>Logout error: {logoutError instanceof Error ? logoutError.message : 'An error occurred'}</p> : null}
+
       <p>Tokens:</p>
       <pre>{JSON.stringify(authClient.tokens, null, 2)}</pre>
     </div>
@@ -58,16 +62,20 @@ export const Content: React.FC = () => {
 function useAsyncCallback<T extends (...args: never[]) => Promise<unknown>>(
   callback: T,
   deps: DependencyList
-): [T, boolean] {
+): [T, boolean, unknown] {
   const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState<unknown>(null);
   const cb = useCallback(async (...argsx: never[]) => {
     setLoading(true);
+    setError(null);
     try {
       return await callback(...argsx);
+    } catch (err) {
+      setError(err);
     } finally {
       setLoading(false);
     }
   }, deps) as T;
 
-  return [cb, isLoading];
+  return [cb, isLoading, error];
 }
