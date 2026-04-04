@@ -2,6 +2,8 @@ packages:
   - lib
   - packages/*
 
+autoInstallPeers: false
+
 catalog:
   '@types/react': ^19.2.14
   '@types/react-dom': ^19.2.3
@@ -13,5 +15,3 @@ catalog:
   typescript: ^6.0.2
   vite: ^8.0.3
   vitest: ^4.1.2
-
-autoInstallPeers: false
