@@ -63,6 +63,16 @@ plugins: [
 ],
 ```
 
+And a matching `paths` entry in `tsconfig.json` under `compilerOptions` for IDE/tsc resolution (uses a wildcard because `expo/tsconfig.base` does not need `baseUrl`):
+
+```json
+{
+  "paths": {
+    "@forward-software/react-auth/*": ["../../lib/*"]
+  }
+}
+```
+
 When adding a new example, apply the same two-layer setup and update the tables in `CONTRIBUTING.md`, `AGENTS.md`, and `examples/README.md`.
 
 ---

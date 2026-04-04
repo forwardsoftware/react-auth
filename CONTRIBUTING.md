@@ -241,6 +241,17 @@ module.exports = function (api) {
 };
 ```
 
+And a matching `paths` entry in `tsconfig.json` under `compilerOptions` for IDE/tsc resolution (uses a wildcard because `expo/tsconfig.base` does not need `baseUrl`):
+
+```json
+// tsconfig.json — under "compilerOptions"
+{
+  "paths": {
+    "@forward-software/react-auth/*": ["../../lib/*"]
+  }
+}
+```
+
 ### Adding a new example
 
 1. Create the example under `examples/<name>/`.
