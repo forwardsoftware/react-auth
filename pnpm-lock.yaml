@@ -19,11 +19,11 @@ catalogs:
       specifier: ^29.0.2
       version: 29.0.2
     react:
-      specifier: ^19.2.4
-      version: 19.2.4
+      specifier: ^19.2.5
+      version: 19.2.5
     react-dom:
-      specifier: ^19.2.4
-      version: 19.2.4
+      specifier: ^19.2.5
+      version: 19.2.5
     rimraf:
       specifier: ^6.1.3
       version: 6.1.3
@@ -64,7 +64,7 @@ importers:
         version: 6.9.1
       '@testing-library/react':
         specifier: ^16.3.2
-        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@types/node':
         specifier: ^25.5.2
         version: 25.5.2
@@ -82,10 +82,10 @@ importers:
         version: 29.0.2
       react:
         specifier: 'catalog:'
-        version: 19.2.4
+        version: 19.2.5
       react-dom:
         specifier: 'catalog:'
-        version: 19.2.4(react@19.2.4)
+        version: 19.2.5(react@19.2.5)
       vite:
         specifier: 'catalog:'
         version: 8.0.7(@types/node@25.5.2)(terser@5.46.1)(yaml@2.8.3)
@@ -97,7 +97,7 @@ importers:
     devDependencies:
       '@forward-software/react-auth':
         specifier: ^2.0.4
-        version: 2.0.4(react@19.2.4)
+        version: 2.0.4(react@19.2.5)
       '@testing-library/dom':
         specifier: ^10.4.1
         version: 10.4.1
@@ -106,7 +106,7 @@ importers:
         version: 6.9.1
       '@testing-library/react':
         specifier: ^16.3.2
-        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@types/node':
         specifier: ^25.5.2
         version: 25.5.2
@@ -118,22 +118,22 @@ importers:
         version: 6.0.1(vite@8.0.7(@types/node@25.5.2)(terser@5.46.1)(yaml@2.8.3))
       expo-modules-core:
         specifier: ^55.0.21
-        version: 55.0.21(react-native@0.85.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4)
+        version: 55.0.21(react-native@0.85.0(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
       jsdom:
         specifier: 'catalog:'
         version: 29.0.2
       react:
         specifier: 'catalog:'
-        version: 19.2.4
+        version: 19.2.5
       react-dom:
         specifier: 'catalog:'
-        version: 19.2.4(react@19.2.4)
+        version: 19.2.5(react@19.2.5)
       react-native:
         specifier: ^0.85.0
-        version: 0.85.0(@types/react@19.2.14)(react@19.2.4)
+        version: 0.85.0(@types/react@19.2.14)(react@19.2.5)
       react-native-svg:
         specifier: ^15.15.4
-        version: 15.15.4(react-native@0.85.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4)
+        version: 15.15.4(react-native@0.85.0(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
       rimraf:
         specifier: 'catalog:'
         version: 6.1.3
@@ -151,7 +151,7 @@ importers:
     devDependencies:
       '@forward-software/react-auth':
         specifier: ^2.0.0
-        version: 2.0.4(react@19.2.4)
+        version: 2.0.4(react@19.2.5)
       '@testing-library/dom':
         specifier: ^10.4.1
         version: 10.4.1
@@ -160,7 +160,7 @@ importers:
         version: 6.9.1
       '@testing-library/react':
         specifier: ^16.3.2
-        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@types/node':
         specifier: ^25.5.2
         version: 25.5.2
@@ -175,10 +175,10 @@ importers:
         version: 29.0.2
       react:
         specifier: 'catalog:'
-        version: 19.2.4
+        version: 19.2.5
       react-dom:
         specifier: 'catalog:'
-        version: 19.2.4(react@19.2.4)
+        version: 19.2.5(react@19.2.5)
       rimraf:
         specifier: 'catalog:'
         version: 6.1.3
@@ -1445,10 +1445,10 @@ packages:
   react-devtools-core@6.1.5:
     resolution: {integrity: sha512-ePrwPfxAnB+7hgnEr8vpKxL9cmnp7F322t8oqcPshbIQQhDKgFDW4tjhF2wjVbdXF9O/nyuy3sQWd9JGpiLPvA==}
 
-  react-dom@19.2.4:
-    resolution: {integrity: sha512-AXJdLo8kgMbimY95O2aKQqsz2iWi9jMgKJhRBAxECE4IFxfcazB2LmzloIoibJI3C12IlY20+KFaLv+71bUJeQ==}
+  react-dom@19.2.5:
+    resolution: {integrity: sha512-J5bAZz+DXMMwW/wV3xzKke59Af6CHY7G4uYLN1OvBcKEsWOs4pQExj86BBKamxl/Ik5bx9whOrvBlSDfWzgSag==}
     peerDependencies:
-      react: ^19.2.4
+      react: ^19.2.5
 
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
@@ -1480,8 +1480,8 @@ packages:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
     engines: {node: '>=0.10.0'}
 
-  react@19.2.4:
-    resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
+  react@19.2.5:
+    resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
     engines: {node: '>=0.10.0'}
 
   read-package-json-fast@4.0.0:
@@ -2047,10 +2047,10 @@ snapshots:
 
   '@exodus/bytes@1.15.0': {}
 
-  '@forward-software/react-auth@2.0.4(react@19.2.4)':
+  '@forward-software/react-auth@2.0.4(react@19.2.5)':
     dependencies:
-      react: 19.2.4
-      use-sync-external-store: 1.6.0(react@19.2.4)
+      react: 19.2.5
+      use-sync-external-store: 1.6.0(react@19.2.5)
 
   '@isaacs/ttlcache@1.4.1': {}
 
@@ -2163,12 +2163,12 @@ snapshots:
 
   '@react-native/normalize-colors@0.85.0': {}
 
-  '@react-native/virtualized-lists@0.85.0(@types/react@19.2.14)(react-native@0.85.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4)':
+  '@react-native/virtualized-lists@0.85.0(@types/react@19.2.14)(react-native@0.85.0(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)':
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
-      react: 19.2.4
-      react-native: 0.85.0(@types/react@19.2.14)(react@19.2.4)
+      react: 19.2.5
+      react-native: 0.85.0(@types/react@19.2.14)(react@19.2.5)
     optionalDependencies:
       '@types/react': 19.2.14
 
@@ -2249,12 +2249,12 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
     dependencies:
       '@babel/runtime': 7.29.2
       '@testing-library/dom': 10.4.1
-      react: 19.2.4
-      react-dom: 19.2.4(react@19.2.4)
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
     optionalDependencies:
       '@types/react': 19.2.14
       '@types/react-dom': 19.2.3(@types/react@19.2.14)
@@ -2596,11 +2596,11 @@ snapshots:
 
   expect-type@1.3.0: {}
 
-  expo-modules-core@55.0.21(react-native@0.85.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4):
+  expo-modules-core@55.0.21(react-native@0.85.0(@types/react@19.2.14)(react@19.2.5))(react@19.2.5):
     dependencies:
       invariant: 2.2.4
-      react: 19.2.4
-      react-native: 0.85.0(@types/react@19.2.14)(react@19.2.4)
+      react: 19.2.5
+      react-native: 0.85.0(@types/react@19.2.14)(react@19.2.5)
 
   exponential-backoff@3.1.3: {}
 
@@ -3173,24 +3173,24 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  react-dom@19.2.4(react@19.2.4):
+  react-dom@19.2.5(react@19.2.5):
     dependencies:
-      react: 19.2.4
+      react: 19.2.5
       scheduler: 0.27.0
 
   react-is@17.0.2: {}
 
   react-is@18.3.1: {}
 
-  react-native-svg@15.15.4(react-native@0.85.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4):
+  react-native-svg@15.15.4(react-native@0.85.0(@types/react@19.2.14)(react@19.2.5))(react@19.2.5):
     dependencies:
       css-select: 5.2.2
       css-tree: 1.1.3
-      react: 19.2.4
-      react-native: 0.85.0(@types/react@19.2.14)(react@19.2.4)
+      react: 19.2.5
+      react-native: 0.85.0(@types/react@19.2.14)(react@19.2.5)
       warn-once: 0.1.1
 
-  react-native@0.85.0(@types/react@19.2.14)(react@19.2.4):
+  react-native@0.85.0(@types/react@19.2.14)(react@19.2.5):
     dependencies:
       '@react-native/assets-registry': 0.85.0
       '@react-native/codegen': 0.85.0
@@ -3198,7 +3198,7 @@ snapshots:
       '@react-native/gradle-plugin': 0.85.0
       '@react-native/js-polyfills': 0.85.0
       '@react-native/normalize-colors': 0.85.0
-      '@react-native/virtualized-lists': 0.85.0(@types/react@19.2.14)(react-native@0.85.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4)
+      '@react-native/virtualized-lists': 0.85.0(@types/react@19.2.14)(react-native@0.85.0(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
       abort-controller: 3.0.0
       anser: 1.4.10
       ansi-regex: 5.0.1
@@ -3214,7 +3214,7 @@ snapshots:
       nullthrows: 1.1.1
       pretty-format: 29.7.0
       promise: 8.3.0
-      react: 19.2.4
+      react: 19.2.5
       react-devtools-core: 6.1.5
       react-refresh: 0.14.2
       regenerator-runtime: 0.13.11
@@ -3236,7 +3236,7 @@ snapshots:
 
   react-refresh@0.14.2: {}
 
-  react@19.2.4: {}
+  react@19.2.5: {}
 
   read-package-json-fast@4.0.0:
     dependencies:
@@ -3445,9 +3445,9 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  use-sync-external-store@1.6.0(react@19.2.4):
+  use-sync-external-store@1.6.0(react@19.2.5):
     dependencies:
-      react: 19.2.4
+      react: 19.2.5
 
   utils-merge@1.0.1: {}
 
