@@ -118,7 +118,7 @@ importers:
         version: 6.0.1(vite@8.0.9(@types/node@25.6.0)(terser@5.46.1)(yaml@2.8.3))
       expo-modules-core:
         specifier: ^55.0.22
-        version: 55.0.22(react-native@0.85.1(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
+        version: 55.0.22(react-native@0.85.2(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
       jsdom:
         specifier: 'catalog:'
         version: 29.0.2
@@ -129,11 +129,11 @@ importers:
         specifier: 'catalog:'
         version: 19.2.5(react@19.2.5)
       react-native:
-        specifier: ^0.85.1
-        version: 0.85.1(@types/react@19.2.14)(react@19.2.5)
+        specifier: ^0.85.2
+        version: 0.85.2(@types/react@19.2.14)(react@19.2.5)
       react-native-svg:
         specifier: ^15.15.4
-        version: 15.15.4(react-native@0.85.1(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
+        version: 15.15.4(react-native@0.85.2(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
       rimraf:
         specifier: 'catalog:'
         version: 6.1.3
@@ -382,56 +382,56 @@ packages:
   '@oxc-project/types@0.126.0':
     resolution: {integrity: sha512-oGfVtjAgwQVVpfBrbtk4e1XDyWHRFta6BS3GWVzrF8xYBT2VGQAk39yJS/wFSMrZqoiCU4oghT3Ch0HaHGIHcQ==}
 
-  '@react-native/assets-registry@0.85.1':
-    resolution: {integrity: sha512-QODQ15teXThKaKdb7lnx4RifNUGnsGZ/NMKtkNBE89nJuK93+mPsb1ozp5xkGyLw7ZNVYO4Nkqsp4MsBOuAX8g==}
+  '@react-native/assets-registry@0.85.2':
+    resolution: {integrity: sha512-kauC/oPaxklU4Y+u9gBfCBJm51qX6WBZq4xx0USCdimtp+G8+554kpygfSWIjoqCJa2o06bWxBEjesiuCv+LzA==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
 
-  '@react-native/codegen@0.85.1':
-    resolution: {integrity: sha512-Ge8F5VejnI7ng/NGObqBBovuLbItvmmZDFQ1Qwt/nBhHtk7l2tOffNMVNTta9Jt8TW0oXxVj6FG3hr6nx03JrQ==}
+  '@react-native/codegen@0.85.2':
+    resolution: {integrity: sha512-XCginmxh0//++EXVOEJHBVZxHla294FzLCFF6jXwAUjvXVhqyIKyxhABfz+r4OOmaiuWk4Rtd4arqdAzeHeprg==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
 
-  '@react-native/community-cli-plugin@0.85.1':
-    resolution: {integrity: sha512-vZtNEYv5qMYvbA9cTBMuZ3QkCqyJ7lDQgbxh4MpoZHZ0+62qjJpCXn9xzFM0Rm5ZG2hO8WDDxcFdI581BdASdg==}
+  '@react-native/community-cli-plugin@0.85.2':
+    resolution: {integrity: sha512-3KLgSg1kHvBpr93zMaQhvfYTgnCw7yZRED+3J4dMcYjfSjtD0Wf8SofU6uBmAw9JaVYvP43lpdwUpI4p0+ABsg==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
     peerDependencies:
       '@react-native-community/cli': '*'
-      '@react-native/metro-config': 0.85.1
+      '@react-native/metro-config': 0.85.2
     peerDependenciesMeta:
       '@react-native-community/cli':
         optional: true
       '@react-native/metro-config':
         optional: true
 
-  '@react-native/debugger-frontend@0.85.1':
-    resolution: {integrity: sha512-GUC2ZEy+J/Goc4l243XeeY/8NdNXVXPXoRTc6Yy14OiDcy7Yk87VyrMARbp23wCbzhnrz0dnYB8rxJ+AJvMzCg==}
+  '@react-native/debugger-frontend@0.85.2':
+    resolution: {integrity: sha512-j+0b9H5f5hGTLQxHIhJU/b/W6ijuxJF+ZTLHB0se2kzUBNxFKd7DkIc6753qk3CJdiv55vxG3XDgmlpbHxOpmA==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
 
-  '@react-native/debugger-shell@0.85.1':
-    resolution: {integrity: sha512-M/ogODh0uDFJ7xOlCc+v9nKUucUXGJwVOupl+zb3VT8tJnI2Cie/Fiv9NszAD/bzRQhJSrPZkJSAO6VW0XbWyA==}
+  '@react-native/debugger-shell@0.85.2':
+    resolution: {integrity: sha512-r5BkhqPMfg3LmaZS5zadHmBNVH5h4bhSpv4BEPGfK4gat9HABAMzUzybi+2wpgU3SoHxnyKGdExEJvoqVcjeRg==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
 
-  '@react-native/dev-middleware@0.85.1':
-    resolution: {integrity: sha512-vJSIZP7yymZMnwOrdNjalVf8jqcAFtmi6zT3sC9MRMgJPGkDy05g8y5zgAkgTxpNtVsv+/q5pst8woYp7pgRkA==}
+  '@react-native/dev-middleware@0.85.2':
+    resolution: {integrity: sha512-3J+NaDUg+QEfDeLAUzgaWhpaxEg78g+KwbydlDCewh2G6WnHpsty8XooruxNHzyAsqVWywZMrzmbn78Ctc1O9Q==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
 
-  '@react-native/gradle-plugin@0.85.1':
-    resolution: {integrity: sha512-KeTntbnsH/NOdzZrSE8tgep+9jEMlEfklVDtgxnjjb5nDhhBD016judwyo9bsinZnuwXxmemXnOOqOfcEawxbg==}
+  '@react-native/gradle-plugin@0.85.2':
+    resolution: {integrity: sha512-YXBOLeAqFrv7XwUeBPTKZeOV1FIxn4AW7UAEitScf3ibC8bu8+6NpJu4HWgbNQHg7vDbbTZVbcOl8EwGxsSq2w==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
 
-  '@react-native/js-polyfills@0.85.1':
-    resolution: {integrity: sha512-VseQZAKnDbmpZThLWviDIJ0NmuSiwiHA6vc2HNJTTVqTy2mQR0+858y9kDdDBQPYe0HH8+W1mYui2i4eUWGh4g==}
+  '@react-native/js-polyfills@0.85.2':
+    resolution: {integrity: sha512-esGEAmKVM40DV/yVmNljCKZTIeUo7qXqc+Hwffkv3TG+b3E24xyFovHrbP98gGxZr2ZsEyx+2sKLdXF5asY5nw==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
 
-  '@react-native/normalize-colors@0.85.1':
-    resolution: {integrity: sha512-w+4ZZ2PvvtC0IODEmxizYOrHmeDgdzpM7CKhtTNWoNtDWZoi7/ZY3UmNntn9poPorUy5cwFbfYiP/8rJFEsFvQ==}
+  '@react-native/normalize-colors@0.85.2':
+    resolution: {integrity: sha512-svuOLtjbFGXDdHsriHXuND5FgHg7XlkOXCbH/8+X4t76YLH6qSTffSIQQrKLDL5mn4EFU+Oh/PNO0/FfpnTOTg==}
 
-  '@react-native/virtualized-lists@0.85.1':
-    resolution: {integrity: sha512-RLpoATkxeTaYxna5dDLIxEtoStp9UL7ryHIIOmKnE9NQW3ggR+U9DWQPXQkOfRc7/kPYba4ynKA2fIISGysVTg==}
+  '@react-native/virtualized-lists@0.85.2':
+    resolution: {integrity: sha512-wmVKpAlcr+UB0L5SpbrV865EdleUP7I5+X+48e1aRsQK8q+wsTRBXeUwWVip/1l+HZwlZFeO8iOILJ16VRu0Cw==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
     peerDependencies:
       '@types/react': ^19.2.0
       react: '*'
-      react-native: 0.85.1
+      react-native: 0.85.2
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -709,8 +709,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  baseline-browser-mapping@2.10.18:
-    resolution: {integrity: sha512-VSnGQAOLtP5mib/DPyg2/t+Tlv65NTBz83BJBJvmLVHHuKJVaDOBvJJykiT5TR++em5nfAySPccDZDa4oSrn8A==}
+  baseline-browser-mapping@2.10.20:
+    resolution: {integrity: sha512-1AaXxEPfXT+GvTBJFuy4yXVHWJBXa4OdbIebGN/wX5DlsIkU0+wzGnd2lOzokSk51d5LUmqjgBLRLlypLUqInQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -881,8 +881,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.336:
-    resolution: {integrity: sha512-AbH9q9J455r/nLmdNZes0G0ZKcRX73FicwowalLs6ijwOmCJSRRrLX63lcAlzy9ux3dWK1w1+1nsBJEWN11hcQ==}
+  electron-to-chromium@1.5.340:
+    resolution: {integrity: sha512-908qahOGocRMinT2nM3ajCEM99H4iPdv84eagPP3FfZy/1ZGeOy2CZYzjhms81ckOPCXPlW7LkY4XpxD8r1DrA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -1472,12 +1472,12 @@ packages:
       react: '*'
       react-native: '*'
 
-  react-native@0.85.1:
-    resolution: {integrity: sha512-1K2TIvu2M1C8gqkPevi/MuLan16mQvEdURiTlwHgrb6S2vvkDyik6TrkkXMlMMhz9hF5RT8wFyDUdlpGFlkpXg==}
+  react-native@0.85.2:
+    resolution: {integrity: sha512-GFWEPwLYirfj5X8gMtXOWtqX0cqUEURRHETZfFk37VCa4++izrKvGvv24anvuyulXV87NAhVkfNw93rLg3HByw==}
     engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
     hasBin: true
     peerDependencies:
-      '@react-native/jest-preset': 0.85.1
+      '@react-native/jest-preset': 0.85.2
       '@types/react': ^19.1.1
       react: ^19.2.3
     peerDependenciesMeta:
@@ -2106,9 +2106,9 @@ snapshots:
 
   '@oxc-project/types@0.126.0': {}
 
-  '@react-native/assets-registry@0.85.1': {}
+  '@react-native/assets-registry@0.85.2': {}
 
-  '@react-native/codegen@0.85.1':
+  '@react-native/codegen@0.85.2':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/parser': 7.29.2
@@ -2120,9 +2120,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@react-native/community-cli-plugin@0.85.1':
+  '@react-native/community-cli-plugin@0.85.2':
     dependencies:
-      '@react-native/dev-middleware': 0.85.1
+      '@react-native/dev-middleware': 0.85.2
       debug: 4.4.3
       invariant: 2.2.4
       metro: 0.84.3
@@ -2134,9 +2134,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@react-native/debugger-frontend@0.85.1': {}
+  '@react-native/debugger-frontend@0.85.2': {}
 
-  '@react-native/debugger-shell@0.85.1':
+  '@react-native/debugger-shell@0.85.2':
     dependencies:
       cross-spawn: 7.0.6
       debug: 4.4.3
@@ -2144,11 +2144,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@react-native/dev-middleware@0.85.1':
+  '@react-native/dev-middleware@0.85.2':
     dependencies:
       '@isaacs/ttlcache': 1.4.1
-      '@react-native/debugger-frontend': 0.85.1
-      '@react-native/debugger-shell': 0.85.1
+      '@react-native/debugger-frontend': 0.85.2
+      '@react-native/debugger-shell': 0.85.2
       chrome-launcher: 0.15.2
       chromium-edge-launcher: 0.3.0
       connect: 3.7.0
@@ -2163,18 +2163,18 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@react-native/gradle-plugin@0.85.1': {}
+  '@react-native/gradle-plugin@0.85.2': {}
 
-  '@react-native/js-polyfills@0.85.1': {}
+  '@react-native/js-polyfills@0.85.2': {}
 
-  '@react-native/normalize-colors@0.85.1': {}
+  '@react-native/normalize-colors@0.85.2': {}
 
-  '@react-native/virtualized-lists@0.85.1(@types/react@19.2.14)(react-native@0.85.1(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)':
+  '@react-native/virtualized-lists@0.85.2(@types/react@19.2.14)(react-native@0.85.2(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)':
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
       react: 19.2.5
-      react-native: 0.85.1(@types/react@19.2.14)(react@19.2.5)
+      react-native: 0.85.2(@types/react@19.2.14)(react@19.2.5)
     optionalDependencies:
       '@types/react': 19.2.14
 
@@ -2398,7 +2398,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  baseline-browser-mapping@2.10.18: {}
+  baseline-browser-mapping@2.10.20: {}
 
   bidi-js@1.0.3:
     dependencies:
@@ -2416,9 +2416,9 @@ snapshots:
 
   browserslist@4.28.2:
     dependencies:
-      baseline-browser-mapping: 2.10.18
+      baseline-browser-mapping: 2.10.20
       caniuse-lite: 1.0.30001788
-      electron-to-chromium: 1.5.336
+      electron-to-chromium: 1.5.340
       node-releases: 2.0.37
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
@@ -2568,7 +2568,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.336: {}
+  electron-to-chromium@1.5.340: {}
 
   emoji-regex@8.0.0: {}
 
@@ -2602,11 +2602,11 @@ snapshots:
 
   expect-type@1.3.0: {}
 
-  expo-modules-core@55.0.22(react-native@0.85.1(@types/react@19.2.14)(react@19.2.5))(react@19.2.5):
+  expo-modules-core@55.0.22(react-native@0.85.2(@types/react@19.2.14)(react@19.2.5))(react@19.2.5):
     dependencies:
       invariant: 2.2.4
       react: 19.2.5
-      react-native: 0.85.1(@types/react@19.2.14)(react@19.2.5)
+      react-native: 0.85.2(@types/react@19.2.14)(react@19.2.5)
 
   exponential-backoff@3.1.3: {}
 
@@ -3195,23 +3195,23 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-native-svg@15.15.4(react-native@0.85.1(@types/react@19.2.14)(react@19.2.5))(react@19.2.5):
+  react-native-svg@15.15.4(react-native@0.85.2(@types/react@19.2.14)(react@19.2.5))(react@19.2.5):
     dependencies:
       css-select: 5.2.2
       css-tree: 1.1.3
       react: 19.2.5
-      react-native: 0.85.1(@types/react@19.2.14)(react@19.2.5)
+      react-native: 0.85.2(@types/react@19.2.14)(react@19.2.5)
       warn-once: 0.1.1
 
-  react-native@0.85.1(@types/react@19.2.14)(react@19.2.5):
+  react-native@0.85.2(@types/react@19.2.14)(react@19.2.5):
     dependencies:
-      '@react-native/assets-registry': 0.85.1
-      '@react-native/codegen': 0.85.1
-      '@react-native/community-cli-plugin': 0.85.1
-      '@react-native/gradle-plugin': 0.85.1
-      '@react-native/js-polyfills': 0.85.1
-      '@react-native/normalize-colors': 0.85.1
-      '@react-native/virtualized-lists': 0.85.1(@types/react@19.2.14)(react-native@0.85.1(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
+      '@react-native/assets-registry': 0.85.2
+      '@react-native/codegen': 0.85.2
+      '@react-native/community-cli-plugin': 0.85.2
+      '@react-native/gradle-plugin': 0.85.2
+      '@react-native/js-polyfills': 0.85.2
+      '@react-native/normalize-colors': 0.85.2
+      '@react-native/virtualized-lists': 0.85.2(@types/react@19.2.14)(react-native@0.85.2(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
       abort-controller: 3.0.0
       anser: 1.4.10
       ansi-regex: 5.0.1
