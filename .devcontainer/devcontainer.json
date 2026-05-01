@@ -17,7 +17,7 @@
 			"username": "node"
 		},
 		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/node:2": {},
 		"ghcr.io/joshuanianji/devcontainer-features/mount-pnpm-store:1": {}
 	},
 
