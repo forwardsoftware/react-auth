@@ -117,8 +117,8 @@ importers:
         specifier: 'catalog:'
         version: 6.0.1(vite@8.0.10(@types/node@25.6.0)(terser@5.46.2)(yaml@2.8.4))
       expo-modules-core:
-        specifier: ^55.0.24
-        version: 55.0.24(react-native@0.85.3(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
+        specifier: ^55.0.25
+        version: 55.0.25(react-native@0.85.3(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
@@ -939,8 +939,8 @@ packages:
     resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
 
-  expo-modules-core@55.0.24:
-    resolution: {integrity: sha512-1FztZjelwf3xQZpD6+LFo6IKjnGF/PMVXYkv9aC3EybMl/ZbXji35cfhy9W5uR/bwQ7L+SVqvd5A00XOoIiO8Q==}
+  expo-modules-core@55.0.25:
+    resolution: {integrity: sha512-yXpfg7aHLbuqoXocK34Vua6Aey5SCyqLygAsXAMbul9P8vfBjLpaOPiTJ5cLVF7Drfq8ownqVJO6qpGEtZ6GOw==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -2610,7 +2610,7 @@ snapshots:
 
   expect-type@1.3.0: {}
 
-  expo-modules-core@55.0.24(react-native@0.85.3(@types/react@19.2.14)(react@19.2.5))(react@19.2.5):
+  expo-modules-core@55.0.25(react-native@0.85.3(@types/react@19.2.14)(react@19.2.5))(react@19.2.5):
     dependencies:
       invariant: 2.2.4
       react: 19.2.5
