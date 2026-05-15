@@ -7,11 +7,11 @@ autoInstallPeers: false
 catalog:
   '@types/react': ^19.2.14
   '@types/react-dom': ^19.2.3
-  '@vitejs/plugin-react': ^6.0.1
+  '@vitejs/plugin-react': ^6.0.2
   jsdom: ^29.1.1
   react: ^19.2.6
   react-dom: ^19.2.6
   rimraf: ^6.1.3
   typescript: ^6.0.3
-  vite: ^8.0.12
+  vite: ^8.0.13
   vitest: ^4.1.6
