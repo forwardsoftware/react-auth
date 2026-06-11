@@ -117,8 +117,8 @@ importers:
         specifier: 'catalog:'
         version: 6.0.2(vite@8.0.16(@types/node@25.9.3)(terser@5.48.0)(yaml@2.9.0))
       expo-modules-core:
-        specifier: ^56.0.15
-        version: 56.0.15(react-native@0.86.0(@types/react@19.2.17)(react@19.2.7))(react@19.2.7)
+        specifier: ^56.0.16
+        version: 56.0.16(react-native@0.86.0(@types/react@19.2.17)(react@19.2.7))(react@19.2.7)
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
@@ -353,8 +353,8 @@ packages:
       '@noble/hashes':
         optional: true
 
-  '@expo/expo-modules-macros-plugin@0.0.9':
-    resolution: {integrity: sha512-odai6D7ng/gA7At8ukFcWcauNEeDdyVqzVPbQxDkyU2NTJ4kgphA4I5iigS5C4LXFicSIzEt2nzdlLM8sjsTdA==}
+  '@expo/expo-modules-macros-plugin@0.2.2':
+    resolution: {integrity: sha512-4IMzPDIo/VOXREQjsJtliSfqYVZvfzU2SLFS/9sKMWF848S8CHx+e/E+Vf0TcMvpWCCKX5umyqxb13KJJ+YUzg==}
 
   '@forward-software/react-auth@2.0.4':
     resolution: {integrity: sha512-12b/q56hBcU8EtfnGE2drIAqrHde+KfJnPT0HvtEuBGyPY++blkwsgQQKXQ9YykUONYg2FDt28dxds8DEweQdA==}
@@ -951,8 +951,8 @@ packages:
     resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
 
-  expo-modules-core@56.0.15:
-    resolution: {integrity: sha512-XOXuWjtUA/xF8VjMHoRTRxuAmrAeUv8QyASX3h/CpTNS58fOt3stV8EYW7BinJPJyqwV7BZoYV83iN0p2FzyZw==}
+  expo-modules-core@56.0.16:
+    resolution: {integrity: sha512-IVdT0CnqOpQCPdemA5rb50CPbbhWeJePnvuH0yUmOmyMkNky8WVOdRQtVicoIv4CCG5hDrzPIxULD4YOHZ5CHg==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -961,8 +961,8 @@ packages:
       react-native-worklets:
         optional: true
 
-  expo-modules-jsi@56.0.8:
-    resolution: {integrity: sha512-tXqFU1MHrf7Ctq+Pw0qOeIPDFl1W51p9nRRZy9vVUn4GNuAk1Av0vrj0SGLvcxJvDf3aGwSzr8o8dgUsX5sG0g==}
+  expo-modules-jsi@56.0.9:
+    resolution: {integrity: sha512-2lfDkRcsP/Qh2upS+nu0MS0tfGsghc6ehTivzbgM5nJz0MGYhAJxCJSeendWM+aOQutQAwzsoxrNT0nW8lRAwA==}
     peerDependencies:
       react-native: '*'
 
@@ -2086,7 +2086,7 @@ snapshots:
 
   '@exodus/bytes@1.15.0': {}
 
-  '@expo/expo-modules-macros-plugin@0.0.9': {}
+  '@expo/expo-modules-macros-plugin@0.2.2': {}
 
   '@forward-software/react-auth@2.0.4(react@19.2.7)':
     dependencies:
@@ -2635,15 +2635,15 @@ snapshots:
 
   expect-type@1.3.0: {}
 
-  expo-modules-core@56.0.15(react-native@0.86.0(@types/react@19.2.17)(react@19.2.7))(react@19.2.7):
+  expo-modules-core@56.0.16(react-native@0.86.0(@types/react@19.2.17)(react@19.2.7))(react@19.2.7):
     dependencies:
-      '@expo/expo-modules-macros-plugin': 0.0.9
-      expo-modules-jsi: 56.0.8(react-native@0.86.0(@types/react@19.2.17)(react@19.2.7))
+      '@expo/expo-modules-macros-plugin': 0.2.2
+      expo-modules-jsi: 56.0.9(react-native@0.86.0(@types/react@19.2.17)(react@19.2.7))
       invariant: 2.2.4
       react: 19.2.7
       react-native: 0.86.0(@types/react@19.2.17)(react@19.2.7)
 
-  expo-modules-jsi@56.0.8(react-native@0.86.0(@types/react@19.2.17)(react@19.2.7)):
+  expo-modules-jsi@56.0.9(react-native@0.86.0(@types/react@19.2.17)(react@19.2.7)):
     dependencies:
       react-native: 0.86.0(@types/react@19.2.17)(react@19.2.7)
 
