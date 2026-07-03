@@ -31,8 +31,8 @@ catalogs:
       specifier: ^6.0.3
       version: 6.0.3
     vite:
-      specifier: ^8.1.0
-      version: 8.1.0
+      specifier: ^8.1.3
+      version: 8.1.3
     vitest:
       specifier: ^4.1.9
       version: 4.1.9
@@ -76,7 +76,7 @@ importers:
         version: 19.2.3(@types/react@19.2.17)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.0.3(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
+        version: 6.0.3(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
@@ -88,10 +88,10 @@ importers:
         version: 19.2.7(react@19.2.7)
       vite:
         specifier: 'catalog:'
-        version: 8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
+        version: 8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
       vitest:
         specifier: 'catalog:'
-        version: 4.1.9(@types/node@26.1.0)(jsdom@29.1.1)(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
+        version: 4.1.9(@types/node@26.1.0)(jsdom@29.1.1)(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
 
   packages/apple-signin:
     devDependencies:
@@ -115,7 +115,7 @@ importers:
         version: 19.2.17
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.0.3(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
+        version: 6.0.3(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
       expo-modules-core:
         specifier: ^56.0.17
         version: 56.0.17(react-native@0.86.0(@types/react@19.2.17)(react@19.2.7))(react@19.2.7)
@@ -142,10 +142,10 @@ importers:
         version: 6.0.3
       vite:
         specifier: 'catalog:'
-        version: 8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
+        version: 8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
       vitest:
         specifier: 'catalog:'
-        version: 4.1.9(@types/node@26.1.0)(jsdom@29.1.1)(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
+        version: 4.1.9(@types/node@26.1.0)(jsdom@29.1.1)(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
 
   packages/google-signin:
     devDependencies:
@@ -169,7 +169,7 @@ importers:
         version: 19.2.17
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.0.3(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
+        version: 6.0.3(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
@@ -187,10 +187,10 @@ importers:
         version: 6.0.3
       vite:
         specifier: 'catalog:'
-        version: 8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
+        version: 8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
       vitest:
         specifier: 'catalog:'
-        version: 4.1.9(@types/node@26.1.0)(jsdom@29.1.1)(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
+        version: 4.1.9(@types/node@26.1.0)(jsdom@29.1.1)(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
 
 packages:
 
@@ -885,8 +885,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.383:
-    resolution: {integrity: sha512-I2484/KkAvl8lm9VyjH2JnbOIV0d/UCqT7gbzs6l+o6Vmn9wgB66uVcKX+Vk6HrXtY6fbWTOEXuv8waDTuFNCw==}
+  electron-to-chromium@1.5.384:
+    resolution: {integrity: sha512-g6KAKY1vkYsADvSPWvdJsuYT0ixdcu6lUtD9P/wJKGBEDlZVXh2AX42j1mPqqaQPDluWjara9ziQ7xqAeXCt5A==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -1437,8 +1437,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  postcss@8.5.15:
-    resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
+  postcss@8.5.16:
+    resolution: {integrity: sha512-vuwillviilfKZsg0VGj5R/YwwcHx4SLsIOI/7K6mQkWx+l5cUHTjj5g0AasTBcyXsbfTgrwsUNmVUb5xVwyPwg==}
     engines: {node: ^10 || ^12 || >=14}
 
   pretty-format@27.5.1:
@@ -1721,8 +1721,8 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
-  vite@8.1.0:
-    resolution: {integrity: sha512-BuJcQK/56NQTWDGn4ABea3q4SSBdNPWwNZKTkkUpcMPnLoquSYH8llRtSUIgoL1KSCpHt5eghLShn50mH36y7Q==}
+  vite@8.1.3:
+    resolution: {integrity: sha512-Ds+gBRbj0lwRO2Y5hwnUBdxSwlAve9LeRyU4sNnAr0ewW0gWF0n5bgXgUzbgZ49MV9BVUAQUFYVcDUcilUExMA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -2315,10 +2315,10 @@ snapshots:
     dependencies:
       '@types/yargs-parser': 21.0.3
 
-  '@vitejs/plugin-react@6.0.3(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))':
+  '@vitejs/plugin-react@6.0.3(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
+      vite: 8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
 
   '@vitest/expect@4.1.9':
     dependencies:
@@ -2329,13 +2329,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.9(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))':
+  '@vitest/mocker@4.1.9(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.9
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
+      vite: 8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.9':
     dependencies:
@@ -2424,7 +2424,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.10.40
       caniuse-lite: 1.0.30001800
-      electron-to-chromium: 1.5.383
+      electron-to-chromium: 1.5.384
       node-releases: 2.0.50
       update-browserslist-db: 1.2.3(browserslist@4.28.4)
 
@@ -2574,7 +2574,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.383: {}
+  electron-to-chromium@1.5.384: {}
 
   emoji-regex@8.0.0: {}
 
@@ -3159,7 +3159,7 @@ snapshots:
 
   pidtree@1.0.0: {}
 
-  postcss@8.5.15:
+  postcss@8.5.16:
     dependencies:
       nanoid: 3.3.12
       picocolors: 1.1.1
@@ -3465,11 +3465,11 @@ snapshots:
 
   utils-merge@1.0.1: {}
 
-  vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0):
+  vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
-      postcss: 8.5.15
+      postcss: 8.5.16
       rolldown: 1.1.3
       tinyglobby: 0.2.17
     optionalDependencies:
@@ -3478,10 +3478,10 @@ snapshots:
       terser: 5.48.0
       yaml: 2.9.0
 
-  vitest@4.1.9(@types/node@26.1.0)(jsdom@29.1.1)(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)):
+  vitest@4.1.9(@types/node@26.1.0)(jsdom@29.1.1)(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.9
-      '@vitest/mocker': 4.1.9(vite@8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
+      '@vitest/mocker': 4.1.9(vite@8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.9
       '@vitest/runner': 4.1.9
       '@vitest/snapshot': 4.1.9
@@ -3498,7 +3498,7 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.1.0(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
+      vite: 8.1.3(@types/node@26.1.0)(terser@5.48.0)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 26.1.0
