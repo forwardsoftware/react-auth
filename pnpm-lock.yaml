@@ -13,8 +13,8 @@ catalogs:
       specifier: ^19.2.3
       version: 19.2.3
     '@vitejs/plugin-react':
-      specifier: ^6.0.3
-      version: 6.0.3
+      specifier: ^6.0.4
+      version: 6.0.4
     jsdom:
       specifier: ^29.1.1
       version: 29.1.1
@@ -76,7 +76,7 @@ importers:
         version: 19.2.3(@types/react@19.2.17)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.0.3(vite@8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0))
+        version: 6.0.4(vite@8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0))
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
@@ -115,7 +115,7 @@ importers:
         version: 19.2.17
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.0.3(vite@8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0))
+        version: 6.0.4(vite@8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0))
       expo-modules-core:
         specifier: ^57.0.6
         version: 57.0.6(react-native@0.86.0(@types/react@19.2.17)(react@19.2.8))(react@19.2.8)
@@ -169,7 +169,7 @@ importers:
         version: 19.2.17
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.0.3(vite@8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0))
+        version: 6.0.4(vite@8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0))
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
@@ -731,8 +731,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@vitejs/plugin-react@6.0.3':
-    resolution: {integrity: sha512-vmFvco5/QuC2f9Oj+wTk0+9XeDFkHxSamwZKYc7MxYwKICfvUvlMhqKI0VuICPltGqh1neqBKDvO4kes1ya8vg==}
+  '@vitejs/plugin-react@6.0.4':
+    resolution: {integrity: sha512-XcCQz0TBpBgljhj0gMuuDj49i6Ytqh5q1osT/Gp5uAVJUCTWxyskk/l1jwYYiu2xcNHHipdMz40EGfM1VdamVg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       '@rolldown/plugin-babel': ^0.1.7 || ^0.2.0
@@ -2499,7 +2499,7 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@vitejs/plugin-react@6.0.3(vite@8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0))':
+  '@vitejs/plugin-react@6.0.4(vite@8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       vite: 8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0)
