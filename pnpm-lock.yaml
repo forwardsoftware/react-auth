@@ -117,8 +117,8 @@ importers:
         specifier: 'catalog:'
         version: 6.0.4(vite@8.1.5(@types/node@26.1.1)(terser@5.48.0)(yaml@2.9.0))
       expo-modules-core:
-        specifier: ^57.0.6
-        version: 57.0.6(react-native@0.86.0(@types/react@19.2.17)(react@19.2.8))(react@19.2.8)
+        specifier: ^57.0.7
+        version: 57.0.7(react-native@0.86.0(@types/react@19.2.17)(react@19.2.8))(react@19.2.8)
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
@@ -833,8 +833,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  baseline-browser-mapping@2.11.0:
-    resolution: {integrity: sha512-oCu2wfipvX3AePSgmOuKkIywOu+8n9psz7hXYmk56ghpu3+7KzNIBopaOs4c9BrtdnTtW30unG9GTfHo7EwERQ==}
+  baseline-browser-mapping@2.11.1:
+    resolution: {integrity: sha512-HYXq73DDpCtNzOmrFsm9eSwCvWCql0RzqjpDzXN9EadiLJ4DNat0nsZ/Bzmy+Ud12mb4/zKDY0cQ805ZzN+i0A==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -1059,8 +1059,8 @@ packages:
     resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
 
-  expo-modules-core@57.0.6:
-    resolution: {integrity: sha512-hePwOh2+i+EpWrVnv95sQeQ0OD5PYuEuIhmglVLzQVaVBV3zHcRvLAc1rV8ROqUL6YtAQUXjPkoSx1ly2ZdTuQ==}
+  expo-modules-core@57.0.7:
+    resolution: {integrity: sha512-5HrbCfgYmLs0a5dzfM4GmRGelVTPIg+eYp0vmSbWnKRTOPj5DyVOfg1rHGEsuNKp07QwDxfLJfQVp8CNbuvxMQ==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -1069,8 +1069,8 @@ packages:
       react-native-worklets:
         optional: true
 
-  expo-modules-jsi@57.0.3:
-    resolution: {integrity: sha512-B+iXJCC5OIXjFKkLLSY2DZ8BGS+hC3PBTrALpV43pHqhXqqZrRH3uTEylZgsoKQO8N8tjmjAua2ucTFHtr1o0w==}
+  expo-modules-jsi@57.0.4:
+    resolution: {integrity: sha512-vt7FyqUqqFXiRVnBqYD7y+GSPTgeua5Ocoy0+SYt+RSHkZEA2Fyop7If3g1TYDzQObYybPRo7TG2Rle1XLaWFw==}
     peerDependencies:
       react-native: '*'
 
@@ -2588,7 +2588,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  baseline-browser-mapping@2.11.0: {}
+  baseline-browser-mapping@2.11.1: {}
 
   bidi-js@1.0.3:
     dependencies:
@@ -2606,7 +2606,7 @@ snapshots:
 
   browserslist@4.28.7:
     dependencies:
-      baseline-browser-mapping: 2.11.0
+      baseline-browser-mapping: 2.11.1
       caniuse-lite: 1.0.30001806
       electron-to-chromium: 1.5.395
       node-releases: 2.0.51
@@ -2792,15 +2792,15 @@ snapshots:
 
   expect-type@1.3.0: {}
 
-  expo-modules-core@57.0.6(react-native@0.86.0(@types/react@19.2.17)(react@19.2.8))(react@19.2.8):
+  expo-modules-core@57.0.7(react-native@0.86.0(@types/react@19.2.17)(react@19.2.8))(react@19.2.8):
     dependencies:
       '@expo/expo-modules-macros-plugin': 0.6.1
-      expo-modules-jsi: 57.0.3(react-native@0.86.0(@types/react@19.2.17)(react@19.2.8))
+      expo-modules-jsi: 57.0.4(react-native@0.86.0(@types/react@19.2.17)(react@19.2.8))
       invariant: 2.2.4
       react: 19.2.8
       react-native: 0.86.0(@types/react@19.2.17)(react@19.2.8)
 
-  expo-modules-jsi@57.0.3(react-native@0.86.0(@types/react@19.2.17)(react@19.2.8)):
+  expo-modules-jsi@57.0.4(react-native@0.86.0(@types/react@19.2.17)(react@19.2.8)):
     dependencies:
       react-native: 0.86.0(@types/react@19.2.17)(react@19.2.8)
 
