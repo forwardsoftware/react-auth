@@ -60,7 +60,7 @@
     "@types/node": "^26.2.0",
     "@types/react": "catalog:",
     "@vitejs/plugin-react": "catalog:",
-    "expo-modules-core": "^57.0.10",
+    "expo-modules-core": "^57.0.11",
     "jsdom": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
