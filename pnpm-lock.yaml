@@ -66,8 +66,8 @@ importers:
         specifier: ^16.3.2
         version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@types/node':
-        specifier: ^26.2.0
-        version: 26.2.0
+        specifier: ^26.4.0
+        version: 26.4.0
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.18
@@ -76,7 +76,7 @@ importers:
         version: 19.2.5(@types/react@19.2.18)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.1.1(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2))
+        version: 6.1.1(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
@@ -88,10 +88,10 @@ importers:
         version: 19.2.8(react@19.2.8)
       vite:
         specifier: 'catalog:'
-        version: 8.2.2(@types/node@26.2.0)(terser@5.51.2)
+        version: 8.2.2(@types/node@26.4.0)(terser@5.51.2)
       vitest:
         specifier: 'catalog:'
-        version: 4.1.10(@types/node@26.2.0)(jsdom@29.1.1)(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2))
+        version: 4.1.10(@types/node@26.4.0)(jsdom@29.1.1)(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))
 
   packages/apple-signin:
     devDependencies:
@@ -108,14 +108,14 @@ importers:
         specifier: ^16.3.2
         version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@types/node':
-        specifier: ^26.2.0
-        version: 26.2.0
+        specifier: ^26.4.0
+        version: 26.4.0
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.18
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.1.1(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2))
+        version: 6.1.1(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))
       expo-modules-core:
         specifier: ^57.0.14
         version: 57.0.14(react-native@0.87.1(@types/react@19.2.18)(react@19.2.8))(react@19.2.8)
@@ -142,10 +142,10 @@ importers:
         version: 7.0.2
       vite:
         specifier: 'catalog:'
-        version: 8.2.2(@types/node@26.2.0)(terser@5.51.2)
+        version: 8.2.2(@types/node@26.4.0)(terser@5.51.2)
       vitest:
         specifier: 'catalog:'
-        version: 4.1.10(@types/node@26.2.0)(jsdom@29.1.1)(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2))
+        version: 4.1.10(@types/node@26.4.0)(jsdom@29.1.1)(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))
 
   packages/google-signin:
     devDependencies:
@@ -162,14 +162,14 @@ importers:
         specifier: ^16.3.2
         version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@types/node':
-        specifier: ^26.2.0
-        version: 26.2.0
+        specifier: ^26.4.0
+        version: 26.4.0
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.18
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.1.1(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2))
+        version: 6.1.1(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
@@ -187,10 +187,10 @@ importers:
         version: 7.0.2
       vite:
         specifier: 'catalog:'
-        version: 8.2.2(@types/node@26.2.0)(terser@5.51.2)
+        version: 8.2.2(@types/node@26.4.0)(terser@5.51.2)
       vitest:
         specifier: 'catalog:'
-        version: 4.1.10(@types/node@26.2.0)(jsdom@29.1.1)(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2))
+        version: 4.1.10(@types/node@26.4.0)(jsdom@29.1.1)(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))
 
 packages:
 
@@ -576,8 +576,8 @@ packages:
   '@types/istanbul-reports@3.0.4':
     resolution: {integrity: sha512-pk2B1NWalF9toCRu6gjBzR69syFjP4Od8WRAX+0mmf9lAjCRicLOWc+ZrxZHx/0XRjotgkF9t6iaMJ+aXcOdZQ==}
 
-  '@types/node@26.2.0':
-    resolution: {integrity: sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg==}
+  '@types/node@26.4.0':
+    resolution: {integrity: sha512-faiGnoIrLH/V8cibOMEAZ8pMw6oXqSukl29ra4mN8GdaB2ZewzeaLj+INpV5N+Z1eKWzY+IzaIZH2EIR6YZRNQ==}
 
   '@types/react-dom@19.2.5':
     resolution: {integrity: sha512-fMPwH9v7r/pp43yUd2/Mbiex5KouJwwR3dzHkhLREUC6764VyDsqxhAxv6OFEYR1RhjOyD1naqba8ECDBe7ZQg==}
@@ -2152,7 +2152,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 26.2.0
+      '@types/node': 26.4.0
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -2355,7 +2355,7 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
 
-  '@types/node@26.2.0':
+  '@types/node@26.4.0':
     dependencies:
       undici-types: 8.3.0
 
@@ -2433,10 +2433,10 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@vitejs/plugin-react@6.1.1(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2))':
+  '@vitejs/plugin-react@6.1.1(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.2.2(@types/node@26.2.0)(terser@5.51.2)
+      vite: 8.2.2(@types/node@26.4.0)(terser@5.51.2)
 
   '@vitest/expect@4.1.10':
     dependencies:
@@ -2447,13 +2447,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.10(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2))':
+  '@vitest/mocker@4.1.10(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))':
     dependencies:
       '@vitest/spy': 4.1.10
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.2.2(@types/node@26.2.0)(terser@5.51.2)
+      vite: 8.2.2(@types/node@26.4.0)(terser@5.51.2)
 
   '@vitest/pretty-format@4.1.10':
     dependencies:
@@ -2561,7 +2561,7 @@ snapshots:
 
   chrome-launcher@0.15.2:
     dependencies:
-      '@types/node': 26.2.0
+      '@types/node': 26.4.0
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -2570,7 +2570,7 @@ snapshots:
 
   chromium-edge-launcher@0.3.0:
     dependencies:
-      '@types/node': 26.2.0
+      '@types/node': 26.4.0
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -2845,7 +2845,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 26.2.0
+      '@types/node': 26.4.0
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -2862,7 +2862,7 @@ snapshots:
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 26.2.0
+      '@types/node': 26.4.0
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -3595,7 +3595,7 @@ snapshots:
 
   utils-merge@1.0.1: {}
 
-  vite@8.2.2(@types/node@26.2.0)(terser@5.51.2):
+  vite@8.2.2(@types/node@26.4.0)(terser@5.51.2):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.5
@@ -3603,14 +3603,14 @@ snapshots:
       rolldown: 1.2.5
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 26.2.0
+      '@types/node': 26.4.0
       fsevents: 2.3.3
       terser: 5.51.2
 
-  vitest@4.1.10(@types/node@26.2.0)(jsdom@29.1.1)(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2)):
+  vitest@4.1.10(@types/node@26.4.0)(jsdom@29.1.1)(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2)):
     dependencies:
       '@vitest/expect': 4.1.10
-      '@vitest/mocker': 4.1.10(vite@8.2.2(@types/node@26.2.0)(terser@5.51.2))
+      '@vitest/mocker': 4.1.10(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))
       '@vitest/pretty-format': 4.1.10
       '@vitest/runner': 4.1.10
       '@vitest/snapshot': 4.1.10
@@ -3627,10 +3627,10 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.2.2(@types/node@26.2.0)(terser@5.51.2)
+      vite: 8.2.2(@types/node@26.4.0)(terser@5.51.2)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 26.2.0
+      '@types/node': 26.4.0
       jsdom: 29.1.1
     transitivePeerDependencies:
       - msw
