@@ -117,8 +117,8 @@ importers:
         specifier: 'catalog:'
         version: 6.1.1(vite@8.2.2(@types/node@26.4.0)(terser@5.51.2))
       expo-modules-core:
-        specifier: ^57.0.14
-        version: 57.0.14(react-native@0.87.1(@types/react@19.2.18)(react@19.2.8))(react@19.2.8)
+        specifier: ^57.0.16
+        version: 57.0.16(react-native@0.87.1(@types/react@19.2.18)(react@19.2.8))(react@19.2.8)
       jsdom:
         specifier: 'catalog:'
         version: 30.0.1
@@ -1018,8 +1018,8 @@ packages:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
     engines: {node: '>=12.0.0'}
 
-  expo-modules-core@57.0.14:
-    resolution: {integrity: sha512-Cg3aQnVsQhZcMOF/RFgPGzMuhIak5W9eR9ecwmFSeQ813r4/49ut6RMA6PqUuUKuPCUIRqnBAHfSyTm1W9nfzg==}
+  expo-modules-core@57.0.16:
+    resolution: {integrity: sha512-vPbxDOdvG6Ucpws5ucdbQa+nNmdxKONS1fTg92sy0p4TnHX8hBiExtbrtUA/5+1t3FRCUuiy29/1nJEGdt3E4A==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -1028,8 +1028,8 @@ packages:
       react-native-worklets:
         optional: true
 
-  expo-modules-jsi@57.0.6:
-    resolution: {integrity: sha512-WK0xFEe0FdZTCLCdfXK+HVNYfAmEbA6goecRxqjr0gh3XYRKAr9tikxqcM0ItLQoEPKntscPZhWcPLGvr97Tfw==}
+  expo-modules-jsi@57.0.8:
+    resolution: {integrity: sha512-MFwvKP0FXLkEET27KsKvOh/L7Dpu2d00UgzAlmKozJgtI23WTKSyKPxu+EOSs9peSgkHzKI0vQOhWjOseGBMkQ==}
     peerDependencies:
       react-native: '*'
 
@@ -2666,15 +2666,15 @@ snapshots:
 
   expect-type@1.4.0: {}
 
-  expo-modules-core@57.0.14(react-native@0.87.1(@types/react@19.2.18)(react@19.2.8))(react@19.2.8):
+  expo-modules-core@57.0.16(react-native@0.87.1(@types/react@19.2.18)(react@19.2.8))(react@19.2.8):
     dependencies:
       '@expo/expo-modules-macros-plugin': 0.6.1
-      expo-modules-jsi: 57.0.6(react-native@0.87.1(@types/react@19.2.18)(react@19.2.8))
+      expo-modules-jsi: 57.0.8(react-native@0.87.1(@types/react@19.2.18)(react@19.2.8))
       invariant: 2.2.4
       react: 19.2.8
       react-native: 0.87.1(@types/react@19.2.18)(react@19.2.8)
 
-  expo-modules-jsi@57.0.6(react-native@0.87.1(@types/react@19.2.18)(react@19.2.8)):
+  expo-modules-jsi@57.0.8(react-native@0.87.1(@types/react@19.2.18)(react@19.2.8)):
     dependencies:
       react-native: 0.87.1(@types/react@19.2.18)(react@19.2.8)
 
