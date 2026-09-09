@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/forwardsoftware/react-auth/compare/v2.1.1...v2.1.2) (2026-09-09)
+
+
+### Bug Fixes
+
+* **deps:** upgrade direct and transitive dependencies to reduce security alerts ([#387](https://github.com/forwardsoftware/react-auth/issues/387)) ([9c55fe9](https://github.com/forwardsoftware/react-auth/commit/9c55fe994a6df275f633a0bf0239364ec8130bea))
+
 ## [2.1.1](https://github.com/forwardsoftware/react-auth/compare/v2.1.0...v2.1.1) (2026-09-08)
 
 
