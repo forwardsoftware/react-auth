@@ -69,7 +69,7 @@ jobs:
 
       - name: Build package
         working-directory: ${{ matrix.path }}
-        run: pnpm build
+        run: pnpm --config.auto-install-peers=true build
 
       - name: Publish package at ${{ matrix.path }}
         run: npm publish
