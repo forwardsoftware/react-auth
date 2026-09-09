@@ -1,7 +1,7 @@
 {
   "name": "@forward-software/react-auth-apple",
   "description": "Apple Sign-In adapter for @forward-software/react-auth - Web and React Native/Expo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "ForWarD Software (https://forwardsoftware.solutions/)",
   "license": "MIT",
   "repository": {
