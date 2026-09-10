@@ -17,7 +17,6 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "paths": {
       "@forward-software/react-auth": ["./../../lib/src/index.ts"]
     }
