@@ -275,8 +275,8 @@ importers:
         specifier: 'catalog:'
         version: 6.1.2(vite@8.3.3(@types/node@26.6.4)(terser@5.51.2))
       expo-modules-core:
-        specifier: ^58.0.12
-        version: 58.0.12(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)
+        specifier: ^58.0.13
+        version: 58.0.13(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)
       jsdom:
         specifier: 'catalog:'
         version: 30.1.2
@@ -309,7 +309,7 @@ importers:
     dependencies:
       expo-modules-core:
         specifier: '>=2.0.0'
-        version: 58.0.12(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)
+        version: 58.0.13(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)
       react-native:
         specifier: '>=0.73.0'
         version: 0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1)
@@ -1196,8 +1196,8 @@ packages:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
     engines: {node: '>=12.0.0'}
 
-  expo-modules-core@58.0.12:
-    resolution: {integrity: sha512-826/BvV7D15rwZ2oN5fXDF66pI3+mgSvUgxyhBqmverySXU3sZ5fIi+57gX81poSy0KH4uuZjV1p7brS/aaSDQ==}
+  expo-modules-core@58.0.13:
+    resolution: {integrity: sha512-9tdwl423WgX//xZU2jYQugjY9LDUA61USZ1T9M7FfWON6AIM5EjpyGA77pXsSO8+/A0KURrkzsFn69/1fPUw1Q==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -1206,13 +1206,13 @@ packages:
       react-native-worklets:
         optional: true
 
-  expo-modules-jsi@58.0.8:
-    resolution: {integrity: sha512-i5TVHlgvhYB0sr62DYFhoPh2/FakGXOnD9PDE5qLqovIo9RpDBt5Ps7Z2+KHbAAL+nJBoYe2HPtvFVSoFlcAkw==}
+  expo-modules-jsi@58.0.9:
+    resolution: {integrity: sha512-xQkVspk1foHsHaPpTjT0DfahkcPMIPujBXrBCcQOVLI31Bz7yQ7nNv8jm5CNMm7fTZUGAB2JpIADn8xk6ZzvNg==}
     peerDependencies:
       react-native: '*'
 
-  expo-modules-macros@0.14.0:
-    resolution: {integrity: sha512-R6ODnfK0Za+pSZZjv0SuOTV2YkxczeavvrsLv40gueH3U7QJ8H5OlD3kkFqyT68UzDLRJhwF52D884egtNH7Rw==}
+  expo-modules-macros@0.15.0:
+    resolution: {integrity: sha512-SPNpejC1GTb5g519PQXRHnwNjC3NJE/IP8yvuwwKJ9cfel7g7gQk/11qsvlNQBdk/AOnu2uhsmBMpTVit2WMfA==}
 
   exponential-backoff@3.1.3:
     resolution: {integrity: sha512-ZgEeZXj30q+I0EN+CbSSpIyPaJ5HVQD18Z1m+u1FXbAeT94mr1zw50q4q6jiiC447Nl/YTcIYSAftiGqetwXCA==}
@@ -2850,19 +2850,19 @@ snapshots:
 
   expect-type@1.4.0: {}
 
-  expo-modules-core@58.0.12(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0):
+  expo-modules-core@58.0.13(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0):
     dependencies:
-      expo-modules-jsi: 58.0.8(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))
-      expo-modules-macros: 0.14.0
+      expo-modules-jsi: 58.0.9(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))
+      expo-modules-macros: 0.15.0
       invariant: 2.2.4
       react: 19.3.0
       react-native: 0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1)
 
-  expo-modules-jsi@58.0.8(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1)):
+  expo-modules-jsi@58.0.9(react-native@0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1)):
     dependencies:
       react-native: 0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1)
 
-  expo-modules-macros@0.14.0: {}
+  expo-modules-macros@0.15.0: {}
 
   exponential-backoff@3.1.3: {}
 
