@@ -19,7 +19,7 @@
   "scripts": {},
   "packageManager": "pnpm@12.8.0",
   "devDependencies": {
-    "npm-run-all2": "9.0.3",
+    "npm-run-all2": "9.0.4",
     "rimraf": "catalog:",
     "tslib": "2.8.1",
     "typescript": "catalog:"
