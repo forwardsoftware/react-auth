@@ -275,8 +275,8 @@ importers:
         specifier: 'catalog:'
         version: 6.1.2(vite@8.3.4(@types/node@26.6.5)(terser@5.51.2))
       expo-modules-core:
-        specifier: ^58.0.23
-        version: 58.0.23(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1))(react@19.3.1)
+        specifier: ^58.0.24
+        version: 58.0.24(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1))(react@19.3.1)
       jsdom:
         specifier: 'catalog:'
         version: 30.1.3
@@ -309,7 +309,7 @@ importers:
     dependencies:
       expo-modules-core:
         specifier: '>=2.0.0'
-        version: 58.0.23(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1))(react@19.3.1)
+        version: 58.0.24(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1))(react@19.3.1)
       react-native:
         specifier: '>=0.73.0'
         version: 0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1)
@@ -490,25 +490,25 @@ packages:
       '@noble/hashes':
         optional: true
 
-  '@expo/modules-macros-linux-arm64@0.21.0':
-    resolution: {integrity: sha512-et6K38xG21MBiYGrSfLlh3pD8ZuWkUrg7O1fdQxuLUvmFggb/C1ddo29SHLguJ+5Hjl+6J+ncEgpIWt6pQZjIw==}
+  '@expo/modules-macros-linux-arm64@0.22.0':
+    resolution: {integrity: sha512-FGXyxpZMEJ4pDPCeCBjfBjftCbk03P/1Rf6UkFoL22joqu4XXt+XUsjfTzyKBzP9pAXL39FVdbNClwk529CEEQ==}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@expo/modules-macros-linux-x64@0.21.0':
-    resolution: {integrity: sha512-p/vMS+FrWTvk+um3+8fd7/3VBJQxnPu8SjXGu4zs8lYPWaVOfpyjE80ziDW/KEOUyueT/U9DEzxX8JE/uDDdUg==}
+  '@expo/modules-macros-linux-x64@0.22.0':
+    resolution: {integrity: sha512-4yN4cZTCUWkq1Olr0/lA57gFan8+MEo7K3K0cx0bB3TUEqHgL/hyJN79vQKXlp9NWTnOxO7J5uwqMQkQwfh6aw==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@expo/modules-macros-win32-arm64@0.21.0':
-    resolution: {integrity: sha512-u2+LDxUKqKvos5dTnZn37Pbp6gMmdGG566dh9fO8gWrS5qcoxBDuNeeB0ZXwrfmhhiL7JtT4AhH5FO7NP8dsfQ==}
+  '@expo/modules-macros-win32-arm64@0.22.0':
+    resolution: {integrity: sha512-nLDXRGZWKNERzP4zH9LdfdZ3jvPBQcQE7LX5UnWW4cnDE/GoiVyUKdXQFK+KRnMD6We5gxqhIOU6SLj74h6fHA==}
     cpu: [arm64]
     os: [win32]
 
-  '@expo/modules-macros-win32-x64@0.21.0':
-    resolution: {integrity: sha512-MPtZ6mYFJBs7aKfs5PZ9HikyXxn9OnxzObRkCM4vedRLwJ6mEPRaZEzWUyi9MS2SUVU7Lt4oQZPNp+gjTVEZkw==}
+  '@expo/modules-macros-win32-x64@0.22.0':
+    resolution: {integrity: sha512-IT5/YsBTj2gnfNlxDfv3sC51rBudiSHbPFBKoPBbpwmTCMcQg1rmWVdUoiy7LLC48NNzm86wyMxHpSI5lkW1Gg==}
     cpu: [x64]
     os: [win32]
 
@@ -1195,8 +1195,8 @@ packages:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
     engines: {node: '>=12.0.0'}
 
-  expo-modules-core@58.0.23:
-    resolution: {integrity: sha512-jsINDwUJ1ddCGMTQAROPnBHIvCyLFZNJcGT/3iFP5LcP+01edie2ZBx44NEYIPmQLb3Vnz8sC3rKouwo7vj2gQ==}
+  expo-modules-core@58.0.24:
+    resolution: {integrity: sha512-RrE6FEWHJWpyazngFj2ZtpGrgf0sDWsl0Pa6TxHP9VD+Ns0Fju6E831d9nDary0PnGlGLHY31nJqfurOd2uEbg==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -1205,13 +1205,13 @@ packages:
       react-native-worklets:
         optional: true
 
-  expo-modules-jsi@58.0.16:
-    resolution: {integrity: sha512-+UwXQVGBJDmwCe2MgkeVLdMIXmUjCcmMakRrtlAmA5I7WwAt5QYcbVi3u7Cae9X12xKet9IpXzzJRPz5zM32LA==}
+  expo-modules-jsi@58.0.17:
+    resolution: {integrity: sha512-pGIj40nf3roqUvCkRbeEJ40ROouyOAdlP3tLWRTci6julMd+FlmCL8UIb6p7TQMODxb8fV2O5VM+QdUd+MPI9A==}
     peerDependencies:
       react-native: '*'
 
-  expo-modules-macros@0.21.0:
-    resolution: {integrity: sha512-dCzN+IH3ss9audf0tvDPgwEuQJZ0WvlC60SfUDFhms8Gal1cXkYpyU7epTH2lj+ipGqghrXXjp+fmyo5wDX+YQ==}
+  expo-modules-macros@0.22.0:
+    resolution: {integrity: sha512-IHY+FkILfG19qsyf9G/z7dcWVgsyqdkWsvvob3n5nWKa2meCCAGeEjp42N68fG8Ta6dn/bsceuma7uh2i6ho9g==}
 
   exponential-backoff@3.1.3:
     resolution: {integrity: sha512-ZgEeZXj30q+I0EN+CbSSpIyPaJ5HVQD18Z1m+u1FXbAeT94mr1zw50q4q6jiiC447Nl/YTcIYSAftiGqetwXCA==}
@@ -2255,16 +2255,16 @@ snapshots:
 
   '@exodus/bytes@1.16.0': {}
 
-  '@expo/modules-macros-linux-arm64@0.21.0':
+  '@expo/modules-macros-linux-arm64@0.22.0':
     optional: true
 
-  '@expo/modules-macros-linux-x64@0.21.0':
+  '@expo/modules-macros-linux-x64@0.22.0':
     optional: true
 
-  '@expo/modules-macros-win32-arm64@0.21.0':
+  '@expo/modules-macros-win32-arm64@0.22.0':
     optional: true
 
-  '@expo/modules-macros-win32-x64@0.21.0':
+  '@expo/modules-macros-win32-x64@0.22.0':
     optional: true
 
   '@forward-software/react-auth@2.1.0(react@19.3.1)':
@@ -2812,24 +2812,24 @@ snapshots:
 
   expect-type@1.4.0: {}
 
-  expo-modules-core@58.0.23(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1))(react@19.3.1):
+  expo-modules-core@58.0.24(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1))(react@19.3.1):
     dependencies:
-      expo-modules-jsi: 58.0.16(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1))
-      expo-modules-macros: 0.21.0
+      expo-modules-jsi: 58.0.17(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1))
+      expo-modules-macros: 0.22.0
       invariant: 2.2.4
       react: 19.3.1
       react-native: 0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1)
 
-  expo-modules-jsi@58.0.16(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1)):
+  expo-modules-jsi@58.0.17(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1)):
     dependencies:
       react-native: 0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.1)(supports-color@8.1.1)
 
-  expo-modules-macros@0.21.0:
+  expo-modules-macros@0.22.0:
     optionalDependencies:
-      '@expo/modules-macros-linux-arm64': 0.21.0
-      '@expo/modules-macros-linux-x64': 0.21.0
-      '@expo/modules-macros-win32-arm64': 0.21.0
-      '@expo/modules-macros-win32-x64': 0.21.0
+      '@expo/modules-macros-linux-arm64': 0.22.0
+      '@expo/modules-macros-linux-x64': 0.22.0
+      '@expo/modules-macros-win32-arm64': 0.22.0
+      '@expo/modules-macros-win32-x64': 0.22.0
 
   exponential-backoff@3.1.3: {}
 
