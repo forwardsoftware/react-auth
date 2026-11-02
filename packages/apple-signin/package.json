@@ -64,7 +64,7 @@
     "jsdom": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "react-native": "^0.88.0",
+    "react-native": "^0.88.1",
     "react-native-svg": "^15.16.0",
     "rimraf": "catalog:",
     "typescript": "catalog:",
