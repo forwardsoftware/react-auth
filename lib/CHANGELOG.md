@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.3](https://github.com/forwardsoftware/react-auth/compare/v2.1.2...v2.1.3) (2026-11-25)
+
+
+### Bug Fixes
+
+* **deps:** bump the testing group across 4 directories with 2 updates ([#452](https://github.com/forwardsoftware/react-auth/issues/452)) ([fe8ce6b](https://github.com/forwardsoftware/react-auth/commit/fe8ce6b7415ae0e593a024073d50c620431b5c0b))
+
 ## [2.1.2](https://github.com/forwardsoftware/react-auth/compare/v2.1.1...v2.1.2) (2026-09-09)
 
 
